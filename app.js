@@ -1,5 +1,4 @@
 //app.js
-//test
 App({
     onLaunch: function () {
 
@@ -16,3 +15,4 @@ App({
     globalData: {
     }
 })
+
