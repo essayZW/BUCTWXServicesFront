@@ -1,6 +1,5 @@
 //index
 const app = getApp();
-
 Page({
   data: {
     
