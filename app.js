@@ -1,4 +1,5 @@
 //app.js
+//test
 App({
     onLaunch: function () {
 
