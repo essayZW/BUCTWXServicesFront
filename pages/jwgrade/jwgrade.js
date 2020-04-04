@@ -1,11 +1,18 @@
-// pages/index/index.js
+// pages/jw/jw.js
+const App = getApp();
+
+const token = require('/../../utils/token.js');
+const AppCofig = require('/../../utils/config.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        inputValue : {
+            'xnm' : '',
+            'xqm' : ''
+        }
     },
 
     /**
@@ -26,7 +33,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-    
+
     },
 
     /**
@@ -64,18 +71,21 @@ Page({
 
     },
     /**
-     * 试验的跳转功能
+     * 得到指定学年学期所有的成绩
      */
-    jumpPage : function() {
-        // 简单试验跳转功能
-        wx.navigateTo({
-            url: '/pages/jwgrade/jwgrade',
-            success : function() {
-                console.log(1);
-            },
-            fail: function() {
-                console.log(0);
-            }
-        })
+    getAllGrade : function(){
+        
+    },
+    /**
+     * 得到某学年学期指定科目的成绩明细
+     */
+    getSingleGrade : function(){
+
+    },
+    /**
+     * 记录input输入
+     */
+    storeInputValue : function(e) {
+        this.data.inputValue[e.currentTarget.id] = e.detail.value;
     }
 })
