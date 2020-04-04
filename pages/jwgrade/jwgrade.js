@@ -1,11 +1,18 @@
 // pages/jw/jw.js
+const App = getApp();
+
+const token = require('/../../utils/token.js');
+const AppCofig = require('/../../utils/config.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        inputValue : {
+            'xnm' : '',
+            'xqm' : ''
+        }
     },
 
     /**
@@ -62,5 +69,23 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    /**
+     * 得到指定学年学期所有的成绩
+     */
+    getAllGrade : function(){
+        
+    },
+    /**
+     * 得到某学年学期指定科目的成绩明细
+     */
+    getSingleGrade : function(){
+
+    },
+    /**
+     * 记录input输入
+     */
+    storeInputValue : function(e) {
+        this.data.inputValue[e.currentTarget.id] = e.detail.value;
     }
 })

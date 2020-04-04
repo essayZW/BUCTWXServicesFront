@@ -26,7 +26,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+    
     },
 
     /**
@@ -62,5 +62,20 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    /**
+     * 试验的跳转功能
+     */
+    jumpPage : function() {
+        // 简单试验跳转功能
+        wx.navigateTo({
+            url: '/pages/jwgrade/jwgrade',
+            success : function() {
+                console.log(1);
+            },
+            fail: function() {
+                console.log(0);
+            }
+        })
     }
 })
