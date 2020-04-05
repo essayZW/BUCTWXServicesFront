@@ -5,4 +5,5 @@
     <swiper-item><image src="/images/test1.jpg"></image></swiper-item>
     <swiper-item><image src="/images/test2.jpg"></image></swiper-item>
 </swiper>
-<button bindtap="jumpPage">跳转</button>
+<button bindtap="jumpPage">成绩查询区</button>
+<view class="text-middle-shadow">测试文字</view>
