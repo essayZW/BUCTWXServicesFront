@@ -11,7 +11,8 @@ Page({
     data: {
         inputValue : {
             'xnm' : '',
-            'xqm' : ''
+            'xqm' : '',
+            'classm' : ''
         }
     },
 
