@@ -1,8 +1,7 @@
 <!--pages/index/index.wxml-->
-<!--<text>pages/index/index.wxml</text>-->
+<!-- 轮播图 start -->
 <view>
   <swiper bindchange="changeDots">
-  <!-- mode属性在图片设置宽高才起作用，我在app.wxss中设置了所有图片的默认宽高 -->
     <swiper-item><image class="swiper" src="/images/test1.jpg"></image></swiper-item>
     <swiper-item><image class="swiper" src="/images/test2.jpg"></image></swiper-item>
   </swiper>
@@ -10,14 +9,14 @@
     <view class="normal-dots {{currentDots == 1 ? 'active-dots' : ''}}"></view>
     <view class="normal-dots {{currentDots == 2 ? 'active-dots' : ''}}"></view>
   </view>
-<!--<button bindtap="jumpPage">成绩查询区</button>-->
 </view>
+<!-- 轮播图 end -->
 <view class="text-margin">
  <text class="index-normal" decode="{{true}}">&emsp;教务</text>
  <text class="text-middle-shadow">系统</text>
 </view>
 <view class="center">
-  <image class="index-link" src="/images/test3.png"> </image>
+  <image class="index-link" src="/images/test3.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image>
   <image class="index-link" src="/images/test3.png"> </image>
   <image class="index-link" src="/images/test3.png"> </image>
 </view>
