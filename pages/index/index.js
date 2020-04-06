@@ -68,11 +68,29 @@ Page({
 
     },
     /**
-     * 页面跳转
+     * 轮播图滑块变化
      */
     changeDots : function(e){
         this.setData({
             'currentDots' : e.detail.current + 1
+        });
+    },
+    /**
+     * 页面切换
+     */
+    changePage : function(e) {
+        let src = e.target.dataset.src ? e.target.dataset.src : false;
+        if(src === false) {
+            return;
+        }
+        wx.navigateTo({
+          url: src,
+          success : function(e) {
+              console.log(e.errMsg);
+          },
+          fail: function(e) {
+              console.log(e.errMsg);
+          }
         });
     }
 })

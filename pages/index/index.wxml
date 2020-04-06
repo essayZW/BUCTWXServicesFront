@@ -1,4 +1,5 @@
 <!--pages/index/index.wxml-->
+<!-- 轮播图 start -->
 <view>
   <swiper bindchange="changeDots">
     <swiper-item><image class="swiper" src="/images/test1.jpg"></image></swiper-item>
@@ -9,12 +10,13 @@
     <view class="normal-dots {{currentDots == 2 ? 'active-dots' : ''}}"></view>
   </view>
 </view>
+<!-- 轮播图 end -->
 <view class="text-margin">
  <text class="index-normal" decode="{{true}}">&emsp;教务</text>
  <text class="text-middle-shadow">系统</text>
 </view>
 <view class="center">
-  <image class="index-link" src="/images/test3.png"> </image>
+  <image class="index-link" src="/images/test3.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image>
   <image class="index-link" src="/images/test3.png"> </image>
   <image class="index-link" src="/images/test3.png"> </image>
 </view>
