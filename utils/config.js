@@ -29,8 +29,12 @@ module.exports = {
     /**
      * 配置项
      */
-    'APIAddress' : 'https://api.imessay.cn',
-
+    'APIAddress' : 'https://www.imessay.cn:8848',
+    /**
+     * 教务API配置
+     */
+    'jwAllGrade'    : '/jw/getAllGrade',
+    'jwSingleGrade' : '/jw/getSingleGrade',
     /**
      * 函数
      */
