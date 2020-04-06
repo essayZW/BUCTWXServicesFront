@@ -5,7 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        // 当前的页面
+        currentDots : 1
+        // 
     },
 
     /**
@@ -26,7 +28,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.setData({
+            'currentDots' : this.data.currentDots
+        });
     },
 
     /**
@@ -64,18 +68,11 @@ Page({
 
     },
     /**
-     * 试验的跳转功能
+     * 页面跳转
      */
-    jumpPage : function() {
-        // 简单试验跳转功能
-        wx.navigateTo({
-            url: '/pages/jwgrade/jwgrade',
-            success : function() {
-                console.log(1);
-            },
-            fail: function() {
-                console.log(0);
-            }
-        })
+    changeDots : function(e){
+        this.setData({
+            'currentDots' : e.detail.current + 1
+        });
     }
 })
