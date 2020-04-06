@@ -3,6 +3,7 @@ const App = getApp();
 
 const token = require('/../../utils/token.js');
 const AppCofig = require('/../../utils/config.js');
+const jw = require('/../../utils/jw.js');
 Page({
 
     /**
