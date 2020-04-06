@@ -1,11 +1,21 @@
 /* app.wxss */
 
-image{
+.swiper{
     width:100%;
     height:100%;
 }
-
+.index-link{
+    width:240rpx;
+    height:300rpx;
+}
 /* 文字背景上下两块渐变 */
 .text-middle-shadow{
-    background: linear-gradient(to bottom, white 50%, #f4bc00 50%);
+    background: linear-gradient(to bottom, white 53%, #f7b52c 47%);
+    font-size: 25px;
+    font-weight: bold;
 }
+.index-normal{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  

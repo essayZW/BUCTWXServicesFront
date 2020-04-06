@@ -1,1 +1,8 @@
 /* pages/index/index.wxss */
+.center{
+  text-align:center;
+}
+.text-margin{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
