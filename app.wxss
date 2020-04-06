@@ -17,5 +17,29 @@
 .index-normal{
     font-size: 25px;
     font-weight: bold;
-  }
-  
+}
+
+/* 导航栏滑块样式组件 */
+.dots-group{
+    width:100%;
+    height:20px;
+    line-height: 20px;
+    text-align: center;
+}
+.dots-group>view{
+    /* 设置滑块点的样子，宽高等,默认是圆点 */
+    width:8px;
+    height:8px;
+    border-radius: 4px;
+    display: inline-block;
+    /* 间隔 */
+    margin-right: 8px;
+}
+.normal-dots{
+    /* 滑块正常时候的样子 */
+    background-color: black;
+}
+.active-dots{
+    /* 滑块被选中的样子 */
+    background-color: gray;
+}
