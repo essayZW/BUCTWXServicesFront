@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/notice/notice",
-        "pages/mine/mine"
+        "pages/mine/mine",
+        "pages/calendar/calendar"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -12,27 +13,28 @@
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
-        "list": [{
-          "pagePath": "pages/index/index",
-          "text": "首页",
-          "iconPath": "images/icon/index.png",
-          "selectedIconPath": "images/icon/index_.png"
-        },
-        {
-          "pagePath": "pages/notice/notice",
-          "text": "通知",
-          "iconPath": "images/icon/notice.png",
-          "selectedIconPath": "images/icon/notice_.png"
-        },
-        {
-          "pagePath": "pages/mine/mine",
-          "text": "我的",
-          "iconPath": "images/icon/mine.png",
-          "selectedIconPath": "images/icon/mine_.png"
-        }
-      ],
-      "color":"#000000",
-      "selectedColor":"#000000"
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/icon/index.png",
+                "selectedIconPath": "images/icon/index_.png"
+            },
+            {
+                "pagePath": "pages/notice/notice",
+                "text": "通知",
+                "iconPath": "images/icon/notice.png",
+                "selectedIconPath": "images/icon/notice_.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "images/icon/mine.png",
+                "selectedIconPath": "images/icon/mine_.png"
+            }
+        ],
+        "color": "#000000",
+        "selectedColor": "#000000"
     },
     "style": "v2",
     "sitemapLocation": "sitemap.json"

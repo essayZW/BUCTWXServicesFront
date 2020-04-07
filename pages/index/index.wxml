@@ -26,7 +26,7 @@
   <text class="text-middle-shadow">生活</text>
 </view>
 <view class="center">
-  <image class="index-link" src="/images/test4.png"> </image>
+  <image class="index-link" src="/images/test4.png" data-src="/pages/calendar/calendar" bindtap="changePage"> </image>
   <image class="index-link" src="/images/test4.png"> </image>
   <image class="index-link" src="/images/test4.png"> </image>
 </view>
