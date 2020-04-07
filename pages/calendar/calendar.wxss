@@ -46,15 +46,23 @@
     height:90rpx;
     font-weight: 500;
 }
+/* 当天 */
 .day-active{
     background-color: #0ae;
+    font-weight: 500;
     color: white;
     border-radius: 12rpx;
 }
 .day-active>.day-info{
     color:white;
 }
+/* 当天 end */
+/* 不在当月 */
+.day-not-inmonth, .day-not-inmonth>.day-info{
+    color: rgb(220, 220, 220);
+}
+/* 不在当月end */
 .day-info{
-    color:gray;
+    color:rgb(180, 180, 180);
     font-size: small;
 }

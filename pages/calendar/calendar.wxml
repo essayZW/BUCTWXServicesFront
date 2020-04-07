@@ -7,7 +7,7 @@
             <view wx:for="{{ weekdayList }}">{{ item }}</view>
         </view>
         <view id="monthday-list">
-            <view wx:for="{{ monthdayList }}" class="{{ item.day == day ? 'day-active' : ''}}">
+            <view wx:for="{{ monthdayList }}" class="{{ item.day == day ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}">
                 <view>{{ item.day }}</view><view class="day-info">{{ item.shortInfo }}</view>
             </view>
         </view>
