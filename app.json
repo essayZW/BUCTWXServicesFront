@@ -1,9 +1,8 @@
 {
     "pages": [
-        
         "pages/index/index",
         "pages/jwgrade/jwgrade",
-        
+        "pages/calendar/calendar",
         "pages/notice/notice",
         "pages/mine/mine"
     ],
