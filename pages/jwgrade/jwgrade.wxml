@@ -1,2 +1,93 @@
 <!--pages/jw/jw.wxml-->
-<text>pages/jw/jw.wxml</text>
+<view class="bkg">
+
+</view>
+<view class="subject">
+  <view class="subject-name" >
+    <image class="item" src="/images/icon/item.png" ></image>
+    <text class="index-normal" decode="{{true}}">大学</text>
+    <text class="text-middle-shadow">物理I</text>     
+  </view>
+  <view class=".detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
+  <view>
+    <image class="logo" src="/images/icon/logo1.png" ></image>
+  </view>
+  
+<view class="line"></view>
+ 
+  <view>
+    <image class="logo" src="/images/icon/logo2.png" ></image> 
+  </view>
+<view class="line"></view>
+  
+  <view>
+    <image class="logo" src="/images/icon/logo3.png" ></image>
+  </view>
+</view>
+
+<view class="subject">
+  <view class="subject-name" >
+    <image class="item" src="/images/icon/item.png" ></image>
+    <text class="index-normal" decode="{{true}}">数据结</text>
+    <text class="text-middle-shadow">构实验</text>
+  </view>
+  <view>
+    <image class="logo" src="/images/icon/logo1.png" ></image>
+  </view>
+  
+<view class="line"></view>
+ 
+  <view>
+    <image class="logo" src="/images/icon/logo2.png" ></image> 
+  </view>
+<view class="line"></view>
+  
+  <view>
+    <image class="logo" src="/images/icon/logo3.png" ></image>
+  </view>
+</view>
+
+<view class="subject">
+  <view class="subject-name" >
+    <image class="item" src="/images/icon/item.png" ></image>
+    <text class="index-normal" decode="{{true}}">大学</text>
+    <text class="text-middle-shadow">物理III</text>
+  </view>
+  <view>
+    <image class="logo" src="/images/icon/logo1.png" ></image>
+  </view>
+  
+<view class="line"></view>
+ 
+  <view>
+    <image class="logo" src="/images/icon/logo2.png" ></image> 
+  </view>
+<view class="line"></view>
+  
+  <view>
+    <image class="logo" src="/images/icon/logo3.png" ></image>
+  </view>
+</view>
+
+<view class="subject">
+  <view class="subject-name" >
+    <image class="item" src="/images/icon/item.png" ></image>
+    <text class="index-normal" decode="{{true}}">大学</text>
+    <text class="text-middle-shadow">物理IV</text>
+  </view>
+  <view>
+    <image class="logo" src="/images/icon/logo1.png" ></image>
+  </view>
+  
+<view class="line"></view>
+ 
+  <view>
+    <image class="logo" src="/images/icon/logo2.png" ></image> 
+  </view>
+<view class="line"></view>
+  
+  <view>
+    <image class="logo" src="/images/icon/logo3.png" ></image>
+  </view>
+</view>
+ 

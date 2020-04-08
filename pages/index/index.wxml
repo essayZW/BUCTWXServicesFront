@@ -1,16 +1,17 @@
 <!--pages/index/index.wxml-->
 <!--<text>pages/index/index.wxml</text>-->
+
 <view>
   <swiper bindchange="changeDots">
   <!-- mode属性在图片设置宽高才起作用，我在app.wxss中设置了所有图片的默认宽高 -->
-    <swiper-item><image class="swiper" src="/images/test1.jpg"></image></swiper-item>
-    <swiper-item><image class="swiper" src="/images/test2.jpg"></image></swiper-item>
+    <swiper-item><image class="swiper" src="/images/test5.png"></image></swiper-item>
+    <swiper-item><image class="swiper" src="/images/test6.png"></image></swiper-item>
   </swiper>
   <view class="dots-group">
     <view class="normal-dots {{currentDots == 1 ? 'active-dots' : ''}}"></view>
     <view class="normal-dots {{currentDots == 2 ? 'active-dots' : ''}}"></view>
   </view>
-<!--<button bindtap="jumpPage">成绩查询区</button>-->
+
 </view>
 <view class="text-margin">
  <text class="index-normal" decode="{{true}}">&emsp;教务</text>

@@ -1,8 +1,19 @@
 /* pages/index/index.wxss */
+
 .center{
   text-align:center;
 }
 .text-margin{
   margin-top: 30px;
   margin-bottom: 20px;
+}
+/* 文字背景上下两块渐变 */
+.text-middle-shadow{
+  background: linear-gradient(to bottom, white 53%, #f7b52c 47%);
+  font-size: 25px;
+  font-weight: bold;
+}
+.index-normal{
+  font-size: 25px;
+  font-weight: bold;
 }

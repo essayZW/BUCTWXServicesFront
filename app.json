@@ -1,15 +1,17 @@
 {
     "pages": [
-        "pages/index/index",
+        
+        
         "pages/jwgrade/jwgrade",
+        "pages/index/index",
         "pages/notice/notice",
         "pages/mine/mine"
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#f7b52c",
-        "navigationBarTitleText": "北化嘤嘤嘤助手",
-        "navigationBarTextStyle": "black"
+        "navigationBarBackgroundColor": "#ffd21e",
+        "navigationBarTitleText": "挺好看的呀",
+        "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "list": [{
