@@ -9,19 +9,36 @@
     <text class="text-middle-shadow">物理I</text>     
   </view>
   <view class=".detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
-  <view>
+  <view class="logo-s">
     <image class="logo" src="/images/icon/logo1.png" ></image>
   </view>
-  
+  <view class="logo-text" >
+    <text class="logo-text-style" >学分</text>
+  </view>
+  <view class="logo-texta" >
+    <text class="logo-text-style" >3.0</text>
+  </view>
 <view class="line"></view>
  
-  <view>
+  <view class="logo-s">
     <image class="logo" src="/images/icon/logo2.png" ></image> 
+  </view>
+  <view class="logo-text" >
+    <text class="logo-text-style" >评级</text>
+  </view>
+  <view class="logo-texta" >
+    <text class="logo-text-style" >A+</text>
   </view>
 <view class="line"></view>
   
-  <view>
+  <view class="logo-s">
     <image class="logo" src="/images/icon/logo3.png" ></image>
+  </view>
+  <view class="logo-text" >
+    <text class="logo-text-style" >绩点</text>
+  </view>
+  <view class="logo-texta" >
+    <text class="logo-text-style" >4.33</text>
   </view>
 </view>
 
