@@ -1,6 +1,9 @@
 /* pages/calendar/calendar.wxss */
+#calendar-body{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
 #calendar-body>view:first-child{
-    margin-left: calc(100% / 18);
     height:70rpx;
     line-height: 70rpx;
     margin-bottom: 25rpx;
@@ -15,22 +18,24 @@
     background-color: rgba(220, 220, 220, 0.5);
     border-radius: 8rpx;
     display: inline-block;
-    width:100rpx;
+    min-width:100rpx;
     height:45rpx;
     text-align: center;
     line-height: 45rpx;
 }
-#weekday-list, #monthday-list{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+/* 返回今天的按钮 */
+#today-butt{
+    margin-right: 10rpx;
+    float:right;
+    background-color: #0ae;
+    border-radius: 10rpx;
+    color: white;
+    font-weight: bold;
+    padding: 0px 20rpx;
 }
 #weekday-list{
     font-size: smaller;
     color: rgb(180, 180, 180);
-}
-#monthday-list{
-    padding: 0px 10rpx;
 }
 #weekday-list>view{
     line-height: 55rpx;
@@ -38,9 +43,10 @@
 #weekday-list>view, #monthday-list>view{
     display: inline-block;
     width:calc(100% / 7);
-    height: 55rpx;
+    height: 50rpx;
     text-align: center;
     margin-bottom: 10rpx;
+    font-size: 35rpx;
 }
 #monthday-list>view{
     height:90rpx;
