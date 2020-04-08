@@ -1,0 +1,74 @@
+/* pages/calendar/calendar.wxss */
+#calendar-body{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+#calendar-body>view:first-child{
+    height:70rpx;
+    line-height: 70rpx;
+    margin-bottom: 25rpx;
+}
+#day-info-show{
+    font-weight: bold;
+    margin-right: 15rpx;
+}
+
+#weekday-show{
+    font-size: small;
+    background-color: rgba(220, 220, 220, 0.5);
+    border-radius: 8rpx;
+    display: inline-block;
+    min-width:100rpx;
+    height:45rpx;
+    text-align: center;
+    line-height: 45rpx;
+}
+/* 返回今天的按钮 */
+#today-butt{
+    margin-right: 10rpx;
+    float:right;
+    background-color: #0ae;
+    border-radius: 10rpx;
+    color: white;
+    font-weight: bold;
+    padding: 0px 20rpx;
+}
+#weekday-list{
+    font-size: smaller;
+    color: rgb(180, 180, 180);
+}
+#weekday-list>view{
+    line-height: 55rpx;
+}
+#weekday-list>view, #monthday-list>view{
+    display: inline-block;
+    width:calc(100% / 7);
+    height: 50rpx;
+    text-align: center;
+    margin-bottom: 10rpx;
+    font-size: 35rpx;
+}
+#monthday-list>view{
+    height:90rpx;
+    font-weight: 500;
+}
+/* 当天 */
+.day-active{
+    background-color: #0ae;
+    font-weight: 500;
+    color: white;
+    border-radius: 12rpx;
+}
+.day-active>.day-info{
+    color:white;
+}
+/* 当天 end */
+/* 不在当月 */
+.day-not-inmonth, .day-not-inmonth>.day-info{
+    color: rgb(220, 220, 220);
+}
+/* 不在当月end */
+.day-info{
+    color:rgb(180, 180, 180);
+    font-size: small;
+}

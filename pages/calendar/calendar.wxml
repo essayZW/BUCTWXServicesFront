@@ -1,0 +1,23 @@
+<!--pages/calendar/calendar.wxml-->
+<!-- 日历部分 start-->
+<view id="calendar-body">
+    <view>
+        <text id="day-info-show">{{ year }}年{{ month }}月{{ day }}日</text>
+        <text id="weekday-show">{{ weekday }}</text>
+        <text wx:if="{{ !isCurrentDay }}" bindtap="goBackToday" id="today-butt">今</text>
+    </view>
+    <view>
+        <view id="weekday-list">
+            <view wx:for="{{ weekdayList }}">{{ item }}</view>
+        </view>
+        <view id="monthday-list" bindtouchstart="touchStart" bindtouchmove="touchMove">
+            <view wx:for="{{ monthdayList }}" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}">
+                <view>{{ item.day }}</view><view class="day-info">{{ item.shortInfo }}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 日历部分 end -->
+<!-- 当前信息展示 start -->
+<view></view>
+<!-- 当前信息展示 end -->
