@@ -2,6 +2,7 @@
 #calendar-body{
     padding-left: 30rpx;
     padding-right: 30rpx;
+    padding-top: 25rpx;
 }
 #calendar-body>view:first-child{
     height:70rpx;
