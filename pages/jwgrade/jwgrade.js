@@ -11,10 +11,9 @@ Page({
      */
     data: {
         inputValue : {
-            'xnm' : '',
-            'xqm' : '',
-            'classm' : ''
-        }
+
+        },
+        listShow : false
     },
 
     /**
@@ -35,7 +34,22 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+        this.setData({
+            'hasGrade' : false,
+            'noGradeInfo' : '暂时无成绩!'
+        });
+        let touch = require('/../../utils/touch.js');
+        let touchObj = new touch(() => {
+            this.listChange(false);
+        }, () => {
+            this.listChange(true);
+        });
+        this.touchStart = function(e) {
+            touchObj.start(e);
+        };
+        this.touchMove = function(e) {
+            touchObj.move(e);
+        }
     },
 
     /**
@@ -85,9 +99,19 @@ Page({
 
     },
     /**
-     * 记录input输入
+     * 选择列表出现
      */
-    storeInputValue : function(e) {
-        this.data.inputValue[e.currentTarget.id] = e.detail.value;
-    }
+    listChange : function(show) {
+        if(show === true){
+            this.data.listShow = false;
+        }
+        else if(show === false) {
+            this.data.listShow = true;
+        }
+        this.setData({
+            'selectListShow' : this.data.listShow ? '' : 'selected-list',
+        });
+        this.data.listShow = !this.data.listShow;
+    },
+
 })

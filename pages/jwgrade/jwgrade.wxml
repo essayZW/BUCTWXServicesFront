@@ -1,110 +1,55 @@
 <!--pages/jw/jw.wxml-->
-<view class="bkg">
-
+<view class="select-list">
+  <!-- 列表内容 -->
 </view>
-<view class="subject">
-  <view class="subject-name" >
-    <image class="item" src="/images/icon/item.png" ></image>
-    <text class="index-normal" decode="{{true}}">大学</text>
-    <text class="text-middle-shadow">物理I</text>     
+<view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
+  <view class="bkg">
+    <button bindtap="listChange">按钮</button>
   </view>
-  <view class=".detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
-  <view class="logo-s">
-    <image class="logo" src="/images/icon/logo1.png" ></image>
+  <view wx:if="{{ !hasGrade }}" class="no-grade">
+    {{ noGradeInfo }}
   </view>
-  <view class="logo-text" >
-    <text class="logo-text-style" >学分</text>
-  </view>
-  <view class="logo-texta" >
-    <text class="logo-text-style" >3.0</text>
-  </view>
-<view class="line"></view>
- 
-  <view class="logo-s">
-    <image class="logo" src="/images/icon/logo2.png" ></image> 
-  </view>
-  <view class="logo-text" >
-    <text class="logo-text-style" >评级</text>
-  </view>
-  <view class="logo-texta" >
-    <text class="logo-text-style" >A+</text>
-  </view>
-<view class="line"></view>
-  
-  <view class="logo-s">
-    <image class="logo" src="/images/icon/logo3.png" ></image>
-  </view>
-  <view class="logo-text" >
-    <text class="logo-text-style" >绩点</text>
-  </view>
-  <view class="logo-texta" >
-    <text class="logo-text-style" >4.33</text>
-  </view>
-</view>
-
-<view class="subject">
-  <view class="subject-name" >
-    <image class="item" src="/images/icon/item.png" ></image>
-    <text class="index-normal" decode="{{true}}">数据结</text>
-    <text class="text-middle-shadow">构实验</text>
-  </view>
-  <view>
-    <image class="logo" src="/images/icon/logo1.png" ></image>
-  </view>
-  
-<view class="line"></view>
- 
-  <view>
-    <image class="logo" src="/images/icon/logo2.png" ></image> 
-  </view>
-<view class="line"></view>
-  
-  <view>
-    <image class="logo" src="/images/icon/logo3.png" ></image>
+  <view class="subject" wx:for="{{ allGradeInfo }}" wx:if="{{ hasGrade }}">
+    <view class="subject-name" >
+      <image class="item" src="/images/icon/item.png" ></image>
+      <text class="index-normal" decode="{{true}}">{{ item.classNameFirstHalf }}</text>
+      <text class="text-middle-shadow">{{ item.classNameSecondHalf }}</text>
+      <view class="detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
+    </view>
+    <view class="item-line">
+      <view class="logo-s">
+        <image class="logo" src="/images/icon/logo1.png" ></image>
+      </view>
+      <view class="logo-text" >
+        <text class="logo-text-style" >学分</text>
+      </view>
+      <view class="logo-texta" >
+        <text class="logo-text-style" >{{ item.score }}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item-line">
+      <view class="logo-s">
+        <image class="logo" src="/images/icon/logo2.png" ></image> 
+      </view>
+      <view class="logo-text" >
+        <text class="logo-text-style" >评级</text>
+      </view>
+      <view class="logo-texta" >
+        <text class="logo-text-style" >{{ item.grade }}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item-line">
+      <view class="logo-s">
+        <image class="logo" src="/images/icon/logo3.png" ></image>
+      </view>
+      <view class="logo-text" >
+        <text class="logo-text-style" >绩点</text>
+      </view>
+      <view class="logo-texta" >
+        <text class="logo-text-style" >{{ item.scorePoint}}</text>
+      </view>
+    </view>
   </view>
 </view>
-
-<view class="subject">
-  <view class="subject-name" >
-    <image class="item" src="/images/icon/item.png" ></image>
-    <text class="index-normal" decode="{{true}}">大学</text>
-    <text class="text-middle-shadow">物理III</text>
-  </view>
-  <view>
-    <image class="logo" src="/images/icon/logo1.png" ></image>
-  </view>
-  
-<view class="line"></view>
- 
-  <view>
-    <image class="logo" src="/images/icon/logo2.png" ></image> 
-  </view>
-<view class="line"></view>
-  
-  <view>
-    <image class="logo" src="/images/icon/logo3.png" ></image>
-  </view>
-</view>
-
-<view class="subject">
-  <view class="subject-name" >
-    <image class="item" src="/images/icon/item.png" ></image>
-    <text class="index-normal" decode="{{true}}">大学</text>
-    <text class="text-middle-shadow">物理IV</text>
-  </view>
-  <view>
-    <image class="logo" src="/images/icon/logo1.png" ></image>
-  </view>
-  
-<view class="line"></view>
- 
-  <view>
-    <image class="logo" src="/images/icon/logo2.png" ></image> 
-  </view>
-<view class="line"></view>
-  
-  <view>
-    <image class="logo" src="/images/icon/logo3.png" ></image>
-  </view>
-</view>
- 
