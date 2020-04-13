@@ -1,0 +1,100 @@
+.logo{
+  width:200rpx;
+  height:200rpx;
+  margin-left:270rpx;
+  margin-bottom:100rpx;
+  margin-top:100rpx;
+}
+/*调整一波距离*/
+.panel {
+  text-align: center;
+  padding: 5% 0;
+}
+
+.panel .bn {
+  display: inline-block;
+}
+/*输入文本+输入框*/
+.panel .bn input {
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  height: 50px;
+  width: 100rpx;
+  border-radius:50px;
+  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
+  background-color: #ffffff;
+  color: #808080;
+  font-size: 15px;
+  padding: 0 20px;
+  vertical-align: middle;
+  text-align:left;
+  transition: .2s;
+
+}
+
+.panel .bn .btn {
+  display: inline-block;
+  height: 50px;
+  background-color: #545454;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 13px;
+  color: #fff;
+  
+  width: 170px;
+  border-radius: 50px;
+  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
+  margin-left: -100px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.panel .bn:hover input{
+  width: 200px;
+  animation: inputAction .4s ease-out;
+}
+
+.panel .bn:hover .btn{
+  width: 100px;
+  height: 50px;
+  margin-left: -80px;
+  animation: btnAction .4s ease-out;
+}
+
+@keyframes inputAction {
+  0% {
+    width: 210px;
+  }
+  60% {
+    width: 260px;
+  }
+  100% {
+    width: 210px;
+  }
+}
+
+@keyframes btnAction {
+  0% {
+    width: 100px;
+    height: 50px;
+    margin-left: -100px;
+  }
+  60% {
+    width: 60px;
+    height: 50px;
+    margin-left: 10px;
+  }
+  100% {
+    width: 100px;
+    height: 50px;
+    margin-left: -100px;
+  }
+}
+
+
+::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}

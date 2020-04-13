@@ -1,0 +1,24 @@
+<!--pages/mine/mine.wxml-->
+<view>
+        <image class="logo" src="/images/icon/logo2.png" ></image>
+</view>
+<view class="panel">
+    <view class="bn">
+      <input type="text" placeholder="" ></input>
+      <view class="btn">账号</view>
+    </view>
+</view>
+
+<view class="panel">
+    <view class="bn">
+      <input type="text" placeholder="" ></input>
+      <view class="btn">校园网密码</view>
+    </view>
+</view>
+
+<view class="panel">
+    <view class="bn">
+      <input type="text" placeholder="" ></input>
+      <view class="btn">教务密码</view>
+    </view>
+</view>
