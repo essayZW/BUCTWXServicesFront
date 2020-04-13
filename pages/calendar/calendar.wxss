@@ -46,7 +46,7 @@
     width:calc(100% / 7);
     height: 50rpx;
     text-align: center;
-    margin-bottom: 10rpx;
+    margin-bottom: 15rpx;
     font-size: 35rpx;
 }
 #monthday-list>view{

@@ -85,7 +85,7 @@ page{
   color:#636363;
 }
 .details{
-  width:15rpx;
+  width:13rpx;
   height:13rpx;
 }
 .text-middle-shadow{
