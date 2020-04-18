@@ -11,14 +11,14 @@
 
 <view class="panel">
     <view class="bn">
-      <input type="text" placeholder="" ></input>
+      <input type="password" placeholder="" ></input>
       <view class="btn">校园网密码</view>
     </view>
 </view>
 
 <view class="panel">
     <view class="bn">
-      <input type="text" placeholder="" ></input>
+      <input type="password" placeholder="" ></input>
       <view class="btn">教务密码</view>
     </view>
 </view>

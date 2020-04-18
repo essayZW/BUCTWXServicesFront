@@ -10,7 +10,7 @@ const token = require('./token.js');
  * @param {function} successCallBack 
  * @param {function} failCallBack 
  */
-function getAllGrade(xnm, xqm, successCallBack, failCallBack){
+function getAllGrade(xnm, xqm, username, password, vpnusername, vpnpassword, successCallBack, failCallBack){
     let random = token.random(256);
     let timetoken = new Date().getTime();
     let rtoken = token.encrypt(timetoken, random);
@@ -22,7 +22,11 @@ function getAllGrade(xnm, xqm, successCallBack, failCallBack){
         },
         data : {
             'xqm' : xqm,
-            'xnm' : xnm
+            'xnm' : xnm,
+            'username' : username,
+            'password' : password,
+            'vpnusername' : vpnusername,
+            'vpnpassword' : vpnpassword
         },
         success: successCallBack,
         fail: failCallBack
