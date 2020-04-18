@@ -166,7 +166,7 @@ Page({
           duration: 10000
         });
         // 检测是否本地存储的有用户名密码
-        if(!AppCofig.has('uerrpass')) {
+        if(!AppCofig.has('userpass')) {
             // 没有存好的用户名密码
             wx.hideToast();
             wx.showModal({
@@ -179,9 +179,9 @@ Page({
                         })
                     }
                     else {
-                        // 需要更换图标
                         wx.showToast({
                             title: '失败',
+                            image: '/images/icon/error.png'
                         })
                     }
                 }
@@ -192,23 +192,62 @@ Page({
         let userInfo = AppCofig.get('userpass');
         let username = userInfo['username'];
         let password = userInfo['password'];
-        let vpnusername = userInfo['vpnusername'];
+        let vpnusername = userInfo['username'];
         let vpnpassword = userInfo['vpnpassword'];
         // 开始发送表单
-        jw.getAllGrade(this.data.start, this.data.sclass, username, password, vpnusername, vpnpassword, function(data) {
+        let THIS = this;
+        console.log(this.data.syear);
+        console.log(this.data.sclass);
+        jw.getAllGrade(this.data.syear, this.data.sclass, username, password, vpnusername, vpnpassword, function(data) {
             // 成功
             wx.hideToast();
             // 分析数据并展示
+            if(!data.data.status) {
+                wx.showToast({
+                  title: data.info,
+                  image: '/images/icon/error.png'
+                });
+                return;
+            }
+            data = data.data.data;
+            if(data.items.length == 0) {
+                wx.showToast({
+                  title: '无成绩',
+                  image: '/images/icon/warn.png'
+                })
+                return;
+            }
+            let gradeRes = new Array();
+            for(let i = 0; i < data.items.length; i ++) {
+                let obj = {};
+                obj.score = data.items[i].xf;
+                obj.grade = data.items[i].cj;
+                obj.scorePoint = data.items[i].jd;
+                let name = data.items[i].kcmc;
+                obj.classNameFirstHalf = name.substr(0, parseInt(name.length / 2));
+                obj.classNameSecondHalf = name.substr(parseInt(name.length / 2), name.length - parseInt(name.length / 2));
+                gradeRes.push(obj);
+            }
+            // 更新页面
+            THIS.setData({
+                'hasGrade' : true,
+                'allGradeInfo': gradeRes
+            });
+            // 检查是否本地存有登陆信息
+            if(!AppCofig.has('userinfo')) {
+
+            }
         }, function(data) {
             // 失败
             wx.hideToast({
                 complete: (res) => {
-                    // 需要更换图标
                     wx.showToast({
-                        title: '失败'
+                        title: '失败',
+                        image: '/images/icon/error.png'
                     })
                 },
-            })
+            });
+            console.log(data);
         });
     }
 })

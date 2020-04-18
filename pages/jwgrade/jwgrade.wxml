@@ -31,7 +31,7 @@
       <image class="item" src="/images/icon/item.png" ></image>
       <text class="index-normal" decode="{{true}}">{{ item.classNameFirstHalf }}</text>
       <text class="text-middle-shadow">{{ item.classNameSecondHalf }}</text>
-      <view class="detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
+      <view class="detailed-grade"><text class="detailed-grade-text" decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
     </view>
     <view class="item-line">
       <view class="logo-s">
