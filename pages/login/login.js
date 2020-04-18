@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputData : {
+      'username' : '',
+      'password' : '',
+      'vpnpassword' : ''
+    }
   },
 
   /**
@@ -62,5 +66,38 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 保存输入信息
+   */
+  saveInput : function(e) {
+    this.data.inputData[e.target.id] = e.detail.value;
+  },
+  /**
+   * 存储用户密码信息
+   */
+  userpassSave: function() {
+    let savedata = {
+      'username': this.data.inputData['username'],
+      'password': this.data.inputData['password'],
+      'vpnpassword': this.data.inputData['vpnpassword'],
+      'vpnusername': this.data.inputData['vpnusername']
+    }
+    wx.setStorage({
+      data: savedata,
+      key: 'userpass',
+      success: function() {
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+        });
+      },
+      fail:function() {
+        wx.showToast({
+          title: '失败',
+          image: '/images/icon/error.png'
+        })
+      }
+    });
   }
 })

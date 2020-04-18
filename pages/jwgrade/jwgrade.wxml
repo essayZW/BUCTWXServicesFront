@@ -1,10 +1,27 @@
 <!--pages/jw/jw.wxml-->
 <view class="select-list">
+  <view class="selected-info-show">
+    {{ syear }}~{{ syear + 1 }}学年第{{ sclass }}学期
+  </view>
   <!-- 列表内容 -->
+  <picker-view class="select-area" value="{{ selectValue }}" bindchange="selectChange">
+    <picker-view-column>
+      <view wx:for="{{ selectedYear }}">{{ item }}~{{ item + 1}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{ selectedClass }}">{{ item }}</view>
+    </picker-view-column>
+  </picker-view>
+  <button class="query-button" bindtap="query">查询</button>
 </view>
 <view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
   <view class="bkg">
-    <button bindtap="listChange">按钮</button>
+      <image src="/images/grademenu.png" class="menu-img"></image>
+      <image src="/images/test1.jpg" class="head-img" bindtap="listChange"></image>
+      <view class="student-info-show">
+        <view>{{ studentName }}</view>
+        <view>{{ studentClass }}</view>
+      </view>
   </view>
   <view wx:if="{{ !hasGrade }}" class="no-grade">
     {{ noGradeInfo }}
@@ -14,7 +31,7 @@
       <image class="item" src="/images/icon/item.png" ></image>
       <text class="index-normal" decode="{{true}}">{{ item.classNameFirstHalf }}</text>
       <text class="text-middle-shadow">{{ item.classNameSecondHalf }}</text>
-      <view class="detailed-grade"><text class="detailed-grade-text"decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
+      <view class="detailed-grade"><text class="detailed-grade-text" decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
     </view>
     <view class="item-line">
       <view class="logo-s">

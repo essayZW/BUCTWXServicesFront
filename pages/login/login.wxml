@@ -4,21 +4,24 @@
 </view>
 <view class="panel">
     <view class="bn">
-      <input type="text" placeholder="" ></input>
+      <input type="text" placeholder="" id="username" bindinput="saveInput"></input>
       <view class="btn">账号</view>
     </view>
 </view>
 
 <view class="panel">
     <view class="bn">
-      <input type="text" placeholder="" ></input>
+      <input type="password" placeholder="" id="password" bindinput="saveInput"></input>
       <view class="btn">校园网密码</view>
     </view>
 </view>
 
 <view class="panel">
     <view class="bn">
-      <input type="text" placeholder="" ></input>
+      <input type="password" placeholder="" id="vpnpassword" bindinput="saveInput"></input>
       <view class="btn">教务密码</view>
     </view>
+</view>
+<view class="submit-area">
+  <view class="submit" bindtap="userpassSave">确认</view>
 </view>

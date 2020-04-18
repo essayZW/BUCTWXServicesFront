@@ -98,3 +98,18 @@
   font-size: 10px;
   font-family: 'Courier New', Courier, monospace;
 }
+.submit-area{
+  display: flex;
+  justify-content: center;
+}
+.submit{
+  width:260rpx;
+  height:50px;
+  line-height: 50px;
+  background-color: rgb(84, 84, 84);
+  border-radius: 50px;
+  color:white;
+  text-align: center;
+  padding: 0 20px;
+  font-size:13px;
+}
