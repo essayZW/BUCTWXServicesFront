@@ -1,12 +1,11 @@
 {
     "pages": [
-        
-        "pages/login/login",
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/calendar/calendar",
         "pages/notice/notice",
-        "pages/mine/mine"
+        "pages/mine/mine",
+        "pages/login/login"
     ],
     "window": {
         "backgroundTextStyle": "light",
