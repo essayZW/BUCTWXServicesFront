@@ -1,12 +1,11 @@
 {
     "pages": [
-      "pages/mine/mine",
       "pages/index/index",
-        "pages/login/login",
-        
-        "pages/jwgrade/jwgrade",
-        "pages/calendar/calendar",
-        "pages/notice/notice"
+      "pages/mine/mine",
+      "pages/login/login",
+      "pages/jwgrade/jwgrade",
+      "pages/calendar/calendar",
+      "pages/notice/notice"
         
     ],
     "window": {
