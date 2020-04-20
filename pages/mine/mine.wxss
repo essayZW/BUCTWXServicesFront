@@ -1,10 +1,5 @@
 /* pages/mine/mine.wxss */
 
-/* rgb(51, 51, 51)
-
-rgb(73, 73, 73)
-
-rgb(239,77,138) */
 .bg
 {
     height:120rpx;
@@ -46,6 +41,15 @@ rgb(239,77,138) */
     font-size: 25rpx;
     color: #515151;
   }
+  .text{
+    font-size: 25rpx;
+    color: #515151;
+    display: inline-block;
+    height:50rpx;
+    line-height: 50rpx;
+    vertical-align: top;
+    margin-left: 40rpx;
+  }
   .a1{
     display: inline-block;
     margin-left: 103rpx;
@@ -59,28 +63,24 @@ rgb(239,77,138) */
     display: inline-block;
     margin-left: 135rpx;
   }
-  .b1{
-    display: inline-block;
-    margin-left: 80rpx;
-  }
+
   .icon2{
     width:50rpx;
     height:50rpx;
+    margin-left: 83rpx;
 }
   .detail-logo{
     width:20rpx;
     height:20rpx;
+    margin-right: 90rpx;
   }
   .logo{
     display: inline-block;
     margin-left: 440rpx;
   }
-  .text{
-    display: inline-block;
-    margin-left: 30rpx;
-  }
   .f{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: 80rpx;
   }
