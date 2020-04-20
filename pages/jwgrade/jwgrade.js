@@ -2,7 +2,7 @@
 const App = getApp();
 
 const token = require('/../../utils/token.js');
-const AppCofig = require('/../../utils/config.js');
+const AppConfig = require('/../../utils/config.js');
 const jw = require('/../../utils/jw.js');
 Page({
 
@@ -34,6 +34,14 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        // 渲染用户信息
+        if(AppConfig.has('userinfo')) {
+            let userInfo = AppConfig.get('userinfo');
+            this.setData({
+                'studentName' : userInfo['name'],
+                'studentClass' : userInfo['classInfo']
+            });
+        }
         this.setData({
             'hasGrade' : false,
             'noGradeInfo' : '暂时无成绩!'
@@ -166,7 +174,7 @@ Page({
           duration: 10000
         });
         // 检测是否本地存储的有用户名密码
-        if(!AppCofig.has('userpass')) {
+        if(!AppConfig.has('userpass')) {
             // 没有存好的用户名密码
             wx.hideToast();
             wx.showModal({
@@ -189,7 +197,7 @@ Page({
             return;
         }
         // 调用本地存储获得用户名密码
-        let userInfo = AppCofig.get('userpass');
+        let userInfo = AppConfig.get('userpass');
         let username = userInfo['username'];
         let password = userInfo['password'];
         let vpnusername = userInfo['username'];
@@ -209,6 +217,7 @@ Page({
                 });
                 return;
             }
+            let userInfo = data.data.sinfo;
             data = data.data.data;
             if(data.items.length == 0) {
                 wx.showToast({
@@ -234,15 +243,22 @@ Page({
                 'allGradeInfo': gradeRes
             });
             // 检查是否本地存有登陆信息
-            if(!AppCofig.has('userinfo')) {
-
+            if(!AppConfig.has('userinfo')) {
+                wx.setStorage({
+                  data: userInfo,
+                  key: 'userinfo',
+                });
+                THIS.setData({
+                    'studentName' : userInfo['name'],
+                    'studentClass' : userInfo['classInfo']
+                });
             }
         }, function(data) {
             // 失败
             wx.hideToast({
                 complete: (res) => {
                     wx.showToast({
-                        title: '失败',
+                        title: data.errMsg,
                         image: '/images/icon/error.png'
                     })
                 },

@@ -72,7 +72,7 @@
   .detail-logo{
     width:20rpx;
     height:20rpx;
-    margin-right: 90rpx;
+    margin-right: 78rpx;
   }
   .logo{
     display: inline-block;

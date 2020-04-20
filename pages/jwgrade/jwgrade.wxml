@@ -16,7 +16,7 @@
 </view>
 <view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
   <view class="bkg">
-      <image src="/images/grademenu.png" class="menu-img"></image>
+      <image src="/images/grademenu.png" class="menu-img" bindtap="listChange"></image>
       <image src="/images/test1.jpg" class="head-img" bindtap="listChange"></image>
       <view class="student-info-show">
         <view>{{ studentName }}</view>
