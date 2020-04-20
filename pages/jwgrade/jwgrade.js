@@ -43,7 +43,7 @@ Page({
             this.listChange(false);
         }, () => {
             this.listChange(true);
-        });
+        }, 1000, 120);
         this.touchStart = function(e) {
             touchObj.start(e);
         };
