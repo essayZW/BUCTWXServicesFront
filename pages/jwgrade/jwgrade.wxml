@@ -31,7 +31,7 @@
       <image class="item" src="/images/icon/item.png" ></image>
       <text class="index-normal" decode="{{true}}">{{ item.classNameFirstHalf }}</text>
       <text class="text-middle-shadow">{{ item.classNameSecondHalf }}</text>
-      <view class="detailed-grade"><text class="detailed-grade-text" decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
+      <view class="detailed-grade" data-name="{{ item.className }}" data-syear="{{ item.syear }}" data-sclass="{{ item.sclass }}" bindtap="getDetails"><text class="detailed-grade-text" decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
     </view>
     <view class="item-line">
       <view class="logo-s">
@@ -66,6 +66,19 @@
       </view>
       <view class="logo-texta" >
         <text class="logo-text-style" >{{ item.scorePoint}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 详细成绩显示区域 -->
+<view class="mask" bindtap="hideSingleGrade" wx:if="{{ showSingleGrade }}">
+  <view class="single-grade-area" id="show-area">
+    <view class="single-grade-title">{{ singleClassName }}</view>
+    <view class="table">
+      <view wx:for="{{ tr }}" wx:for-item="td" class="tr" wx:for-index="line">
+        <view wx:for="{{ td }}" class="td {{index == 0 ? 'bold' : ''}}">
+          {{ item }}
+        </view>
       </view>
     </view>
   </view>
