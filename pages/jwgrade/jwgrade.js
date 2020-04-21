@@ -13,7 +13,10 @@ Page({
         inputValue : {
 
         },
-        listShow : false
+        // 是否显示了选择列表
+        listShow : false,
+        // 是否显示了成绩明细
+        showSingleGrade : false
     },
 
     /**
@@ -204,17 +207,21 @@ Page({
         let vpnpassword = userInfo['vpnpassword'];
         // 开始发送表单
         let THIS = this;
-        console.log(this.data.syear);
-        console.log(this.data.sclass);
-        jw.getAllGrade(this.data.syear, this.data.sclass, username, password, vpnusername, vpnpassword, function(data) {
+        let syear = this.data.syear;
+        let sclass = this.data.sclass;
+        jw.getAllGrade(syear, sclass, username, password, vpnusername, vpnpassword, function(data) {
             // 成功
             wx.hideToast();
             // 分析数据并展示
             if(!data.data.status) {
-                wx.showToast({
-                  title: data.info,
-                  image: '/images/icon/error.png'
-                });
+                wx.hideToast({
+                    complete: (res) => {
+                        wx.showToast({
+                            title: data.info,
+                            image: '/images/icon/error.png'
+                        });
+                    },
+                })
                 return;
             }
             let userInfo = data.data.sinfo;
@@ -235,6 +242,9 @@ Page({
                 let name = data.items[i].kcmc;
                 obj.classNameFirstHalf = name.substr(0, parseInt(name.length / 2));
                 obj.classNameSecondHalf = name.substr(parseInt(name.length / 2), name.length - parseInt(name.length / 2));
+                obj.className = name;
+                obj.syear = syear;
+                obj.sclass = sclass;
                 gradeRes.push(obj);
             }
             // 更新页面
@@ -265,5 +275,83 @@ Page({
             });
             console.log(data);
         });
+    },
+    /**
+     * 得到单个成绩详情
+     */
+    getDetails : function(e) {
+        // 显示等待提示
+        wx.showToast({
+            title: '请稍等',
+            icon: 'loading',
+            duration: 10000
+        });
+        if(!AppConfig.has('userpass')) {
+            console.log('not found userpass storage');
+            wx.hideToast({
+              complete: (res) => {
+                  wx.showToast({
+                      title: 'error',
+                      image: '/images/icon/error.png'
+                  })
+              },
+            })
+            return false;
+        }
+        // 调用本地存储获得用户名密码
+        let userInfo = AppConfig.get('userpass');
+        let username = userInfo['username'];
+        let password = userInfo['password'];
+        let vpnusername = userInfo['username'];
+        let vpnpassword = userInfo['vpnpassword'];
+        // 获得查询的课程名
+        // 发送表单
+        let syear = e.currentTarget.dataset.syear;
+        let sclass = e.currentTarget.dataset.sclass;
+        let name = e.currentTarget.dataset.name;
+        jw.getSingleGrade(syear, sclass, name, username, password, vpnusername, vpnpassword, (rep) => {
+            let data = rep.data.data;
+            if(!rep.data.status) {
+                wx.hideToast({
+                    complete: (res) => {
+                        wx.showToast({
+                            title: rep.data.info,
+                            image: '/images/icon/error.png'
+                        });
+                    },
+                })
+                return;
+            }
+            wx.hideToast();
+            this.data.showSingleGrade = true;
+            this.setData({
+                'showSingleGrade' : this.data.showSingleGrade,
+                'tr' : data,
+                'singleClassName' : name
+            });
+        }, (rep) => {
+            // 失败
+            wx.hideToast({
+                complete: (res) => {
+                    wx.showToast({
+                        title: rep.errMsg,
+                        image: '/images/icon/error.png'
+                    })
+                },
+            });
+            console.log(rep);
+        });
+    },
+    /**
+     * 隐藏成绩明细
+     */
+    hideSingleGrade : function(e) {
+        if(e.target.id === 'show-area') {
+            return;
+        }
+        this.data.showSingleGrade = false;
+        this.setData({
+            'showSingleGrade' : this.data.showSingleGrade
+        })
     }
 })

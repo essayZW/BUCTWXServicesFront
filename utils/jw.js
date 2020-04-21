@@ -7,6 +7,10 @@ const token = require('./token.js');
  * 查询所有指定学年学期所有的成绩
  * @param {integer} xnm 
  * @param {integer} xqm 
+ * @param {string} username
+ * @param {string} password
+ * @param {string} vpnusername
+ * @param {string} vpnpassword
  * @param {function} successCallBack 
  * @param {function} failCallBack 
  */
@@ -34,13 +38,17 @@ function getAllGrade(xnm, xqm, username, password, vpnusername, vpnpassword, suc
 }
 /**
  * 查询指定学年指定学期的课程详细信息
- * @param {integer} xqm 
  * @param {integer} xnm 
+ * @param {integer} xqm 
  * @param {mixed} classm 
+ * @param {string} username
+ * @param {string} password
+ * @param {string} vpnusername
+ * @param {string} vpnpassword
  * @param {function} successCallBack 
  * @param {function} failCallBack 
  */
-function getSingleGrade(xqm, xnm, classm, successCallBack, failCallBack){
+function getSingleGrade(xnm, xqm, classm, username, password, vpnusername, vpnpassword, successCallBack, failCallBack){
     let random = token.random(256);
     let timetoken = new Date().getTime();
     let rtoken = token.encrypt(timetoken, random);
@@ -53,7 +61,11 @@ function getSingleGrade(xqm, xnm, classm, successCallBack, failCallBack){
         data : {
             'xqm' : xqm,
             'xnm' : xnm,
-            'classm' : classm
+            'classm' : classm,
+            'username' : username,
+            'password' : password,
+            'vpnusername' : vpnusername,
+            'vpnpassword' : vpnpassword
         },
         success: successCallBack,
         fail: failCallBack
