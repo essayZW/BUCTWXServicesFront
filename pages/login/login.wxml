@@ -1,24 +1,24 @@
 <!--pages/mine/mine.wxml-->
 <view>
-        <image class="logo" src="/images/icon/logo2.png" ></image>
+      <image class="logo" src="/images/icon/logo2.png" ></image>
 </view>
 <view class="panel">
-    <view class="bn">
-      <input type="text" placeholder="" id="username" bindinput="saveInput"></input>
+    <view class="bn {{ active['username'] ? 'bn-focus' : '' }}">
+      <input type="text" placeholder="" id="username" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['username'] }}"></input>
       <view class="btn">账号</view>
     </view>
 </view>
 
 <view class="panel">
-    <view class="bn">
-      <input type="password" placeholder="" id="password" bindinput="saveInput"></input>
+    <view class="bn {{ active['password'] ? 'bn-focus' : '' }}">
+      <input type="password" placeholder="" id="password" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['password'] }}"></input>
       <view class="btn">校园网密码</view>
     </view>
 </view>
 
 <view class="panel">
-    <view class="bn">
-      <input type="password" placeholder="" id="vpnpassword" bindinput="saveInput"></input>
+    <view class="bn {{ active['vpnpassword'] ? 'bn-focus' : '' }}">
+      <input type="password" placeholder="" id="vpnpassword" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['vpnpassword'] }}"></input>
       <view class="btn">教务密码</view>
     </view>
 </view>

@@ -292,7 +292,7 @@ Page({
         if(AppConfig.has('gradedetails')) {
             // 存在成绩详情的缓存
             let gradeDetails = AppConfig.get('gradedetails');
-            console.log(gradeDetails);
+            // console.log(gradeDetails);
             if(gradeDetails[syear] && gradeDetails[syear][sclass] && gradeDetails[syear][sclass][name]) {
                 wx.hideToast();
                 this.data.showSingleGrade = true;
