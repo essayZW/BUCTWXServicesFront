@@ -286,6 +286,24 @@ Page({
             icon: 'loading',
             duration: 10000
         });
+        let name = e.currentTarget.dataset.name;
+        let syear = e.currentTarget.dataset.syear;
+        let sclass = e.currentTarget.dataset.sclass;
+        if(AppConfig.has('gradedetails')) {
+            // 存在成绩详情的缓存
+            let gradeDetails = AppConfig.get('gradedetails');
+            console.log(gradeDetails);
+            if(gradeDetails[syear] && gradeDetails[syear][sclass] && gradeDetails[syear][sclass][name]) {
+                wx.hideToast();
+                this.data.showSingleGrade = true;
+                this.setData({
+                    'showSingleGrade' : this.data.showSingleGrade,
+                    'tr' : gradeDetails[syear][sclass][name],
+                    'singleClassName' : name
+                });
+                return;
+            }
+        }
         if(!AppConfig.has('userpass')) {
             console.log('not found userpass storage');
             wx.hideToast({
@@ -304,11 +322,7 @@ Page({
         let password = userInfo['password'];
         let vpnusername = userInfo['username'];
         let vpnpassword = userInfo['vpnpassword'];
-        // 获得查询的课程名
         // 发送表单
-        let syear = e.currentTarget.dataset.syear;
-        let sclass = e.currentTarget.dataset.sclass;
-        let name = e.currentTarget.dataset.name;
         jw.getSingleGrade(syear, sclass, name, username, password, vpnusername, vpnpassword, (rep) => {
             let data = rep.data.data;
             if(!rep.data.status) {
@@ -329,6 +343,22 @@ Page({
                 'tr' : data,
                 'singleClassName' : name
             });
+            // 存储到缓存中
+            let gradeDetail = {};
+            if(AppConfig.has('gradedetails')) {
+                gradeDetail = AppConfig.get('gradedetails');
+            }
+            if(!gradeDetail[syear]) {
+                gradeDetail[syear] = {};
+            }
+            if(!gradeDetail[syear][sclass]) {
+                gradeDetail[syear][sclass] = {};
+            }
+            gradeDetail[syear][sclass][name] = data;
+            wx.setStorage({
+              data: gradeDetail,
+              key: 'gradedetails',
+            })
         }, (rep) => {
             // 失败
             wx.hideToast({
@@ -346,7 +376,7 @@ Page({
      * 隐藏成绩明细
      */
     hideSingleGrade : function(e) {
-        if(e.target.id === 'show-area') {
+        if(e.target.id !== 'mask') {
             return;
         }
         this.data.showSingleGrade = false;
