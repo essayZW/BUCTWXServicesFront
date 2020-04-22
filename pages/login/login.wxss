@@ -21,9 +21,9 @@
   border: 0;
   outline: 0;
   height: 50px;
-  width: 170rpx;
+  width: 260rpx;
   border-radius:50px;
-  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
+  box-shadow: 0 0 240rpx 0 rgba(43,86,112,.1);
   background-color: #ffffff;
   color: #808080;
   font-size: 15px;
@@ -47,11 +47,11 @@
   line-height: 50px;
   font-size: 13px;
   color: #fff;
-  width: 170px;
+  width: 260rpx;
   border-radius: 50px;
-  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
+  box-shadow: 0 0 240rpx 0 rgba(43,86,112,.1);
+  padding: 0px 20px;
   
-  margin-left: -100px;
   cursor: pointer;
   transition: .2s;
   position: absolute;
@@ -66,15 +66,17 @@
 }
 
 .panel>.bn-focus>input{
-  width: 200px;
+  width: 400rpx;
   animation: inputAction .4s ease-out;
+  z-index: 1;
 }
 
 .panel>.bn-focus>.btn{
-  width: 100px;
+  width: 200rpx;
   height: 50px;
-  left: calc(50% - 85rpx);
+  left: calc(50% - 55rpx);
   animation: btnAction .4s ease-out;
+  z-index: 2;
 }
 
 @keyframes inputAction {
@@ -93,7 +95,7 @@
   0% {
     width: 100px;
     height: 50px;
-    left: calc(50% - 85rpx);
+    left: calc(50% - 55rpx);
   }
   60% {
     width: 60px;
@@ -103,7 +105,7 @@
   100% {
     width: 100px;
     height: 50px;
-    left: calc(50% - 85rpx);
+    left: calc(50% - 55rpx);
   }
 }
 
