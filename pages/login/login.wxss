@@ -9,20 +9,21 @@
 .panel {
   text-align: center;
   padding: 5% 0;
+  position: relative;
 }
 
-.panel .bn {
+.panel>.bn {
   display: inline-block;
 }
 /*输入文本+输入框*/
-.panel .bn input {
+.panel>.bn>input {
   display: inline-block;
   border: 0;
   outline: 0;
   height: 50px;
-  width: 100rpx;
+  width: 260rpx;
   border-radius:50px;
-  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
+  box-shadow: 0 0 240rpx 0 rgba(43,86,112,.1);
   background-color: #ffffff;
   color: #808080;
   font-size: 15px;
@@ -30,10 +31,15 @@
   vertical-align: middle;
   text-align:left;
   transition: .2s;
-
+  position: absolute;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  margin: auto;
 }
 
-.panel .bn .btn {
+.panel>.bn>.btn {
   display: inline-block;
   height: 50px;
   background-color: #545454;
@@ -41,25 +47,36 @@
   line-height: 50px;
   font-size: 13px;
   color: #fff;
-  
-  width: 170px;
+  width: 260rpx;
   border-radius: 50px;
-  box-shadow: 0 0 120px 0 rgba(43,86,112,.1);
-  margin-left: -100px;
+  box-shadow: 0 0 240rpx 0 rgba(43,86,112,.1);
+  padding: 0px 20px;
+  
   cursor: pointer;
   transition: .2s;
+  position: absolute;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  margin: auto;
+}
+.panel{
+  margin: 0px auto;
 }
 
-.panel .bn:hover input{
-  width: 200px;
+.panel>.bn-focus>input{
+  width: 400rpx;
   animation: inputAction .4s ease-out;
+  z-index: 1;
 }
 
-.panel .bn:hover .btn{
-  width: 100px;
+.panel>.bn-focus>.btn{
+  width: 200rpx;
   height: 50px;
-  margin-left: -80px;
+  left: calc(50% - 55rpx);
   animation: btnAction .4s ease-out;
+  z-index: 2;
 }
 
 @keyframes inputAction {
@@ -78,17 +95,17 @@
   0% {
     width: 100px;
     height: 50px;
-    margin-left: -100px;
+    left: calc(50% - 55rpx);
   }
   60% {
     width: 60px;
     height: 50px;
-    margin-left: 10px;
+    left: calc(50% - 85rpx + 180px);
   }
   100% {
     width: 100px;
     height: 50px;
-    margin-left: -100px;
+    left: calc(50% - 55rpx);
   }
 }
 
@@ -101,6 +118,7 @@
 .submit-area{
   display: flex;
   justify-content: center;
+  margin-top: 20rpx;
 }
 .submit{
   width:260rpx;

@@ -71,8 +71,8 @@
   </view>
 </view>
 <!-- 详细成绩显示区域 -->
-<view class="mask" bindtap="hideSingleGrade" wx:if="{{ showSingleGrade }}">
-  <view class="single-grade-area" id="show-area">
+<view class="mask" bindtap="hideSingleGrade" wx:if="{{ showSingleGrade }}" id="mask">
+  <view class="single-grade-area">
     <view class="single-grade-title">{{ singleClassName }}</view>
     <view class="table">
       <view wx:for="{{ tr }}" wx:for-item="td" class="tr" wx:for-index="line">
