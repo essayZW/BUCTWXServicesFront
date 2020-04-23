@@ -9,7 +9,7 @@
 }
 /* 文字背景上下两块渐变 */
 .text-middle-shadow{
-  background: linear-gradient(to bottom, white 53%, #f7b52c 47%);
+  /* background: linear-gradient(to bottom, white 53%, #f7b52c 47%); */
   font-size: 25px;
   font-weight: bold;
 }

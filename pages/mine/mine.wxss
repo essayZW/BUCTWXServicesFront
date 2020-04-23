@@ -4,7 +4,7 @@
 {
     height:120rpx;
     width:900rpx;
-    border-left:818rpx solid #ffd21e; 
+    border-left:818rpx solid white; 
     position:fixed;
     top:0px;
     left:0px;

@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+const App = getApp();
 Page({
 
   /**
@@ -12,7 +13,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 修改本页面顶栏颜色
+    wx.setNavigationBarColor({
+        backgroundColor: App.globalData.backgroundColor,
+        frontColor: App.globalData.frontColor
+    });
   },
 
   /**
@@ -26,7 +31,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 设置该页面主题色
+    this.setData({
+        'globalBackgroundTheme' : App.globalData.backgroundColor,
+        'globalFronrTheme' : App.globalData.frontColor
+    });
   },
 
   /**
@@ -64,21 +73,21 @@ Page({
 
   },
   /**
-     * 页面切换
-     */
-    changePage : function(e) {
+    * 页面切换
+    */
+  changePage : function(e) {
       let src = e.target.dataset.src ? e.target.dataset.src : false;
       if(src === false) {
           return;
       }
       wx.navigateTo({
-        url: src,
-        success : function(e) {
-            console.log(e.errMsg);
-        },
-        fail: function(e) {
-            console.log(e.errMsg);
-        }
+          url: src,
+          success : function(e) {
+              console.log(e.errMsg);
+          },
+          fail: function(e) {
+              console.log(e.errMsg);
+          }
       });
   }
 })

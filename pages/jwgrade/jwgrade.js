@@ -23,7 +23,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        // 修改本页面顶栏颜色
+        wx.setNavigationBarColor({
+            backgroundColor: App.globalData.backgroundColor,
+            frontColor: App.globalData.frontColor
+        });
     },
 
     /**
@@ -89,6 +93,11 @@ Page({
         });
         this.setData({
             'selectValue' : [9999, sclass - 1]
+        });
+        // 设置该页面主题色
+        this.setData({
+            'globalBackgroundTheme' : App.globalData.backgroundColor,
+            'globalFronrTheme' : App.globalData.frontColor
         });
     },
 

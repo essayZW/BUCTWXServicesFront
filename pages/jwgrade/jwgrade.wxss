@@ -55,7 +55,7 @@ page{
 }
 .bkg{
   height:140rpx;
-  background:#fad258;
+  /* background:#fad258; */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -92,7 +92,7 @@ page{
   height:13rpx;
 }
 .text-middle-shadow{
-  background: linear-gradient(to bottom, white 60%, #f7b52c 40%);
+  /* background: linear-gradient(to bottom, white 60%, #f7b52c 40%); */
   font-size: 18px;
   color:#636363;
   
@@ -135,7 +135,7 @@ page{
 .student-info-show>view{
   height: 50%;
   width:100%;
-  color:white;
+  /* color:white; */
 }
 
 .select-area{
