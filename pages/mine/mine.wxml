@@ -23,7 +23,7 @@
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
 
-<view class="f">
+<view class="f" data-src="/pages/settings/settings" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/settings.png"></image>
         <text class="text">系统设置</text>

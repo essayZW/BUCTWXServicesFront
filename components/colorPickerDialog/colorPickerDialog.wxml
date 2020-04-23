@@ -1,0 +1,34 @@
+<block wx:if="{{showDialog}}">
+    <view
+            id="dialogRoot"
+            class="flex"
+          bindtap="closeDialog"
+          style="z-index:{{zIndex}};box-sizing:border-box;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba({{maskColor[0]}},{{maskColor[1]}},{{maskColor[2]}},{{maskOpacity}});">
+
+
+        <view  id="colorPickerContainer"
+                class="dialog ext-class">
+            <color-picker
+                    animationDuration="{{animationDuration}}"
+                    onlock="lockChange"
+                    oncolorConfirm="colorConfirm"
+                    oncolorChange="colorChange"
+                    confirmImage = "{{confirmImage}}"
+                    sSliderPointerImage="{{sSliderPointerImage}}"
+                    vSliderPointerImage="{{vSliderPointerImage}}"
+                    tSliderPointerImage="{{tSliderPointerImage}}"
+                    sliderHeightPercent="{{sliderHeightPercent}}"
+                    sliderWidthPercent="{{sliderWidthPercent}}"
+                    sliderPointerHeightPercent="{{sliderPointerHeightPercent}}"
+                    ext-slider-pointer-class="ext-slider-pointer-class"
+                    ext-center-color-class="ext-center-color-class"
+                    ext-ring-pointer-class="ext-ring-pointer-class"
+                    pointerRadiusPercent="{{pointerRadiusPercent}}"
+                    colorRingWidthPercent="{{colorRingWidthPercent}}"
+                    ringPointerImage="{{ringPointerImage}}"
+                    centerColorRadiusPercent="{{centerColorRadiusPercent}}"
+                    showOpacity="{{showOpacity}}"
+                    style="width:100%;height:100%"></color-picker>
+        </view>
+    </view>
+</block>

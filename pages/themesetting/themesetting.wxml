@@ -1,0 +1,2 @@
+<!--pages/themesetting/themesetting.wxml-->
+<color-picker-dialog showDialog="{{ true }}"></color-picker-dialog>

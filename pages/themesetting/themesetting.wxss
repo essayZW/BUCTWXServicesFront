@@ -1,0 +1,5 @@
+/* pages/themesetting/themesetting.wxss */
+color-picker-dialog{
+    width:100%;
+    height:100%;
+}

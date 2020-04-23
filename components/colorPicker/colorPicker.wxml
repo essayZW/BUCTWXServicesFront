@@ -1,0 +1,154 @@
+<view id="color-picker" class="root">
+    <wxs module="wxs" src="./colorPicker.wxs"></wxs>
+    <view id="main-container"
+          class="main-container  flex"
+          data-show-opacity="{{showOpacity}}"
+          data-ring-radius="{{ringRadius}}"
+          data-container-rect="{{containerRect}}"
+          data-animation-duration="{{animationDuration}}"
+          bindtap="{{wxs.tapRingPointer}}">
+        <view class="color-ring-panel  grid"
+              style="border-radius:50%;background-color:transparent;width:{{ringRadius*2}}px;height:{{ringRadius*2}}px;position:absolute;">
+            <view class="jianbian-a"></view>
+            <view class="jianbian-b"></view>
+            <view class="jianbian-c"></view>
+            <view class="jianbian-d"></view>
+        </view>
+        <view id="center-bg"
+              style="background-color:{{centerBackgroundColor}};border-radius:50%;width:{{bgRadius*2}}px;height:{{bgRadius*2}}px;position:absolute">
+        </view>
+
+        <view id="center-color-view-bcg" class="center-view-bcg ext-center-color-class"
+              style="border-radius:50%;width:{{chooseColorRadius*2}}px !important;height:{{chooseColorRadius*2}}px !important;position:absolute !important">
+        </view>
+
+        <view id="center-color-view"
+              bindtap="confirmColor"
+              class="center-view ext-center-color-class"
+              style="border-radius:50%;width:{{chooseColorRadius*2}}px !important;height:{{chooseColorRadius*2}}px !important;position:absolute !important">
+        </view>
+
+        <image id="confirmImg"
+               bindtap="confirmColor"
+               src="{{confirmImage}}"
+               style="width:{{chooseColorRadius*1.5}}px !important;height:{{chooseColorRadius*1.5}}px !important;position:absolute !important">
+        </image>
+        <image id="ring-pointer"
+               data-radius="{{pointerRadius}}"
+               src="{{ringPointerImage}}"
+               data-border="{{pointerBorder}}"
+               data-color="{{pointerColor}}"
+               data-extend-radius-percent="{{extendPointerRadiusPercent}}"
+               change:prop="{{wxs.propertyChangeWatcher}}"
+               prop="{{currentColor}}"
+               class="ring-pointer ext-ring-pointer-class"
+               bindtouchstart="{{wxs.touchRingPointer}}"
+               bindtouchmove="{{wxs.touchMoveRingPointer}}"
+               style="width:{{pointerRadius*2}}px !important;height:{{pointerRadius*2}}px !important;position:absolute !important;">
+        </image>
+    </view>
+
+    <view class="flex" style="width:100%;height:10%">
+        <view id="slider-s"
+              class="sliderStripe {{extSliderClass}} flex"
+              data-rect="{{sSliderRect}}"
+              style="width:{{sliderWidthPercent*100}}%;height:{{sliderHeightPercent*100}}%;background-color:transparent">
+            <image id="slider-pointer-s"
+                   data-type="s"
+                   src="{{sSliderPointerImage}}"
+                   data-width="{{sliderPointerWidth}}"
+                   data-height="{{sliderPointerHeight}}"
+                   class="slider-pointer ext-slider-pointer-class"
+                   bindtouchstart="{{wxs.touchSliderPointer}}"
+                   bindtouchmove="{{wxs.touchMoveSliderPointer}}"
+                   style="left:{{-sliderPointerWidth/2}}px !important;top:{{(sSliderRect.height- sliderPointerWidth)/2}}px !important;position:absolute !important;width:{{sliderPointerWidth}}px !important;height:{{sliderPointerWidth}}px !important"></image>
+        </view>
+    </view>
+
+    <view class="flex" style="width:100%;height:10%">
+        <view id="slider-v"
+              class="sliderStripe {{extSliderClass}} flex"
+              data-rect="{{vSliderRect}}"
+              style="width:{{sliderWidthPercent*100}}% !important;height:{{sliderHeightPercent*100}}% !important;background-color:transparent">
+            <image id="slider-pointer-v"
+                   data-type="v"
+                   src="{{vSliderPointerImage}}"
+                   data-width="{{sliderPointerWidth}}"
+                   data-height="{{sliderPointerHeight}}"
+                   class="slider-pointer  ext-slider-pointer-class"
+                   bindtouchstart="{{wxs.touchSliderPointer}}"
+                   bindtouchmove="{{wxs.touchMoveSliderPointer}}"
+                   style="left:{{-sliderPointerWidth/2}}px !important;top:{{(vSliderRect.height- sliderPointerWidth)/2}}px !important;position:absolute !important;width:{{sliderPointerWidth}}px !important; height:{{sliderPointerWidth}}px !important"></image>
+        </view>
+    </view>
+
+    <block wx:if="{{showOpacity}}">
+        <view class="flex" style="width:100%;height:10%">
+            <view
+                    class="sliderStripe opacity-background {{extSliderClass}} flex"
+                    style="width:{{sliderWidthPercent*100}}%;height:{{sliderHeightPercent*100}}%;background-color:transparent">
+                <view id="slider-t"
+                      data-rect="{{tSliderRect}}"
+                      style="width:100%;height:100%">
+                    <image id="slider-pointer-t"
+                           data-type="t"
+                           src="{{tSliderPointerImage}}"
+                           data-width="{{sliderPointerWidth}}"
+                           data-height="{{sliderPointerHeight}}"
+                           class="slider-pointer  ext-slider-pointer-class"
+                           bindtouchstart="{{wxs.touchSliderPointer}}"
+                           bindtouchmove="{{wxs.touchMoveSliderPointer}}"
+                           style="left:{{-sliderPointerWidth/2}}px !important;top:{{(tSliderRect.height- sliderPointerWidth)/2}}px !important;position:absolute !important;width:{{sliderPointerWidth}}px !important;height:{{sliderPointerWidth}}px !important"></image>
+                </view>
+            </view>
+        </view>
+
+    </block>
+    <view id="colorsCard" class="flex-column boxBorderContainer"
+          style="justify-content:space-between;font-size:0.75em;width:100%;height:20%">
+        <view class="flex" style="width:100%;height:5%">
+            <view style="width:100%;height:1px;background-color:lightgray;"></view>
+        </view>
+        <view style="position:relative;width:100%;height:40%;padding-left:10rpx;padding-right:10rpx">
+            <scroll-view id="recent-colors" class=""
+                         scroll-x="true"
+                         style="box-sizing:border-box;position:relative;white-space: nowrap;width:100%;height:100%;">
+                <block wx:for="{{recentColors}}" wx:for-item="color" wx:key="index">
+                    <view class="colorCard opacity-background"
+                          data-color="{{color}}"
+                          style="margin-left:10rpx;height:100%;width:{{colorCardWidth}}px;">
+                        <view ontap="chooseColorCard"
+                              data-color="{{color}}"
+                              style="border-radius:5px;width:100%;height:100%;background-color:{{color.hex}};opacity:{{color.opacity}}">
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <view style="top:0;left:0;position:absolute;background-image:linear-gradient(to right,whitesmoke,transparent);width:60rpx;height:100%"></view>
+            <view style="top:0;right:0;position:absolute;background-image:linear-gradient(to left,whitesmoke,transparent);width:60rpx;height:100%"></view>
+        </view>
+
+
+        <view class="flex" style="width:100%;height:5%">
+            <view style="width:100%;height:1px;background-color:lightgray;"></view>
+        </view>
+        <view style="position:relative;width:100%;height:40%;padding-left:10rpx;padding-right:10rpx">
+            <scroll-view id="common-colors" class=""
+                         scroll-x="true"
+                         style="box-sizing:border-box;position:relative;white-space: nowrap;width:100%;height:100%;">
+                <block wx:for="{{commonColors}}" wx:for-item="color" wx:key="hex">
+                    <view class="colorCard opacity-background"
+                          data-color="{{color}}"
+                          style="margin-left:10rpx;height:100%;width:{{colorCardWidth}}px;">
+                        <view ontap="chooseColorCard"
+                              data-color="{{color}}"
+                              style="border-radius:5px;width:100%;height:100%;background-color:{{color.hex}};opacity:{{color.opacity}}">
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <view style="top:0;left:0;position:absolute;background-image:linear-gradient(to right,whitesmoke,transparent);width:60rpx;height:100%"></view>
+            <view style="top:0;right:0;position:absolute;background-image:linear-gradient(to left,whitesmoke,transparent);width:60rpx;height:100%"></view>
+        </view>
+    </view>
+</view>
