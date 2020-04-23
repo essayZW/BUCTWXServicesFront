@@ -28,7 +28,7 @@
 #today-butt{
     margin-right: 10rpx;
     float:right;
-    background-color: #0ae;
+    /* background-color: #0ae; */
     border-radius: 10rpx;
     color: white;
     font-weight: bold;
@@ -55,7 +55,7 @@
 }
 /* 当天 */
 .day-active{
-    background-color: #0ae;
+    /* background-color: #0ae; */
     font-weight: 500;
     color: white;
     border-radius: 12rpx;

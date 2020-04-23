@@ -4,14 +4,14 @@
     <view>
         <text id="day-info-show">{{ year }}年{{ month }}月{{ day }}日</text>
         <text id="weekday-show">{{ weekday }}</text>
-        <text wx:if="{{ !isCurrentDay }}" bindtap="goBackToday" id="today-butt">今</text>
+        <text wx:if="{{ !isCurrentDay }}" bindtap="goBackToday" id="today-butt" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">今</text>
     </view>
     <view>
         <view id="weekday-list">
             <view wx:for="{{ weekdayList }}">{{ item }}</view>
         </view>
         <view id="monthday-list" bindtouchstart="touchStart" bindtouchmove="touchMove">
-            <view wx:for="{{ monthdayList }}" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}">
+            <view wx:for="{{ monthdayList }}" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}" style="{{ item.currentDayBool ? 'background-color: ' + globalBackgroundTheme + '; color: ' +  globalFrontTheme + ';': ''}}">
                 <view>{{ item.day }}</view><view class="day-info">{{ item.shortInfo }}</view>
             </view>
         </view>
