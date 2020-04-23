@@ -1,0 +1,13 @@
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog{
+  background-color:whitesmoke;
+  border-radius:15rpx;
+  padding:30rpx;
+  width:75%;
+  height:80%;
+}

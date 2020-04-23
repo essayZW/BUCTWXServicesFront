@@ -1,0 +1,2 @@
+<!--pages/settings/settings.wxml-->
+<navigator url="/pages/themesetting/themesetting">主题设置</navigator>
