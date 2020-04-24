@@ -17,10 +17,7 @@ Page({
      */
     onLoad: function (options) {
         // 修改本页面顶栏颜色
-        wx.setNavigationBarColor({
-            backgroundColor: App.globalData.backgroundColor,
-            frontColor: App.globalData.frontColor
-        });
+        App.setNavigatorColor();
         // 实例化触摸类
         let touchObj = require('/../../utils/touch.js');
         touchObj = new touchObj(this.lastMonth, this.nextMonth)
@@ -46,10 +43,7 @@ Page({
         let DateObj = new Date();
         this.changeDay(DateObj.getFullYear(), DateObj.getMonth(), DateObj.getDate());
         // 设置该页面主题色
-        this.setData({
-            'globalBackgroundTheme' : App.globalData.backgroundColor,
-            'globalFronrTheme' : App.globalData.frontColor
-        });
+        App.setPageColor(this);
     },
 
     /**

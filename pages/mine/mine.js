@@ -14,10 +14,7 @@ Page({
    */
   onLoad: function (options) {
     // 修改本页面顶栏颜色
-    wx.setNavigationBarColor({
-        backgroundColor: App.globalData.backgroundColor,
-        frontColor: App.globalData.frontColor
-    });
+    App.setNavigatorColor();
   },
 
   /**
@@ -32,10 +29,7 @@ Page({
    */
   onShow: function () {
     // 设置该页面主题色
-    this.setData({
-        'globalBackgroundTheme' : App.globalData.backgroundColor,
-        'globalFronrTheme' : App.globalData.frontColor
-    });
+    App.setPageColor(this);
   },
 
   /**
@@ -76,7 +70,7 @@ Page({
     * 页面切换
     */
   changePage : function(e) {
-      let src = e.target.dataset.src ? e.target.dataset.src : false;
+      let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
       if(src === false) {
           return;
       }

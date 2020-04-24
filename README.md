@@ -19,10 +19,7 @@ const App = getApp();
 
 ```javascript
 // 修改本页面顶栏颜色
-    wx.setNavigationBarColor({
-        backgroundColor: App.globalData.backgroundColor,
-        frontColor: App.globalData.frontColor
-    });
+App.setNavigatorColor();
 ```
 
 此外在`onShow`函数的**最后**加入以下代码：
@@ -31,10 +28,7 @@ const App = getApp();
 
 ```javascript
 // 设置该页面主题色
-    this.setData({
-        'globalBackgroundTheme' : App.globalData.backgroundColor,
-        'globalFronrTheme' : App.globalData.frontColor
-    });
+App.setPageColor(this);
 ```
 
 若不懂`onShow`和`onLoad`函数是啥的话，请参考已经适配的页面~~或者交由不会有任何怨言的乙方后期适配处理~~。
@@ -60,7 +54,7 @@ JS文件中是设置主题色，在这里需要处理接受主题色
 例如:
 
 ```html
-<view style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFronrTheme }}"></view>
+<view style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}"></view>
 ```
 
 这样就对该元素设置了动态的背景颜色以及文字颜色
