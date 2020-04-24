@@ -90,7 +90,7 @@ Page({
      * 页面切换
      */
     changePage : function(e) {
-        let src = e.target.dataset.src ? e.target.dataset.src : false;
+        let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
         if(src === false) {
             return;
         }
