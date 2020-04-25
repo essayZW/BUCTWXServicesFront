@@ -1,7 +1,7 @@
 //app.js
 App({
     onLaunch: function () {
-        
+        this.updateTheme();
     },
     onShow: function() {
 

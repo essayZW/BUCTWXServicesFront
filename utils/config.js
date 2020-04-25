@@ -25,6 +25,37 @@ function has(name) {
     }
     return data ? true : false;
 }
+
+/**
+ * 读取某个JSON文件并转化为对象返回
+ */
+function readJSONFile(filename) {
+    let flag;
+    try {
+        wx.getFileSystemManager().accessSync(filename);
+        flag = true;
+    } catch (error) {
+        console.log(filename + ' don\'t exists');
+        flag = false;
+    }
+    if(!flag) return {};
+    let res = wx.getFileSystemManager().readFileSync(filename, 'utf-8');
+    return JSON.parse(res);
+}
+/**
+ * 覆盖写入JSON文件
+ */
+function writeJSONFile(filename, obj) {
+    let flag;
+    try{
+        wx.getFileSystemManager().writeFileSync(filename, JSON.stringify(obj), 'utf8');
+        flag = true;
+    }
+    catch(e) {
+        flag = false;
+    }
+    return flag;
+}
 module.exports = {
     /**
      * 配置项
@@ -39,5 +70,7 @@ module.exports = {
      * 函数
      */
     'get' : get,
-    'has' : has
+    'has' : has,
+    'read' : readJSONFile,
+    'write' : writeJSONFile
 }

@@ -1,5 +1,7 @@
 // pages/calendar/calendar.js
 const App = getApp();
+const AppConfig = require('/../../utils/config.js');
+const todoManage = require('/../../utils/todo.js');
 Page({
 
     /**
@@ -9,7 +11,9 @@ Page({
         'weekdayChinese' : ['日', '一', '二', '三', '四', '五', '六'],
         'currentShowYear' : new Date().getFullYear(),
         'currentShowMonth' : new Date().getMonth(),
-        'currentShowDay' : new Date().getDate()
+        'currentShowDay' : new Date().getDate(),
+        'currentShowCalendar' : null,
+        'currentTodoList' : null
     },
 
     /**
@@ -116,7 +120,21 @@ Page({
         this.changeDay(jumpYear, jumpMonth, jumpDay);
     },
     changeDay : function(jumpYear, jumpMonth, jumpDay) {
-        let calendar = this.createCalendar(jumpYear, jumpMonth, jumpDay);
+        let calendar;
+        if(this.data.currentShowYear == jumpYear && this.data.currentShowMonth == jumpMonth && this.data.currentShowCalendar) {
+            // 在当月不重新绘制日历
+            calendar = this.data.currentShowCalendar;
+            for(let i = 0; i < calendar.length; i ++) {
+                calendar[i].currentDayBool = false;
+                if(calendar[i].year == jumpYear && calendar[i].month == jumpMonth && calendar[i].day == jumpDay) {
+                    calendar[i].currentDayBool = true;
+                }
+            }
+            calendar = this.getShortInfo(calendar);
+        }
+        else {
+            calendar = this.createCalendar(jumpYear, jumpMonth, jumpDay);
+        }
         // 获取今天
         let DateObj = new Date();
         let showWeekDay;
@@ -136,18 +154,24 @@ Page({
             // 设置回到今天按钮
             isCurrentDay = false;
         }
+        // 提取待办列表
+        let todoList = this.getTodoList(jumpYear, jumpMonth, jumpDay);
         this.setData({
             'monthdayList' : calendar,
             'year' : jumpYear,
             'month' : jumpMonth + 1,
             'day' : jumpDay,
             'weekday' : showWeekDay,
-            'isCurrentDay' : isCurrentDay
+            'isCurrentDay' : isCurrentDay,
+            'weekdayList' : this.data.weekdayChinese,
+            'todoList' : todoList
         });
         // 更新本地变量
         this.data.currentShowMonth = jumpMonth;
         this.data.currentShowYear = jumpYear;
         this.data.currentShowDay = jumpDay;
+        this.data.currentShowCalendar = calendar;
+        this.data.currentTodoList = todoList;
     },
     /**
      * 生成一个指定年月份的日历表
@@ -164,7 +188,7 @@ Page({
         for(let i = firstWeekday; i < dayNum + firstWeekday; i ++) {
             calendarRes[i] = {
                 'day' : i - firstWeekday + 1,
-                'shortInfo' : '放假',
+                'shortInfo' : '',
                 'inThisMonth' : true,
                 'currentDayBool' : i - firstWeekday + 1 == switchDay,
                 'month' : month,
@@ -175,7 +199,7 @@ Page({
         for(let i = firstWeekday - 1; i >= 0; i --) {
             calendarRes[i] = {
                 'day' : lastDayNum --,
-                'shortInfo' : '放假中',
+                'shortInfo' : '',
                 'inThisMonth' : false,
                 'currentDayBool' : i - firstWeekday + 1 == switchDay,
                 'month' : month - 1 < 0 ? 11 : month - 1,
@@ -187,13 +211,173 @@ Page({
         for(let i = firstWeekday + dayNum; i < endDay; i ++) {
             calendarRes[i] = {
                 'day' : i - firstWeekday - dayNum + 1,
-                'shortInfo' : '放假',
+                'shortInfo' : '',
                 'inThisMonth' : false,
                 'currentDayBool' : i - firstWeekday + 1 == switchDay,
                 'month' : (month + 1) % 12,
                 'year' : month + 1 > 11 ? year + 1 : year
             }
         }
+        // 给每一天加一个ID
+        for(let i = 0; i < calendarRes.length; i ++) {
+            calendarRes[i].id = i;
+        }
+        // 对calendar附加shortInfo
+        calendarRes = this.getShortInfo(calendarRes);
         return calendarRes;
+    },
+    /**
+     * 为日历中的每一天设置其当天日程
+     */
+    getTodoList : function(year, month, day) {
+        let todoList = AppConfig.read(wx.env.USER_DATA_PATH + '/todo.json');
+        if(todoList === {}) return [];
+        if(todoList[year] && todoList[year][month] && todoList[year][month][day]) {
+            return todoList[year][month][day];
+        }
+        return [];
+    },
+    /**
+     * 得到每天的 shortInfo
+     */
+    getShortInfo : function(calendar) {
+        let todoList = AppConfig.read(wx.env.USER_DATA_PATH + '/todo.json');
+        if(todoList === {}) return calendar;
+        console.log(todoList);
+        for(let i = 0; i < calendar.length; i ++) {
+            let year = calendar[i]['year'];
+            let month = calendar[i]['month'];
+            let day = calendar[i]['day'];
+            if(todoList[year] && todoList[year][month] && todoList[year][month][day] && todoList[year][month][day].length) {
+                calendar[i]['shortInfo'] = todoList[year][month][day][0].shortInfo;
+            }
+        }
+        return calendar;
+    },
+    /**
+     * 展示待办事件的详细信息
+     */
+    showDetail : function(e) {
+        console.log(e);
+    },
+    /**
+     * 完成某个代办事件
+     */
+    finishTodo : function(e) {
+        console.log(e);
+    },
+    /**
+     * 隐藏细节展示区域
+     */
+    hideMask : function(e) {
+        if(e.target.id !== 'mask') return;
+        let type = e.target.dataset.type;
+        if(type == 'add') {
+            this.setData({
+                'showAdd' : false
+            });
+            return;
+        }
+        this.setData({
+            'showDetail' : false
+        })
+    },
+    /**
+     * 添加一个代办事件
+     */
+    addTodo : function() {
+        let title = this.addTodoInput.title;
+        let position = this.addTodoInput.position;
+        let content = this.addTodoInput.content;
+        let rank;
+        let startTime = this.timeData.timePickerNowTime[0];
+        let endTime = this.timeData.timePickerNowTime[1];
+        let startTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, startTime.substr(0, 2), startTime.substr(3, 2));
+        let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2), endTime.substr(3, 2));
+        // 判断事件是否符合规则，以及填入的表单是否符合规则
+        if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || !position.length || !content.length || content.length > 100) {
+            wx.showToast({
+              title: '失败',
+              image : '/images/icon/error.png'
+            });
+            return;
+        }
+        let data = {
+            'title' : title,
+            'startTime' : startTime,
+            'endTime' : endTime,
+            'position' : position,
+            'content' : content,
+            'finish' : false,
+            'shortInfo' : title.substr(0, 3),
+            'sTime' : startTimeObj.getTime(),
+            'eTime' : endTimeObj.getTime()
+        };
+        if(todoManage.add(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, data)){
+            wx.showToast({
+              title: '成功',
+            });
+            this.hideMask({
+                target : {
+                    id : 'mask',
+                    dataset : {
+                        type : 'add'
+                    }
+                }
+            });
+            this.changeDay(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay);
+        }
+        else {
+            wx.showToast({
+              title: '失败',
+              image: '/images/icon/error.png'
+            });
+        }
+    },
+    /**
+     * 存储关于添加待办的变量
+     */
+    timeData : {
+        timePickerNowTime : []
+    },
+    addTodoInput : {
+
+    },
+    /**
+     * 展示待办添加区域
+     */
+    showAddArea : function() {
+        let nowHover = new Date().getHours();
+        let nowMinute = new Date().getMinutes();
+        let endHover = (nowHover == 23 ? 0 : nowHover + 1).toString().padStart(2, '0');
+        let endMinute = (nowHover == 23 ? 0 : nowMinute).toString().padStart(2, '0');
+        nowHover = nowHover.toString().padStart(2, '0');
+        nowMinute = nowMinute.toString().padStart(2, '0');
+        let timePicker = [
+            nowHover + ':' + nowMinute,
+            endHover + ':' + endMinute
+        ]
+        this.setData({
+            'showAdd' : true,
+            'timePickerNowTime' : timePicker
+        });
+        // 更新变量
+        this.timeData.timePickerNowTime = timePicker;
+    },
+    /**
+     * 选择时间的改变
+     */
+    timeChange : function(e){
+        let index = e.target.dataset.index;
+        this.timeData.timePickerNowTime[index] = e.detail.value;
+        this.setData({
+            'timePickerNowTime' : this.timeData.timePickerNowTime
+        });
+    },
+    /**
+     * 保存输入表单的值
+     */
+    saveInput: function(e) {
+        this.addTodoInput[e.target.id] = e.detail.value;
     }
 })
