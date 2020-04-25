@@ -11,7 +11,7 @@
             <view wx:for="{{ weekdayList }}">{{ item }}</view>
         </view>
         <view id="monthday-list" bindtouchstart="touchStart" bindtouchmove="touchMove">
-            <view wx:for="{{ monthdayList }}" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}" style="{{ item.currentDayBool ? 'background-color: ' + globalBackgroundTheme + '; color: ' +  globalFrontTheme + ';': ''}}">
+            <view wx:for="{{ monthdayList }}" wx:key="id" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}" style="{{ item.currentDayBool ? 'background-color: ' + globalBackgroundTheme + '; color: ' +  globalFrontTheme + ';': ''}}">
                 <view>{{ item.day }}</view><view class="day-info">{{ item.shortInfo }}</view>
             </view>
         </view>
@@ -19,5 +19,58 @@
 </view>
 <!-- 日历部分 end -->
 <!-- 当前信息展示 start -->
-<view></view>
+<view class="todo-list-body">
+    <view wx:if="{{ !todoList.length }}" class="nothing-todo">今日无事可做~</view>
+    <view class="todo" wx:for="{{ todoList }}" wx:key="id" bindtap="showDetail" data-content="{{ item.content }}" data-id="{{ item.id }}">
+        <view class="todo-info-show">
+            <view class="todo-title">{{ item.title }}</view>
+            <view class="time-show">{{ item.startTime }}~{{ item.endTime }}</view>
+        </view>
+        <view class="ok-button {{ item.finish ? 'ok-button-active' : '' }}">
+            <view style="{{ item.finish ? 'background-color: ' + globalBackgroundTheme + ';': '' }}" catchtap="finishTodo">
+                <image></image>
+            </view>
+        </view>
+    </view>
+</view>
 <!-- 当前信息展示 end -->
+<!-- 添加待办按钮 start -->
+<view class="add-button" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }};" bindtap="showAddArea">+</view>
+<!-- 添加待办按钮 end -->
+<!-- 详细信息展示 start -->
+<view wx:if="{{ showDetail }}" class="mask" bindtap="hideMask" id="mask" data-type="detail">
+    <view class="detail-area">
+        <!-- 待办标题 -->
+        <view class="detail-title">{{ detail.title }}</view>
+        <!-- 待办时间区间 -->
+        <view class="detail-time">{{ detail.startTime }}~{{ detail.endTime }}</view>
+        <!-- 待办地点 -->
+        <view class="detail-position">地点:{{ detail.position }}</view>
+        <!-- 待办事件的备注 -->
+        <view>备注:</view>
+        <view class="detail-content">{{ detail.content }}</view>
+    </view>
+</view>
+<!-- 详细信息展示 end  -->
+<!-- 添加新待办 start -->
+<view wx:if="{{ showAdd }}" class="mask" bindtap="hideMask" id="mask" data-type="add">
+    <view class="add-area">
+        <!-- 输入待办的标题 -->
+        <input type="text" placeholder="标题" id="title" bindchange="saveInput" maxlength="20"></input>
+        <!-- 待办的时间区间选择 -->
+        <view class="time-picker">
+            <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
+                <view>开始时间:{{ timePickerNowTime[0] }}</view>
+            </picker>
+            <picker mode="time" value="{{ timePickerNowTime[1] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="1">
+                <view>结束时间:{{ timePickerNowTime[1] }}</view>
+            </picker>
+        </view>
+        <!-- 待办的地点 -->
+        <input type="text" placeholder="地点" id="position" bindchange="saveInput" maxlength="10"></input>
+        <!-- 待办的备注 -->
+        <textarea placeholder="备注" id="content" bindinput="saveInput" maxlength="100"></textarea>
+        <button bindtap="addTodo">添加</button>
+    </view>
+</view>
+<!-- 添加新待办 end  -->

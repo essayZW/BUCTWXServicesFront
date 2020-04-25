@@ -1,2 +1,61 @@
 <!--pages/themesetting/themesetting.wxml-->
 <color-picker-dialog showDialog="{{ true }}"></color-picker-dialog>
+<view class="font-setting">
+<view class="font-setting-p"><text class="font-setting-s">导航栏使用黑色字体</text></view>
+<view class="chosed-border"><image class="chosed-s" src="/images/icon/chosed.png"></image></view>
+</view>
+
+<view class="line"></view>
+
+<view class="font-setting">
+<view class="font-setting-p"><text class="font-setting-s">当前颜色代码</text></view>
+<view class="color-code"><text class="font-setting-s">#ffd21e</text></view>
+<view class="edited-p"><image class="edited-s" src="/images/icon/edit.png"></image></view>
+</view>
+
+<view class="color-select0">
+<view class="classical-color0"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text0"><text class="color-text-s0">自定义</text></view>
+<view class="chosed-border0"><text class="chosed-text0">已选择</text> </view>
+</view>
+
+<view class="color-select1">
+<view class="classical-color1"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text1"><text class="color-text-s1">网易红</text></view>
+<view class="chosed-border1"><text class="chosed-text1">已选择</text> </view>
+</view>
+
+<view class="color-select2">
+<view class="classical-color2"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text2"><text class="color-text-s2">活力黄</text></view>
+<view class="chosed-border2"><text class="chosed-text2">已选择</text> </view>
+</view>
+
+<view class="color-select4">
+<view class="classical-color4"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text4"><text class="color-text-s4">亮海绿</text></view>
+<view class="chosed-border4"><text class="chosed-text4">已选择</text> </view>
+</view>
+
+<view class="color-select3">
+<view class="classical-color3"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text3"><text class="color-text-s3">知乎蓝</text></view>
+<view class="chosed-border3"><text class="chosed-text3">已选择</text> </view>
+</view>
+
+<view class="color-select5">
+<view class="classical-color5"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text5"><text class="color-text-s5">秦叔紫</text></view>
+<view class="chosed-border5"><text class="chosed-text5">已选择</text> </view>
+</view>
+
+<view class="color-select6">
+<view class="classical-color6"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text6"><text class="color-text-s6">芭比粉</text></view>
+<view class="chosed-border6"><text class="chosed-text6">已选择</text> </view>
+</view>
+<view class="color-select7">
+<view class="classical-color7"><image class="chosed" src="/images/icon/chosed.png"></image></view>
+<view class="color-text7"><text class="color-text-s7">岩石灰</text></view>
+<view class="chosed-border7"><text class="chosed-text7">已选择</text> </view>
+</view>
