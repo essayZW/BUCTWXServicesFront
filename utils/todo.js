@@ -21,9 +21,9 @@ function add(year, month, day, data) {
     hadTodoList[year][month][day] = hadTodoList[year][month][day].concat([data]);
     // 对其排序
     hadTodoList[year][month][day].sort((a, b) => {
-        if(a.finish != b.finish) return a.finish < b.finish;
-        if(a.sTime == b.sTime) return a.eTime < b.eTime;
-        return a.sTime < b.sTime;
+        if(a.finish != b.finish) return a.finish - b.finish;
+        if(a.sTime == b.sTime) return a.eTime - b.eTime;
+        return a.sTime - b.sTime;
     });
     for(let i = 0; i < hadTodoList[year][month][day].length; i ++) {
         hadTodoList[year][month][day][i].id = i;
@@ -31,6 +31,70 @@ function add(year, month, day, data) {
     return file.write(wx.env.USER_DATA_PATH + '/todo.json', hadTodoList);
 }
 
+/**
+ * 删除一个待办事件
+ * @param {integer} year 
+ * @param {integer} month 
+ * @param {integer} day 
+ * @param {integer} id 
+ */
+function del(year, month, day, id) {
+    const file = require('./config.js');
+    let hadTodoList = file.read(wx.env.USER_DATA_PATH + '/todo.json');
+    if(!hadTodoList[year]) {
+        return false;
+    }
+    if(!hadTodoList[year][month]) {
+        return false;
+    }
+    if(!hadTodoList[year][month][day] || hadTodoList[year][month][day].length < id + 1) {
+        return false;
+    }
+    hadTodoList[year][month][day].splice(id, 1);
+    // 对其排序
+    hadTodoList[year][month][day].sort((a, b) => {
+        if(a.finish != b.finish) return a.finish - b.finish;
+        if(a.sTime == b.sTime) return a.eTime - b.eTime;
+        return a.sTime - b.sTime;
+    });
+    for(let i = 0; i < hadTodoList[year][month][day].length; i ++) {
+        hadTodoList[year][month][day][i].id = i;
+    }
+    return file.write(wx.env.USER_DATA_PATH + '/todo.json', hadTodoList);
+}
+/**
+ * 完成某个待办
+ * @param {integer} year 
+ * @param {integer} month 
+ * @param {integer} day 
+ * @param {integer} id 
+ */
+function finish(year, month, day, id) {
+    const file = require('./config.js');
+    let hadTodoList = file.read(wx.env.USER_DATA_PATH + '/todo.json');
+    if(!hadTodoList[year]) {
+        return false;
+    }
+    if(!hadTodoList[year][month]) {
+        return false;
+    }
+    if(!hadTodoList[year][month][day] || hadTodoList[year][month][day].length < id + 1) {
+        return false;
+    }
+    hadTodoList[year][month][day][id].finish = true;
+    // 对其排序
+    hadTodoList[year][month][day].sort((a, b) => {
+        if(a.finish != b.finish) return a.finish - b.finish;
+        if(a.sTime == b.sTime) return a.eTime - b.eTime;
+        return a.sTime - b.sTime;
+    });
+    for(let i = 0; i < hadTodoList[year][month][day].length; i ++) {
+        hadTodoList[year][month][day][i].id = i;
+    }
+    return file.write(wx.env.USER_DATA_PATH + '/todo.json', hadTodoList);
+}
 module.exports = {
-    'add' : add
+    'add' : add,
+    'del' : del,
+    'finish' : finish
 }
