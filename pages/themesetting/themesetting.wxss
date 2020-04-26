@@ -7,39 +7,41 @@ page {
     background: #EEEEEE;
   }
 .chosed-s{
-  width:19rpx;
-  height:19rpx;
+  width:100%;
+  height:100%;
 }
 .line{
-  
   width:100%;
   height:1px;
   background:#f0efef;
-  }
+}
 .font-setting{
   background: #ffffff;
   height:100rpx;
+  width:100%;
   line-height:100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .chosed-border{
-  display: inline-block;
   text-align:center;
-  line-height:23rpx;
-  margin-left: 450rpx;
+  line-height:25rpx;
   border:1rpx solid;
-  border-color:#ffd21e;
+  border-color:black;
   border-radius:4rpx;
   width: 25rpx;
   height: 25rpx;
-  background-color: #ffd21e;
+  background-color: black;
+  margin-right:50rpx;
 }
 .font-setting-p{
   display: inline-block;
   margin-left: 20rpx; 
 } 
 .color-code{
-  display: inline-block;
-  margin-left: 420rpx; 
+  display: flex;
+  align-items: center;
 } 
 .edited-p{
   display: inline-block;
@@ -52,10 +54,14 @@ page {
 .edited-s{
   width:35rpx;
   height:35rpx;
+  margin-right: 47rpx;
 }
 .font-setting-s{
   font-size: 25rpx;
   color: #515151;
+  width:110rpx;
+  border-radius: 12rpx;
+  padding:0px 5rpx;
 }
 .chosed{
     width:40rpx;
@@ -86,7 +92,9 @@ page {
   color: #000000;
 }
 .chosed-border0{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -99,6 +107,7 @@ page {
 .chosed-text0{
   font-size: 20rpx;
   color: #000000;
+  vertical-align: middle;
 }
 .classical-color1{
     display: inline-block;
@@ -124,7 +133,9 @@ page {
     color: #db2c20;
 }
   .chosed-border1{
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align:center;
     line-height:50rpx;
     margin-left: 400rpx;
@@ -163,7 +174,9 @@ page {
   color: #ffd21e;
 }
 .chosed-border2{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -201,7 +214,9 @@ page {
   color: #0184ff;
 }
 .chosed-border3{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -240,7 +255,9 @@ page {
   color: #23d59c;
 }
 .chosed-border4{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -278,7 +295,9 @@ page {
   color: #673bb7;
 }
 .chosed-border5{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -304,7 +323,7 @@ page {
   background: #fa7298;
 }
 
-.color-select{
+.color-select6{
   display: flex;
   align-items: center;
 }
@@ -317,7 +336,9 @@ page {
   color: #fa7298;
 }
 .chosed-border6{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -355,7 +376,9 @@ page {
   color: #607d88;
 }
 .chosed-border7{
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align:center;
   line-height:50rpx;
   margin-left: 400rpx;
@@ -368,4 +391,8 @@ page {
 .chosed-text7{
   font-size: 20rpx;
   color: #607d88;
+}
+
+.active-input{
+  border:1px solid black;
 }

@@ -30,6 +30,8 @@ Page({
   onShow: function () {
     // 设置该页面主题色
     App.setPageColor(this);
+    // 修改本页面顶栏颜色
+    App.setNavigatorColor();
   },
 
   /**

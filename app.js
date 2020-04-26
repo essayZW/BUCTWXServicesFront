@@ -14,7 +14,8 @@ App({
     },
     globalData: {
        frontColor : '#ffffff',
-       backgroundColor : '#ffd21e'
+       backgroundColor : '#ffd21e',
+       id : 0
     },
     /**
      * 更新颜色信息
@@ -24,8 +25,12 @@ App({
         const AppConfig = require('/utils/config.js');
         if(AppConfig.has('theme')) {
             let colorSettings = AppConfig.get('theme');
-            this.globalData.frontColor = colorSettings.frontColor;
-            this.globalData.backgroundColor = colorSettings.backgroundColor;
+            if(colorSettings.frontColor)
+                this.globalData.frontColor = colorSettings.frontColor;
+            if(colorSettings.backgroundColor)
+                this.globalData.backgroundColor = colorSettings.backgroundColor;
+            if(colorSettings.id)
+                this.globalData.id = colorSettings.id;
         }
     },
     /**
