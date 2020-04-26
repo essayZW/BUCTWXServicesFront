@@ -21,13 +21,13 @@
 <!-- 当前信息展示 start -->
 <view class="todo-list-body">
     <view wx:if="{{ !todoList.length }}" class="nothing-todo">今日无事可做~</view>
-    <view class="todo" wx:for="{{ todoList }}" wx:key="id" bindtap="showDetail" data-content="{{ item.content }}" data-id="{{ item.id }}">
+    <view class="todo" wx:for="{{ todoList }}" wx:key="id" bindtap="showDetail" data-content="{{ item.content }}" data-title="{{ item.title }}" data-starttime="{{ item.startTime }}" data-endtime="{{ item.endTime }}" data-position="{{ item.position }}">
         <view class="todo-info-show">
             <view class="todo-title">{{ item.title }}</view>
             <view class="time-show">{{ item.startTime }}~{{ item.endTime }}</view>
         </view>
         <view class="ok-button {{ item.finish ? 'ok-button-active' : '' }}">
-            <view style="{{ item.finish ? 'background-color: ' + globalBackgroundTheme + ';': '' }}" catchtap="finishTodo">
+            <view style="{{ item.finish ? 'background-color: ' + globalBackgroundTheme + ';': '' }}" catchtap="finishTodo" data-id="{{ item.id }}" data-finish="{{ item.finish }}">
                 <image></image>
             </view>
         </view>
@@ -49,6 +49,7 @@
         <!-- 待办事件的备注 -->
         <view>备注:</view>
         <view class="detail-content">{{ detail.content }}</view>
+        <button bindtap="deleteTodo" data-id="{{ detail.id }}">删除</button>
     </view>
 </view>
 <!-- 详细信息展示 end  -->

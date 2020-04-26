@@ -48,6 +48,8 @@ Page({
         this.changeDay(DateObj.getFullYear(), DateObj.getMonth(), DateObj.getDate());
         // 设置该页面主题色
         App.setPageColor(this);
+        // 修改本页面顶栏颜色
+        App.setNavigatorColor();
     },
 
     /**
@@ -243,13 +245,17 @@ Page({
     getShortInfo : function(calendar) {
         let todoList = AppConfig.read(wx.env.USER_DATA_PATH + '/todo.json');
         if(todoList === {}) return calendar;
-        console.log(todoList);
         for(let i = 0; i < calendar.length; i ++) {
             let year = calendar[i]['year'];
             let month = calendar[i]['month'];
             let day = calendar[i]['day'];
-            if(todoList[year] && todoList[year][month] && todoList[year][month][day] && todoList[year][month][day].length) {
-                calendar[i]['shortInfo'] = todoList[year][month][day][0].shortInfo;
+            if(todoList[year] && todoList[year][month] && todoList[year][month][day]) {
+                calendar[i]['shortInfo'] = '';
+                for(let j = 0; j < todoList[year][month][day].length; j ++) {
+                    if(todoList[year][month][day][j].finish) continue;
+                    calendar[i]['shortInfo'] = todoList[year][month][day][j].shortInfo;
+                    break;
+                }
             }
         }
         return calendar;
@@ -258,13 +264,41 @@ Page({
      * 展示待办事件的详细信息
      */
     showDetail : function(e) {
-        console.log(e);
+        let title = e.currentTarget.dataset.title;
+        let startTime = e.currentTarget.dataset.starttime;
+        let endTime = e.currentTarget.dataset.endtime;
+        let position = e.currentTarget.dataset.position;
+        let content = e.currentTarget.dataset.content;
+        let id = e.currentTarget.dataset.id;
+        this.setData({
+            'showDetail' : true,
+            'detail' : {
+                'title' : title,
+                'startTime' : startTime,
+                'endTime' : endTime,
+                'position' : position,
+                'content' : content,
+                'id' : id
+            }
+        });
     },
     /**
      * 完成某个代办事件
      */
     finishTodo : function(e) {
-        console.log(e);
+        if(e.currentTarget.dataset.finish === true) {
+            return;
+        }
+        let id = e.currentTarget.dataset.id;
+        if(todoManage.finish(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, id)) {
+            this.changeDay(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay);
+        }
+        else {
+            wx.showToast({
+                title: '失败',
+                image: '/images/icon/error.png'
+            });
+        }
     },
     /**
      * 隐藏细节展示区域
@@ -280,7 +314,44 @@ Page({
         }
         this.setData({
             'showDetail' : false
+        });
+    },
+    /**
+     * 删除一个待办事件
+     */
+    deleteTodo : function(e) {
+        wx.showModal({
+            title: '确认',
+            content : '确认是否删除这条待办',
+            success: (res) => {
+                if(!res.confirm) return;
+                let id = e.target.dataset.id;
+                if(todoManage.del(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, id)) {
+                    wx.showToast({
+                        title: '成功',
+                    });
+                    wx.showToast({
+                        title: '成功',
+                    });
+                    this.hideMask({
+                        target : {
+                            id : 'mask',
+                            dataset : {
+                                type : 'detail'
+                            }
+                        }
+                    });
+                    this.changeDay(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay);
+                }
+                else {
+                    wx.showToast({
+                        title: '失败',
+                        image: '/images/icon/error.png'
+                    });
+                }
+            }
         })
+        
     },
     /**
      * 添加一个代办事件
@@ -289,13 +360,12 @@ Page({
         let title = this.addTodoInput.title;
         let position = this.addTodoInput.position;
         let content = this.addTodoInput.content;
-        let rank;
         let startTime = this.timeData.timePickerNowTime[0];
         let endTime = this.timeData.timePickerNowTime[1];
         let startTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, startTime.substr(0, 2), startTime.substr(3, 2));
-        let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2), endTime.substr(3, 2));
+        let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2) == '00' ? 24 : 0, endTime.substr(3, 2));
         // 判断事件是否符合规则，以及填入的表单是否符合规则
-        if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || !position.length || !content.length || content.length > 100) {
+        if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || content.length > 100) {
             wx.showToast({
               title: '失败',
               image : '/images/icon/error.png'
@@ -325,6 +395,9 @@ Page({
                     }
                 }
             });
+            for(let key in this.addTodoInput) {
+                this.addTodoInput[key] = '';
+            }
             this.changeDay(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay);
         }
         else {
@@ -341,7 +414,9 @@ Page({
         timePickerNowTime : []
     },
     addTodoInput : {
-
+        title : '',
+        content : '',
+        position : ''
     },
     /**
      * 展示待办添加区域
