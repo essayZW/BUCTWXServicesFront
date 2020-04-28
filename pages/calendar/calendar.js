@@ -363,7 +363,7 @@ Page({
         let startTime = this.timeData.timePickerNowTime[0];
         let endTime = this.timeData.timePickerNowTime[1];
         let startTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, startTime.substr(0, 2), startTime.substr(3, 2));
-        let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2) == '00' ? 24 : 0, endTime.substr(3, 2));
+        let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2) == '00' ? 24 : parseInt(endTime.substr(0, 2)), parseInt(endTime.substr(3, 2)));
         // 判断事件是否符合规则，以及填入的表单是否符合规则
         if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || content.length > 100) {
             wx.showToast({
