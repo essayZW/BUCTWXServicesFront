@@ -1,10 +1,12 @@
 {
     "pages": [
+        "pages/calendar/calendar",
+        "pages/feedback/feedback",
         "pages/index/index",
         "pages/mine/mine",
         "pages/login/login",
         "pages/jwgrade/jwgrade",
-        "pages/calendar/calendar",
+      
         "pages/notice/notice",
         "pages/themesetting/themesetting",
         "pages/settings/settings"
