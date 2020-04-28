@@ -172,7 +172,7 @@
 .detail-area, .add-area{
     width:80%;
     max-height:80%;
-    min-height: 30%;
+    min-height: 60%;
     background-color: white;
     border-radius: 20rpx;
     overflow: auto;
