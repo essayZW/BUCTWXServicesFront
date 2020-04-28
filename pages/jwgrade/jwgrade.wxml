@@ -1,7 +1,9 @@
 <!--pages/jw/jw.wxml-->
 <view class="select-list">
   <view class="selected-info-show">
-    {{ syear }}~{{ syear + 1 }}学年第{{ sclass }}学期
+    当前选择:
+    <view>{{ syear }}~{{ syear + 1 }}学年</view>
+    <view>第{{ sclass }}学期</view>
   </view>
   <!-- 列表内容 -->
   <picker-view class="select-area" value="{{ selectValue }}" bindchange="selectChange">
@@ -19,7 +21,7 @@
       <image src="/images/grademenu.png" class="menu-img" bindtap="listChange"></image>
       <image src="/images/test1.jpg" class="head-img" bindtap="listChange"></image>
       <view class="student-info-show">
-        <view style="color:{{ globalFrontTheme  }};">{{ studentName }}</view>
+        <view style="color:{{ globalFrontTheme  }};">{{ studentName }}<text class="blank"></text>绩点:{{ gpa }}</view>
         <view style="color:{{ globalFrontTheme }};">{{ studentClass }}</view>
       </view>
   </view>

@@ -43,7 +43,8 @@ Page({
             let userInfo = AppConfig.get('userinfo');
             this.setData({
                 'studentName' : userInfo['name'],
-                'studentClass' : userInfo['classInfo']
+                'studentClass' : userInfo['classInfo'],
+                'gpa' : userInfo['gpa']
             });
         }
         this.setData({
@@ -265,7 +266,8 @@ Page({
                 });
                 THIS.setData({
                     'studentName' : userInfo['name'],
-                    'studentClass' : userInfo['classInfo']
+                    'studentClass' : userInfo['classInfo'],
+                    'gpa' : userInfo['gpa']['gpa']
                 });
             }
         }, function(data) {

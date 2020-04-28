@@ -146,6 +146,7 @@ page{
 .selected-info-show{
   margin-bottom:20rpx;
   margin-left:10rpx;
+  padding-top:20rpx;
 }
 .query-button{
   float:left;
@@ -228,4 +229,11 @@ page{
 .table>.tr>.td{
   line-height: 60rpx;
   width:calc(100% / 3);
+}
+
+.blank{
+  display: inline-block;
+  width:30rpx;
+  height:100%;
+  vertical-align: middle;
 }
