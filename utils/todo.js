@@ -18,6 +18,23 @@ function add(year, month, day, data) {
     if(!hadTodoList[year][month][day]) {
         hadTodoList[year][month][day] = [];
     }
+    // 去重
+    // console.log(data);
+    for(let i = 0; i < hadTodoList[year][month][day].length; i ++) {
+        let now = hadTodoList[year][month][day][i];
+        let flag = true;
+        // console.log(now);
+        for(let key in now) {
+            if(key == 'id') continue;
+            if(now[key] != data[key]) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            return false;
+        }
+    }
     hadTodoList[year][month][day] = hadTodoList[year][month][day].concat([data]);
     // 对其排序
     hadTodoList[year][month][day].sort((a, b) => {
