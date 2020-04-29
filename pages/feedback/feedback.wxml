@@ -1,6 +1,5 @@
 <!--pages/feedback/feedback.wxml-->
 <view class="star-box">
-<view></view>
 	<view class="star-title"><text class="star-title-s">给个评分吧！</text></view>
 	<view class="star">
 	<view class="star-text1"><text class="star-text1-s">使用操作</text></view>
@@ -28,7 +27,7 @@
 	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
 	</view>
 	<view class="star-title"><text class="star-title-s">给个评价吧！</text></view>
-	<view class="input"></view>
+	<textarea class="input"></textarea>
 </view>
 
 

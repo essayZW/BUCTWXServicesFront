@@ -1,4 +1,5 @@
 // pages/feedback/feedback.js
+const App = getApp();
 Page({
 
   /**
@@ -12,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      App.setNavigatorColor();
   },
 
   /**
@@ -26,7 +27,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      App.setPageColor(this);
+      App.setNavigatorColor();
   },
 
   /**

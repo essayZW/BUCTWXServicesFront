@@ -1,14 +1,13 @@
 {
     "pages": [
-        "pages/calendar/calendar",
-        "pages/feedback/feedback",
         "pages/index/index",
         "pages/mine/mine",
         "pages/login/login",
         "pages/jwgrade/jwgrade",
-      
         "pages/notice/notice",
         "pages/themesetting/themesetting",
+        "pages/calendar/calendar",
+        "pages/feedback/feedback",
         "pages/settings/settings"
     ],
     "window": {
