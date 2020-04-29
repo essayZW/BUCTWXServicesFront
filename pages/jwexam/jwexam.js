@@ -124,8 +124,7 @@ Page({
                     'sTime' : startTimeObj.getTime(),
                     'eTime' : endTimeObj.getTime()
                   };
-                  // console.log(data);
-                  // console.log(todoManage.add(year, month, day, data));
+                  todoManage.add(year, month, day, data);
                 }
                                
               }
