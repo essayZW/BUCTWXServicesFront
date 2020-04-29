@@ -15,7 +15,7 @@ App({
     globalData: {
        frontColor : '#ffffff',
        backgroundColor : '#ffd21e',
-       id : 0
+       id : 2
     },
     /**
      * 更新颜色信息

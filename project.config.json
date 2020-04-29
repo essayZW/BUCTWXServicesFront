@@ -25,7 +25,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "2.11.0",
 	"appid": "wx3bf658d178c58879",
 	"projectname": "BUCTServices",
 	"debugOptions": {
