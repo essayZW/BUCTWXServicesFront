@@ -2,6 +2,7 @@
 const App = getApp();
 const jw = require('/../../utils/jw.js');
 const AppConfig = require('/../../utils/config.js');
+const todoManage = require('/../../utils/todo.js');
 Page({
 
   /**
@@ -98,7 +99,34 @@ Page({
                 }
                 this.setData({
                   'examList' : examList
-                })
+                });
+
+                for(let i = 0; i < examList.length; i ++) {
+                  let res = this.pregMatchFromatDate(examList[i].time);
+                  let year = parseInt(res[1]);
+                  let month = parseInt(res[2]) - 1;
+                  let day = parseInt(res[3]);
+                  let startTime = res[4] + ':' + res[5];
+                  let endTime = res[6] + ':' + res[7];
+                  let startTimeObj = new Date(year, month, day, startTime.substr(0, 2), startTime.substr(3, 2));
+                  let endTimeObj = new Date(year, month, day, endTime.substr(0, 2) == '00' ? 24 : parseInt(endTime.substr(0, 2)), parseInt(endTime.substr(3, 2)));
+                  let content = examList[i].teacherName;
+                  let position = examList[i].position;
+                  let title = examList[i].name + '考试';
+                  let data = {
+                    'title' : title,
+                    'startTime' : startTime,
+                    'endTime' : endTime,
+                    'position' : position,
+                    'content' : content,
+                    'finish' : false,
+                    'shortInfo' : title.substr(0, 3),
+                    'sTime' : startTimeObj.getTime(),
+                    'eTime' : endTimeObj.getTime()
+                  };
+                  // console.log(data);
+                  // console.log(todoManage.add(year, month, day, data));
+                }
                                
               }
               else {
@@ -159,5 +187,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 通过格式化日期字符串"yy-mm-dd(HH:MM-HH:MM)"匹配出年月日时分
+   */
+  pregMatchFromatDate : function(dateStr) {
+    let pattern = /(\d+?)\-(\d+?)-(\d+?)\((\d+?):(\d+?)-(\d+?):(\d+?)\)/;
+    let res = dateStr.match(pattern);
+    return res;
   }
 })
