@@ -95,7 +95,7 @@ page{
   /* background: linear-gradient(to bottom, white 60%, #f7b52c 40%); */
   font-size: 18px;
   color:#636363;
-  
+  font-weight: normal;
 }
 .index-normal{
   font-size: 18px;

@@ -32,7 +32,7 @@
     <view class="subject-name" >
       <image class="item" src="/images/icon/item.png" ></image>
       <text class="index-normal" decode="{{true}}">{{ item.classNameFirstHalf }}</text>
-      <text class="text-middle-shadow">{{ item.classNameSecondHalf }}</text>
+      <text class="text-middle-shadow" style="background: linear-gradient(to bottom, white 53%, {{ globalBackgroundTheme }} 47%);">{{ item.classNameSecondHalf }}</text>
       <view class="detailed-grade" data-name="{{ item.className }}" data-syear="{{ item.syear }}" data-sclass="{{ item.sclass }}" bindtap="getDetails"><text class="detailed-grade-text" decode="{{true}}">成绩详情&ensp;</text><image class="details" src="/images/icon/details.png" ></image></view>
     </view>
     <view class="item-line">

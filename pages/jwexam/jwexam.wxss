@@ -26,23 +26,29 @@
 .time{
   width: 30rpx;
   height:30rpx;
-}
-.icon-style{
   margin-left: 10rpx;
   display: inline-block;
 }
 .time-text{
   margin-left: 6rpx;
   display: inline-block;
-}
-.time-text-s{
+  margin-right: 12rpx;
   font-size: 30rpx;
   color: #515151;
 }
 .time-detail-text{
   display: inline-block;
-}
-.time-detail-text-s{
   font-size: 20rpx;
   color: #515151;
+}
+
+.text-middle-shadow{
+    font-size: 40rpx;
+    font-weight: bold;
+}
+
+.no-info{
+  text-align: center;
+  color:gray;
+  margin-top:50rpx;
 }

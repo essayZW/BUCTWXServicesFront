@@ -1,38 +1,21 @@
 <!--pages/jwexam/jwexam.wxml-->
 <!--zdl记得标题加上半高背景-->
-<view class="subject-box">
-  <view class="subject-name"><text class="subject-name-text">大学物理实验</text> </view>
+<view wx:if="{{ !examList || !examList.length }}" class="no-info">暂无考试信息~</view>
+<view class="subject-box" wx:for="{{ examList }}">
+  <view class="subject-name"><text class="subject-name-text">{{ item.nameHalf }}</text><text class="text-middle-shadow" style="background: linear-gradient(to bottom, #f1f1f1 53%, {{ globalBackgroundTheme }} 47%);">{{ item.nameLastHalf }}</text></view>
    <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/time.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">考试时间</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">2020年5月1日10:30-12:30</text> </view>
+    <image class="time" src="/images/icon/time.png"></image>
+    <view class="time-text">考试时间</view>
+    <view class="time-detail-text">{{ item.time }}</view>
   </view>
   <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/kaochang.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">考场信息</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">B-203</text> </view>
+    <image class="time" src="/images/icon/kaochang.png"></image>
+    <view class="time-text">考场信息</view>
+    <view class="time-detail-text">{{ item.position }}</view>
   </view>
   <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/teacher.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">任课教师</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">谢超然</text> </view>
-  </view>
-</view>
-<view class="subject-box">
-  <view class="subject-name"><text class="subject-name-text">大学物理实验</text> </view>
-   <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/time.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">考试时间</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">2020年5月1日10:30-12:30</text> </view>
-  </view>
-  <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/kaochang.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">考场信息</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">B-203</text> </view>
-  </view>
-  <view class="time-box">
-    <view class="icon-style"><image class="time" src="/images/icon/teacher.png"></image> </view>
-    <view class="time-text"><text class="time-text-s">任课教师</text></view>
-    <view class="time-detail-text"><text class="time-detail-text-s">谢超然</text> </view>
+    <image class="time" src="/images/icon/teacher.png"></image>
+    <view class="time-text">任课教师</view>
+    <view class="time-detail-text">{{ item.teacherName }}</view>
   </view>
 </view>

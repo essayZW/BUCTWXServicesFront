@@ -256,7 +256,7 @@ Page({
             // 更新页面
             THIS.setData({
                 'hasGrade' : true,
-                'allGradeInfo': gradeRes
+                'allGradeInfo': gradeRes,
             });
             // 检查是否本地存有登陆信息
             if(!AppConfig.has('userinfo')) {

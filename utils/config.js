@@ -66,6 +66,7 @@ module.exports = {
      */
     'jwAllGrade'    : '/jw/getAllGrade',
     'jwSingleGrade' : '/jw/getSingleGrade',
+    'jwExam'        : '/jw/getExamInfo',
     /**
      * 函数
      */
