@@ -7,13 +7,33 @@
   margin-top: 30px;
   margin-bottom: 20px;
 }
-/* 文字背景上下两块渐变 */
-.text-middle-shadow{
-  /* background: linear-gradient(to bottom, white 53%, #f7b52c 47%); */
-  font-size: 25px;
-  font-weight: bold;
-}
+
 .index-normal{
   font-size: 25px;
   font-weight: bold;
+}
+
+/* 导航栏滑块样式组件 */
+.dots-group{
+  width:100%;
+  height:20px;
+  line-height: 20px;
+  text-align: center;
+}
+.dots-group>view{
+  /* 设置滑块点的样子，宽高等,默认是圆点 */
+  width:4px;
+  height:4px;
+  border-radius: 4px;
+  display: inline-block;
+  /* 间隔 */
+  margin-right: 8px;
+}
+.normal-dots{
+  /* 滑块正常时候的样子 */
+  background-color: black;
+}
+.active-dots{
+  /* 滑块被选中的样子 */
+  background-color: gray;
 }

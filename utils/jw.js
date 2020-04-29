@@ -71,7 +71,41 @@ function getSingleGrade(xnm, xqm, classm, username, password, vpnusername, vpnpa
         fail: failCallBack
     });
 }
+/**
+ * 得到指定学年学期的考试信息
+ * @param {integer} xnm 
+ * @param {integer} xqm 
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} vpnusername 
+ * @param {string} vpnpassword 
+ * @param {function} successCallBack 
+ * @param {function} failCallBack 
+ */
+function getExamList(xnm, xqm, username, password, vpnusername, vpnpassword,successCallBack, failCallBack) {
+    let random = token.random(256);
+    let timetoken = new Date().getTime();
+    let rtoken = token.encrypt(timetoken, random);
+    wx.request({
+        url: AppConfig.APIAddress + AppConfig.jwExam + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
+        method: 'POST',
+        header : {
+            'content-type' : 'application/x-www-form-urlencoded'
+        },
+        data : {
+            'xqm' : xqm,
+            'xnm' : xnm,
+            'username' : username,
+            'password' : password,
+            'vpnusername' : vpnusername,
+            'vpnpassword' : vpnpassword
+        },
+        success: successCallBack,
+        fail: failCallBack
+    });
+}
 module.exports = {
     'getAllGrade' : getAllGrade,
-    'getSingleGrade' : getSingleGrade
+    'getSingleGrade' : getSingleGrade,
+    'getExamList' : getExamList
 }
