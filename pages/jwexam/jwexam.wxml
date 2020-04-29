@@ -1,0 +1,38 @@
+<!--pages/jwexam/jwexam.wxml-->
+<!--zdl记得标题加上半高背景-->
+<view class="subject-box">
+  <view class="subject-name"><text class="subject-name-text">大学物理实验</text> </view>
+   <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/time.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">考试时间</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">2020年5月1日10:30-12:30</text> </view>
+  </view>
+  <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/kaochang.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">考场信息</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">B-203</text> </view>
+  </view>
+  <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/teacher.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">任课教师</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">谢超然</text> </view>
+  </view>
+</view>
+<view class="subject-box">
+  <view class="subject-name"><text class="subject-name-text">大学物理实验</text> </view>
+   <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/time.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">考试时间</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">2020年5月1日10:30-12:30</text> </view>
+  </view>
+  <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/kaochang.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">考场信息</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">B-203</text> </view>
+  </view>
+  <view class="time-box">
+    <view class="icon-style"><image class="time" src="/images/icon/teacher.png"></image> </view>
+    <view class="time-text"><text class="time-text-s">任课教师</text></view>
+    <view class="time-detail-text"><text class="time-detail-text-s">谢超然</text> </view>
+  </view>
+</view>
