@@ -20,7 +20,7 @@
 </view>
 <view class="center">
   <image class="index-link" src="/images/test3.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test3.png"> </image>
+  <image class="index-link" src="/images/test3.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"> </image>
   <image class="index-link" src="/images/test3.png"> </image>
 </view>
 

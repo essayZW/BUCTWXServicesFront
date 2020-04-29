@@ -1,0 +1,48 @@
+/* pages/jwexam/jwexam.wxss */
+.subject-box{
+  border-radius:20rpx;
+  width: 690rpx;
+  height: 360rpx;
+  padding-top:20rpx;
+  background-color:#f1f1f1;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+  margin-bottom:30rpx; 
+}
+.subject-name-text{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.subject-name{
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+.time-box{
+  margin-top: 30rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.time{
+  width: 30rpx;
+  height:30rpx;
+}
+.icon-style{
+  margin-left: 10rpx;
+  display: inline-block;
+}
+.time-text{
+  margin-left: 6rpx;
+  display: inline-block;
+}
+.time-text-s{
+  font-size: 30rpx;
+  color: #515151;
+}
+.time-detail-text{
+  display: inline-block;
+}
+.time-detail-text-s{
+  font-size: 20rpx;
+  color: #515151;
+}
