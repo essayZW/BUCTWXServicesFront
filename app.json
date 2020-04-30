@@ -1,14 +1,15 @@
 {
-    "pages": [
+    "pages": [ 
+       
         "pages/index/index",
         "pages/jwexam/jwexam",
         "pages/feedback/feedback",
         "pages/mine/mine",
         "pages/login/login",
-        "pages/jwgrade/jwgrade",
+         "pages/jwgrade/jwgrade",
+        "pages/calendar/calendar",
         "pages/notice/notice",
         "pages/themesetting/themesetting",
-        "pages/calendar/calendar",
         "pages/settings/settings"
     ],
     "window": {

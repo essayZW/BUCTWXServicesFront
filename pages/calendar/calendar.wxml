@@ -39,38 +39,50 @@
 <!-- 添加待办按钮 end -->
 <!-- 详细信息展示 start -->
 <view wx:if="{{ showDetail }}" class="mask" bindtap="hideMask" id="mask" data-type="detail">
-    <view class="detail-area">
-        <!-- 待办标题 -->
-        <view class="detail-title">{{ detail.title }}</view>
-        <!-- 待办时间区间 -->
-        <view class="detail-time">{{ detail.startTime }}~{{ detail.endTime }}</view>
-        <!-- 待办地点 -->
-        <view class="detail-position">地点:{{ detail.position }}</view>
-        <!-- 待办事件的备注 -->
-        <view>备注:</view>
-        <view class="detail-content">{{ detail.content }}</view>
-        <button bindtap="deleteTodo" data-id="{{ detail.id }}">删除</button>
+    <view class="detail-area" >
+        <view class="detail-title-time" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">
+            <!-- 待办标题 -->
+            <view class="detail-title" ><text class="detail-title-s">{{ detail.title }}</text> </view>
+            <!-- 待办时间区间 -->
+            <view class="detail-time"><image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;{{ detail.startTime }}&ensp;~&ensp;{{ detail.endTime }}</text> </view>
+        </view>
+        <view class="detail-area-others">
+            <!-- 待办地点 -->
+            <view class="detail-position"><text class="detail-position-text">地点\n</text><text class="detail-position-text-a">{{ detail.position }}</text></view>
+            <!-- 待办事件的备注 -->
+            <view class="beizhu"><text class="detail-position-text">备注</text></view>
+            <view class="detail-content"><text class="detail-position-text-a"> {{ detail.content }}</text></view>
+            <!--<button bindtap="deleteTodo" data-id="{{ detail.id }}">删除</button>-->
+        </view>
+        <view class="edit">
+            <image class="edit-s" src="/images/icon/bianji.png"></image>    
+        </view>    
+        <view class="delete">
+             <image class="delete-s" src="/images/icon/lajitong.png"></image>  
+        </view>
     </view>
 </view>
 <!-- 详细信息展示 end  -->
 <!-- 添加新待办 start -->
 <view wx:if="{{ showAdd }}" class="mask" bindtap="hideMask" id="mask" data-type="add">
     <view class="add-area">
+        <view class="detail-title-time" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">
         <!-- 输入待办的标题 -->
-        <input type="text" placeholder="标题" id="title" bindchange="saveInput" maxlength="20"></input>
+        <input type="text" placeholder="请输入标题" id="title" bindchange="saveInput" maxlength="20"></input>
         <!-- 待办的时间区间选择 -->
         <view class="time-picker">
             <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
-                <view>开始时间:{{ timePickerNowTime[0] }}</view>
+                <view class="detail-time"><image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">{{ month }}月{{ day }}日{{ weekday }}&ensp;{{ timePickerNowTime[0] }}&ensp;～&ensp;</text></view>
             </picker>
             <picker mode="time" value="{{ timePickerNowTime[1] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="1">
-                <view>结束时间:{{ timePickerNowTime[1] }}</view>
+                <view ><text class="detail-time-text" decode="{{true}}">{{ timePickerNowTime[1] }}</text></view>
             </picker>
+            </view>
         </view>
         <!-- 待办的地点 -->
-        <input type="text" placeholder="地点" id="position" bindchange="saveInput" maxlength="10"></input>
+        <input type="text" placeholder="请输入地点" id="position" bindchange="saveInput" maxlength="10"></input>
         <!-- 待办的备注 -->
-        <textarea placeholder="备注" id="content" bindinput="saveInput" maxlength="100"></textarea>
+        <textarea placeholder="请输入备注" id="content" bindinput="saveInput" maxlength="100"></textarea>
         <button bindtap="addTodo">添加</button>
     </view>
 </view>
