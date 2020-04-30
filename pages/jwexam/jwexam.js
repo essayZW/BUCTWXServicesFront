@@ -133,7 +133,7 @@ Page({
                     complete: (res) => {
                         wx.showToast({
                           title: rep.data.info,
-                          image : '/images/icon/error.png'
+                          icon: 'none'
                         });
                     }
                 });
