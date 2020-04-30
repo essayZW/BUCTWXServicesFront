@@ -44,7 +44,7 @@ Page({
             this.setData({
                 'studentName' : userInfo['name'],
                 'studentClass' : userInfo['classInfo'],
-                'gpa' : userInfo['gpa']
+                'gpa' : userInfo['gpa']['gpa']
             });
         }
         this.setData({
@@ -223,8 +223,8 @@ Page({
                 wx.hideToast({
                     complete: (res) => {
                         wx.showToast({
-                            title: data.info,
-                            image: '/images/icon/error.png'
+                            title: data.data.info,
+                            icon: 'none'
                         });
                     },
                 })
@@ -276,7 +276,7 @@ Page({
                 complete: (res) => {
                     wx.showToast({
                         title: data.errMsg,
-                        image: '/images/icon/error.png'
+                        icon: 'icon'
                     })
                 },
             });
