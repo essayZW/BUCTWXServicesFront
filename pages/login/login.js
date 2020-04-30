@@ -107,7 +107,7 @@ Page({
       'username': this.data.inputData['username'],
       'password': this.data.inputData['password'],
       'vpnpassword': this.data.inputData['vpnpassword'],
-      'vpnusername': this.data.inputData['vpnusername']
+      'vpnusername': this.data.inputData['username']
     }
     if(!this.data.inputData['username'] || !this.data.inputData['password'] || !this.data.inputData['vpnpassword']) {
       wx.showToast({
