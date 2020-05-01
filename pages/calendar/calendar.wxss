@@ -176,25 +176,26 @@
     background-color: white;
     border-radius: 30rpx;
     overflow: auto;
+    position: relative;
+}
+.detail-area{
+    min-height: 460rpx;
 }
 .detail-title-time{
-    width: 100%;
+    width: calc(100% - 30rpx);
     height: 180rpx;
     padding-top: 130rpx;
     padding-left: 30rpx;
 }
 .detail-title-s{
-    font-size: 60rpx;
+    font-size: 55rpx;
     font-weight: 350;
-}
-.detail-time{
-    margin-top: 20rpx;
 }
 .time-logo{
     width: 28rpx;
     height:28rpx;
 }
-.detail-time-text{
+.detail-time-text, .detail-time{
     font-size: 30rpx;
     color: #e4ebf1;
 }
@@ -214,8 +215,14 @@
     margin-bottom: 40rpx;
 }
 .detail-content{
+    min-height: 40rpx;
     margin-top: 20rpx;
     margin-bottom: 40rpx;
+    overflow-y: auto;
+}
+.edit-delete-area{
+    text-align: right;
+    padding-right:30rpx;
 }
 .edit{
     display: inline-block;
@@ -226,8 +233,7 @@
     text-align:center;
     line-height:120rpx;
     border-radius: 50%;
-    margin-top: 180rpx;
-    margin-left: 370rpx;
+    margin-bottom: 20rpx;
 }
 .delete{
     display: inline-block;
@@ -239,6 +245,7 @@
     line-height:120rpx;
     border-radius: 50%;
     margin-left: 30rpx;
+    margin-bottom: 20rpx;
 }
 .edit-s{
     width: 40rpx;
@@ -252,29 +259,54 @@
 .add-area>input, .add-area>textarea{
     width:80%;
     height:60rpx;
-    border:1px solid black;
+    /* border:1px solid black; */
     border-radius: 20rpx;
-    margin:0px auto 20rpx auto;
+    margin:10px auto 20rpx auto;
     font-size: 30rpx;
-    padding-left:4rpx;
+    padding-left:8rpx;
+    border:none;
 }
 .add-area>textarea{
     height:200rpx;
-    padding: 4rpx;
+    padding-top:7rpx;
 }
 #title{
-    height:60px;
+    height:100rpx;
+    width: 80%;
     font-size: 60rpx;
     font-weight: 350;
     color: white;
+    border:none;
+    border-bottom: 2px solid black;
 }
-/*.time-picker{
-    width:80%;
+.time-picker{
+    width:100%;
     height:60rpx;
-    margin: 0px auto 20rpx auto;
-}*/
+    margin: 0px auto 0rpx auto;
+    line-height: 60rpx;
+}
 .add-area picker{
-    width:50%;
-    height:100%;
+    height: 100%;
     display: inline-block;
+}
+.add-butt{
+    width:100rpx;
+    height:100rpx;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px #c7c7c7;
+}
+.add-image-f{
+    width:80%;
+    height:110rpx;
+    text-align: right;
+    margin: 0px auto 20rpx auto;
+}
+
+.underline{
+    text-decoration: underline;
+}
+.help-font{
+    padding-left: 30rpx;
+    font-size: 33rpx;
+    font-weight: bold;
 }

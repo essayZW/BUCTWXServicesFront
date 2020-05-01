@@ -21,14 +21,14 @@
 <!-- 当前信息展示 start -->
 <view class="todo-list-body">
     <view wx:if="{{ !todoList.length }}" class="nothing-todo">今日无事可做~</view>
-    <view class="todo" wx:for="{{ todoList }}" wx:key="id" bindtap="showDetail" data-content="{{ item.content }}" data-title="{{ item.title }}" data-starttime="{{ item.startTime }}" data-endtime="{{ item.endTime }}" data-position="{{ item.position }}">
+    <view class="todo" wx:for="{{ todoList }}" wx:key="id" bindtap="showDetail" data-content="{{ item.content }}" data-title="{{ item.title }}" data-starttime="{{ item.startTime }}" data-endtime="{{ item.endTime }}" data-position="{{ item.position }}" data-id="{{ item.id }}">
         <view class="todo-info-show">
             <view class="todo-title">{{ item.title }}</view>
             <view class="time-show">{{ item.startTime }}~{{ item.endTime }}</view>
         </view>
         <view class="ok-button {{ item.finish ? 'ok-button-active' : '' }}">
             <view style="{{ item.finish ? 'background-color: ' + globalBackgroundTheme + ';': '' }}" catchtap="finishTodo" data-id="{{ item.id }}" data-finish="{{ item.finish }}">
-                <image></image>
+                <image src="/images/icon/chosed.png"></image>
             </view>
         </view>
     </view>
@@ -44,7 +44,7 @@
             <!-- 待办标题 -->
             <view class="detail-title" ><text class="detail-title-s">{{ detail.title }}</text> </view>
             <!-- 待办时间区间 -->
-            <view class="detail-time"><image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;{{ detail.startTime }}&ensp;~&ensp;{{ detail.endTime }}</text> </view>
+            <view class="detail-time"><image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text"  style="color: {{ globalFrontTheme }}" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;{{ detail.startTime }}&ensp;~&ensp;{{ detail.endTime }}</text></view>
         </view>
         <view class="detail-area-others">
             <!-- 待办地点 -->
@@ -54,11 +54,13 @@
             <view class="detail-content"><text class="detail-position-text-a"> {{ detail.content }}</text></view>
             <!--<button bindtap="deleteTodo" data-id="{{ detail.id }}">删除</button>-->
         </view>
-        <view class="edit">
-            <image class="edit-s" src="/images/icon/bianji.png"></image>    
-        </view>    
-        <view class="delete">
-             <image class="delete-s" src="/images/icon/lajitong.png"></image>  
+        <view class="edit-delete-area">
+            <view class="edit" bindtap="editTodo" data-id="{{ detail.id }}">
+                <image class="edit-s" src="/images/icon/bianji.png"></image>    
+            </view>    
+            <view class="delete" bindtap="deleteTodo" data-id="{{ detail.id }}">
+                <image class="delete-s" src="/images/icon/lajitong.png"></image>  
+            </view>
         </view>
     </view>
 </view>
@@ -67,23 +69,27 @@
 <view wx:if="{{ showAdd }}" class="mask" bindtap="hideMask" id="mask" data-type="add">
     <view class="add-area">
         <view class="detail-title-time" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">
-        <!-- 输入待办的标题 -->
-        <input type="text" placeholder="请输入标题" id="title" bindchange="saveInput" maxlength="20"></input>
-        <!-- 待办的时间区间选择 -->
-        <view class="time-picker">
-            <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
-                <view class="detail-time"><image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">{{ month }}月{{ day }}日{{ weekday }}&ensp;{{ timePickerNowTime[0] }}&ensp;～&ensp;</text></view>
-            </picker>
-            <picker mode="time" value="{{ timePickerNowTime[1] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="1">
-                <view ><text class="detail-time-text" decode="{{true}}">{{ timePickerNowTime[1] }}</text></view>
-            </picker>
+            <!-- 输入待办的标题 -->
+            <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="20" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};" value="{{ edit.title }}"></input>
+            <!-- 待办的时间区间选择 -->
+            <view class="time-picker">
+                <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
+                <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
+                    <view class="detail-time underline" decode="{{ true }}">{{ timePickerNowTime[0] }}</view>
+                </picker>
+                ~
+                <picker mode="time" value="{{ timePickerNowTime[1] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="1">
+                    <view><text class="detail-time-text underline" decode="{{true}}">{{ timePickerNowTime[1] }}</text></view>
+                </picker>
             </view>
         </view>
         <!-- 待办的地点 -->
-        <input type="text" placeholder="请输入地点" id="position" bindchange="saveInput" maxlength="10"></input>
+        <view class="help-font">地点</view>
+        <input type="text" placeholder="点击编辑地点" id="position" bindchange="saveInput" maxlength="10" value="{{ edit.position }}"></input>
         <!-- 待办的备注 -->
-        <textarea placeholder="请输入备注" id="content" bindinput="saveInput" maxlength="100"></textarea>
-        <button bindtap="addTodo">添加</button>
+        <view class="help-font">备注</view>
+        <textarea placeholder="点击编辑备注" id="content" bindinput="saveInput" maxlength="100" value="{{ edit.content }}"></textarea>
+        <view class="add-image-f"><image bindtap="addTodo" class="add-butt" src="/images/icon/add.png">添加</image></view>
     </view>
 </view>
 <!-- 添加新待办 end  -->
