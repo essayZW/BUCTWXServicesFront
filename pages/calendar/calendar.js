@@ -359,15 +359,17 @@ Page({
     addTodo : function() {
         let title = this.addTodoInput.title;
         let position = this.addTodoInput.position;
+        if(position.length == 0) position = '无';
         let content = this.addTodoInput.content;
+        if(content.length == 0) content = '无';
         let startTime = this.timeData.timePickerNowTime[0];
         let endTime = this.timeData.timePickerNowTime[1];
         let startTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, startTime.substr(0, 2), startTime.substr(3, 2));
         let endTimeObj = new Date(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, endTime.substr(0, 2) == '00' ? 24 : parseInt(endTime.substr(0, 2)), parseInt(endTime.substr(3, 2)));
         // 判断事件是否符合规则，以及填入的表单是否符合规则
-        if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || content.length > 100) {
+        if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || content.length > 100 || title.length > 10) {
             wx.showToast({
-              title: '失败',
+              title: title.length == 0 ? '标题不能空' : '失败',
               image : '/images/icon/error.png'
             });
             return;
