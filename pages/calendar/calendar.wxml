@@ -55,7 +55,7 @@
             <!--<button bindtap="deleteTodo" data-id="{{ detail.id }}">删除</button>-->
         </view>
         <view class="edit-delete-area">
-            <view class="edit" data-id="{{ detail.id }}">
+            <view class="edit" bindtap="editTodo" data-id="{{ detail.id }}">
                 <image class="edit-s" src="/images/icon/bianji.png"></image>    
             </view>    
             <view class="delete" bindtap="deleteTodo" data-id="{{ detail.id }}">
@@ -70,7 +70,7 @@
     <view class="add-area">
         <view class="detail-title-time" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">
             <!-- 输入待办的标题 -->
-            <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="20" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};"></input>
+            <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="20" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};" value="{{ edit.title }}"></input>
             <!-- 待办的时间区间选择 -->
             <view class="time-picker">
                 <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
@@ -85,10 +85,10 @@
         </view>
         <!-- 待办的地点 -->
         <view class="help-font">地点</view>
-        <input type="text" placeholder="点击编辑地点" id="position" bindchange="saveInput" maxlength="10"></input>
+        <input type="text" placeholder="点击编辑地点" id="position" bindchange="saveInput" maxlength="10" value="{{ edit.position }}"></input>
         <!-- 待办的备注 -->
         <view class="help-font">备注</view>
-        <textarea placeholder="点击编辑备注" id="content" bindinput="saveInput" maxlength="100"></textarea>
+        <textarea placeholder="点击编辑备注" id="content" bindinput="saveInput" maxlength="100" value="{{ edit.content }}"></textarea>
         <view class="add-image-f"><image bindtap="addTodo" class="add-butt" src="/images/icon/add.png">添加</image></view>
     </view>
 </view>

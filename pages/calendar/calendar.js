@@ -13,7 +13,9 @@ Page({
         'currentShowMonth' : new Date().getMonth(),
         'currentShowDay' : new Date().getDate(),
         'currentShowCalendar' : null,
-        'currentTodoList' : null
+        'currentTodoList' : null,
+        'showData' : {},
+        'changeBool' : false
     },
 
     /**
@@ -270,27 +272,28 @@ Page({
         let position = e.currentTarget.dataset.position;
         let content = e.currentTarget.dataset.content;
         let id = e.currentTarget.dataset.id;
+        let showData = {
+            'title' : title,
+            'startTime' : startTime,
+            'endTime' : endTime,
+            'position' : position,
+            'content' : content,
+            'id' : id
+        };
         this.setData({
             'showDetail' : true,
-            'detail' : {
-                'title' : title,
-                'startTime' : startTime,
-                'endTime' : endTime,
-                'position' : position,
-                'content' : content,
-                'id' : id
-            }
+            'detail' : showData
         });
+        this.data.showData = showData;
     },
     /**
      * 完成某个代办事件
      */
     finishTodo : function(e) {
-        if(e.currentTarget.dataset.finish === true) {
-            return;
-        }
         let id = e.currentTarget.dataset.id;
-        if(todoManage.finish(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, id)) {
+        if(todoManage.change(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, id, {
+            'finish' : !e.currentTarget.dataset.finish
+        })) {
             this.changeDay(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay);
         }
         else {
@@ -385,6 +388,11 @@ Page({
             'sTime' : startTimeObj.getTime(),
             'eTime' : endTimeObj.getTime()
         };
+        if(this.data.changeBool) {
+            // 现在处于修改模式
+            this.data.changeBool = false;
+            todoManage.del(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, this.data.showData.id);
+        }
         if(todoManage.add(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, data)){
             wx.showToast({
               title: '成功',
@@ -456,5 +464,35 @@ Page({
      */
     saveInput: function(e) {
         this.addTodoInput[e.target.id] = e.detail.value;
+    },
+    /**
+     * 编辑待办事件
+     */
+    editTodo : function(e) {
+        let id = e.currentTarget.dataset.id;
+        if(id == undefined) return;
+        this.hideMask({
+            target: {
+                id : 'mask',
+                dataset : {
+                    type: 'detail'
+                }
+            }
+        });
+        let timePicker = [
+            this.data.showData.startTime,
+            this.data.showData.endTime
+        ];
+        // 更新变量
+        this.timeData.timePickerNowTime = timePicker;
+        for(let key in this.addTodoInput) {
+            this.addTodoInput[key] = this.data.showData[key];
+        }
+        this.data.changeBool = true;
+        this.setData({
+            'edit' : this.data.showData,
+            'showAdd' : true,
+            'timePickerNowTime' : this.timeData.timePickerNowTime
+        });
     }
 })

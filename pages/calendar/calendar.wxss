@@ -267,7 +267,7 @@
     border:none;
 }
 .add-area>textarea{
-    height:300rpx;
+    height:200rpx;
     padding-top:7rpx;
 }
 #title{
