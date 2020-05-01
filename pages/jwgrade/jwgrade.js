@@ -16,7 +16,9 @@ Page({
         // 是否显示了选择列表
         listShow : false,
         // 是否显示了成绩明细
-        showSingleGrade : false
+        showSingleGrade : false,
+        // 选择组件是否完成了滚动
+        pickerFinish : true
     },
 
     /**
@@ -174,6 +176,9 @@ Page({
      * 查询函数
      */
     query : function() {
+        if(!this.data.pickerFinish) {
+            return;
+        }
         // 隐藏区域
         this.listChange();
         // 显示等待提示
@@ -390,5 +395,17 @@ Page({
         this.setData({
             'showSingleGrade' : this.data.showSingleGrade
         })
+    },
+    /**
+     * pick开始
+     */
+    pickStart: function(e) {
+        this.data.pickerFinish = false;
+    },
+    /**
+     * pick结束
+     */
+    pickEnd : function(e) {
+        this.data.pickerFinish = true;
     }
 })

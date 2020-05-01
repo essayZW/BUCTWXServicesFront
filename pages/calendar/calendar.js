@@ -444,7 +444,8 @@ Page({
         ]
         this.setData({
             'showAdd' : true,
-            'timePickerNowTime' : timePicker
+            'timePickerNowTime' : timePicker,
+            'edit' : {}
         });
         // 更新变量
         this.timeData.timePickerNowTime = timePicker;
