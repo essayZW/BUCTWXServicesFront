@@ -38,10 +38,10 @@ Page({
         this.data.focusList[key] = true;
       }
       for(let key in this.data.inputData) {
-        this.data.inputData[key] = userpass[key];
+        this.data.inputData[key] = token.base64decrypt(userpass[key]);
       }
       this.setData({
-        'storageData' : userpass,
+        'storageData' : this.data.inputData,
         'active' : this.data.focusList
       });
     }

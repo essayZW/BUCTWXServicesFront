@@ -27,6 +27,7 @@ Page({
      wx.showToast({
       title: '查询中',
       icon: 'loading',
+      duration: 10000
     });
     // 检测是否本地存储的有用户名密码
     if(!AppConfig.has('userpass')) {

@@ -299,7 +299,8 @@ Page({
         else {
             wx.showToast({
                 title: '失败',
-                image: '/images/icon/error.png'
+                image: '/images/icon/error.png',
+                duration: 600
             });
         }
     },
@@ -332,9 +333,7 @@ Page({
                 if(todoManage.del(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, id)) {
                     wx.showToast({
                         title: '成功',
-                    });
-                    wx.showToast({
-                        title: '成功',
+                        duration: 600
                     });
                     this.hideMask({
                         target : {
@@ -349,7 +348,8 @@ Page({
                 else {
                     wx.showToast({
                         title: '失败',
-                        image: '/images/icon/error.png'
+                        image: '/images/icon/error.png',
+                        duration: 600
                     });
                 }
             }
@@ -373,7 +373,8 @@ Page({
         if(startTimeObj.getTime() > endTimeObj.getTime() || !title.length || content.length > 100 || title.length > 10) {
             wx.showToast({
               title: title.length == 0 ? '标题不能空' : '失败',
-              image : '/images/icon/error.png'
+              image : '/images/icon/error.png',
+              duration: 600
             });
             return;
         }
@@ -396,6 +397,7 @@ Page({
         if(todoManage.add(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, data)){
             wx.showToast({
               title: '成功',
+              duration: 600
             });
             this.hideMask({
                 target : {
@@ -413,7 +415,8 @@ Page({
         else {
             wx.showToast({
               title: '失败',
-              image: '/images/icon/error.png'
+              image: '/images/icon/error.png',
+              duration: 600
             });
         }
     },
