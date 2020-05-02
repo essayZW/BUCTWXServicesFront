@@ -1,7 +1,7 @@
 {
     "pages": [ 
-       "pages/jwgrade/jwgrade",
         "pages/index/index",
+        "pages/jwgrade/jwgrade",
         "pages/jwexam/jwexam",
         "pages/feedback/feedback",
         "pages/mine/mine",
