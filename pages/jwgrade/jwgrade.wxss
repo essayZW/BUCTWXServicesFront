@@ -53,6 +53,7 @@ page{
   line-height:120rpx;
   border-radius: 50%;
   margin-bottom: 30rpx;
+  margin-left: calc((78% - 100rpx) / 2);
 }
 .go-on-s{
   width: 53rpx;
@@ -176,7 +177,7 @@ page{
 .select-area{
   width:60%;
   height:300rpx;
-  margin-left: 50rpx;
+  margin-left: 18%;
 }
 .selected-info-show{
   margin-bottom:20rpx;
