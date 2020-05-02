@@ -152,7 +152,7 @@
     right:50rpx;
     bottom:50rpx;
     text-align: center;
-    line-height: 40rpx;
+    line-height: 34rpx;
     transform: scale(2.5);
 }
 /* 代办事件详细展示区域 */
@@ -294,6 +294,9 @@
     height:100rpx;
     border-radius: 50%;
     box-shadow: 2px 2px 2px #c7c7c7;
+    line-height: 130rpx;
+    text-align: center;
+    margin-left: 400rpx;
 }
 .add-image-f{
     width:80%;
@@ -301,12 +304,16 @@
     text-align: right;
     margin: 0px auto 20rpx auto;
 }
-
+.add-ture{
+    width: 50rpx;
+    height: 50rpx;
+}
 .underline{
     text-decoration: underline;
 }
 .help-font{
     padding-left: 30rpx;
+    padding-top: 30rpx;
     font-size: 33rpx;
     font-weight: bold;
 }
