@@ -33,13 +33,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
         // 渲染用户信息
         if(AppConfig.has('userinfo')) {
             let userInfo = AppConfig.get('userinfo');
@@ -53,19 +46,6 @@ Page({
             'hasGrade' : false,
             'noGradeInfo' : '暂时无成绩!'
         });
-        let touch = require('/../../utils/touch.js');
-        let touchObj = new touch(() => {
-            this.listChange(false);
-        }, () => {
-            this.listChange(true);
-        }, 1000, 120);
-        this.touchStart = function(e) {
-            touchObj.start(e);
-        };
-        this.touchMove = function(e) {
-            touchObj.move(e);
-        }
-
         //渲染选择列表
         let yearList = new Array();
         let nowyear = new Date().getFullYear();
@@ -94,6 +74,26 @@ Page({
         this.setData({
             'selectValue' : [9999, sclass - 1]
         });
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+        let touch = require('/../../utils/touch.js');
+        let touchObj = new touch(() => {
+            this.listChange(false);
+        }, () => {
+            this.listChange(true);
+        }, 1000, 120);
+        this.touchStart = function(e) {
+            touchObj.start(e);
+        };
+        this.touchMove = function(e) {
+            touchObj.move(e);
+        }
+
+        
         // 设置该页面主题色
         App.setPageColor(this);
         // 修改本页面顶栏颜色
@@ -132,18 +132,6 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
-    },
-    /**
-     * 得到指定学年学期所有的成绩
-     */
-    getAllGrade : function(){
-
-    },
-    /**
-     * 得到某学年学期指定科目的成绩明细
-     */
-    getSingleGrade : function(){
 
     },
     /**

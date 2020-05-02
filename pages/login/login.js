@@ -1,6 +1,7 @@
 // pages/login/login.js
 const App = getApp();
 const AppConfig= require('/../../utils/config.js');
+const token = require('/../../utils/token.js')
 Page({
 
   /**
@@ -31,14 +32,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
     if(AppConfig.has('userpass')) {
       let userpass = AppConfig.get('userpass');
       for(let key in this.data.focusList) {
@@ -50,9 +43,14 @@ Page({
       this.setData({
         'storageData' : userpass,
         'active' : this.data.focusList
-      })
+      });
     }
+  },
 
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     // 设置该页面主题色
     App.setPageColor(this);
     // 修改本页面顶栏颜色
@@ -104,10 +102,10 @@ Page({
    */
   userpassSave: function() {
     let savedata = {
-      'username': this.data.inputData['username'],
-      'password': this.data.inputData['password'],
-      'vpnpassword': this.data.inputData['vpnpassword'],
-      'vpnusername': this.data.inputData['username']
+      'username': token.base64encrypt(this.data.inputData['username']),
+      'password': token.base64encrypt(this.data.inputData['password']),
+      'vpnpassword': token.base64encrypt(this.data.inputData['vpnpassword']),
+      'vpnusername': token.base64encrypt(this.data.inputData['username'])
     }
     if(!this.data.inputData['username'] || !this.data.inputData['password'] || !this.data.inputData['vpnpassword']) {
       wx.showToast({
