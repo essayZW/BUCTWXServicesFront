@@ -11,7 +11,6 @@
     <view class="now-select1">{{ syear }}~{{ syear + 1 }}学年</view>
     <view class="now-select2">第{{ sclass }}学期</view>
   </view>
-  <view class="go-on" style="background-color: {{ globalBackgroundTheme }};"><image class="go-on-s" src="/images/icon/youjiantou.png"></image> </view>
   <!-- 列表内容 -->
   <picker-view class="select-area" value="{{ selectValue }}" bindchange="selectChange" bindpickstart="pickStart" bindpickend="pickEnd">
     <picker-view-column>
@@ -21,7 +20,7 @@
       <view wx:for="{{ selectedClass }}">{{ item }}</view>
     </picker-view-column>
   </picker-view>
-  <button class="query-button" bindtap="query">查询</button>
+  <view class="go-on" bindtap="query" style="background-color: {{ globalBackgroundTheme }};"><image class="go-on-s" src="/images/icon/youjiantou.png"></image></view>
 </view>
 <view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
   <view class="bkg" style="background-color: {{ globalBackgroundTheme }};">
