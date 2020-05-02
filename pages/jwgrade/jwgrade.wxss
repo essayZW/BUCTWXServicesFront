@@ -9,21 +9,56 @@ page{
   top:0px;
   left:0px;
   z-index: 2;
-  background-color: white;
+  background-color:#f5f5f5;
   transition: left 0.7s;
 }
 /* 调整选择列表的显示区域宽度 */
 .selected-list{
-  left:60%;
+  left:78%;
 }
 
 .select-list{
   height:100%;
   width:100%;
+ 
   position: fixed;
   top:0px;
   left:0px;
 }
+.now-select-text{
+  font-size: 40rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.now-select1{
+  display: inline-block;
+  font-size: 30rpx;
+  color: #515151;
+  margin-left: 20rpx;
+}
+.now-select2{
+  display: inline-block;
+  font-size: 30rpx;
+  color: #515151;
+  margin-left: 10rpx;
+  margin-bottom: 30rpx;
+}
+.go-on{
+  display: inline-block;
+  width: 100rpx;
+  height: 100rpx;
+  box-shadow: 2px 2px 2px #c7c7c7;
+
+  text-align:center;
+  line-height:120rpx;
+  border-radius: 50%;
+  margin-bottom: 30rpx;
+}
+.go-on-s{
+  width: 53rpx;
+  height: 45rpx;
+}
+
 .subject{
   /*border-top: 10rpx solid #dedede;*/
   border-bottom: 10rpx solid #f5f5f5;
@@ -54,7 +89,7 @@ page{
   margin-bottom:20rpx;
 }
 .bkg{
-  height:140rpx;
+  height:160rpx;
   /* background:#fad258; */
   overflow: hidden;
   display: flex;
@@ -126,7 +161,7 @@ page{
   border:4rpx solid white;
 }
 
-.student-info-show{
+/* .student-info-show{
   display: inline-block;
   height:105rpx;
   min-width:60%;
@@ -135,8 +170,8 @@ page{
 .student-info-show>view{
   height: 50%;
   width:100%;
-  /* color:white; */
-}
+ 
+} */
 
 .select-area{
   width:60%;
@@ -150,6 +185,7 @@ page{
 }
 .query-button{
   float:left;
+  margin-top: 50rpx;
 }
 
 /* 单个成绩显示 */
@@ -165,8 +201,8 @@ page{
 
 .single-grade-area{
   width:80%;
-  height:500rpx;
-  min-height:500rpx;
+  height:600rpx;
+  min-height:600rpx;
   max-width: 500rpx;
   border-radius: 14rpx;
   padding: 10rpx;
@@ -230,7 +266,35 @@ page{
   line-height: 60rpx;
   width:calc(100% / 3);
 }
-
+.stu-name{
+  display: inline-block;
+  margin-left: 30rpx;
+}
+.stu-gpa{
+  display: inline-block;
+  background-color: rgba(256,256,256,0.15);
+  height: 30rpx;
+  line-height: 25rpx;
+  margin-left: 15rpx;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+}
+.stu-gpa-text{
+  color: #f0efef;
+  font-size: 25rpx;
+}
+.stu-class{
+  background-color: rgba(256,256,256,0.15);
+  height: 37rpx;
+  line-height: 32rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+}
+.stu-class-text{
+  color: #f0efef;
+  font-size: 25rpx;
+}
 .blank{
   display: inline-block;
   width:30rpx;

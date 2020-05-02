@@ -73,7 +73,7 @@
             <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="20" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};" value="{{ edit.title }}"></input>
             <!-- 待办的时间区间选择 -->
             <view class="time-picker">
-                <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
+                <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
                 <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
                     <view class="detail-time underline" decode="{{ true }}">{{ timePickerNowTime[0] }}</view>
                 </picker>
@@ -89,7 +89,7 @@
         <!-- 待办的备注 -->
         <view class="help-font">备注</view>
         <textarea placeholder="点击编辑备注" id="content" bindinput="saveInput" maxlength="100" value="{{ edit.content }}"></textarea>
-        <view class="add-image-f"><image bindtap="addTodo" class="add-butt" src="/images/icon/add.png">添加</image></view>
+        <view class="add-image-f"><view bindtap="addTodo" class="add-butt" ><image class="add-ture" src="/images/icon/add.png">添加</image></view></view>
     </view>
 </view>
 <!-- 添加新待办 end  -->
