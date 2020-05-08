@@ -8,7 +8,7 @@ class touch{
     constructor(left, right, limit = 1000, distance = 40) {
         this.leftTouchCallBack = left;
         this.rightTouchCallBack = right;
-        this.limit = 1000;
+        this.limit = limit;
         this.distance = distance;
     }
     start(e) {
