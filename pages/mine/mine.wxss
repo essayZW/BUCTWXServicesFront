@@ -76,5 +76,45 @@
     top:0px;
     left:0px;
     z-index: 3;
-    background-color: rgba(30, 30, 30, 0.7);
+    background-color: rgba(30, 30, 30, 0.8);
   }
+  .notice{
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    width: 710rpx;
+    height: 220rpx;
+    border-radius: 0rpx 0rpx 20rpx 20rpx;
+    background-color: white;
+  }
+  .more{
+    width: 50rpx;
+    height: 50rpx;
+  }
+  .text-de{
+    padding-top: 100rpx;
+    padding-left: 250rpx;
+  }
+  .text-des{
+    font-size: 30rpx;
+    display: inline-block;
+    color: #515151;
+  }
+  .more-s{
+    position: absolute;
+    left: 460rpx;
+    top: 100rpx;
+  }
+  .text-dec{
+    font-size: 30rpx;
+    color: #515151;
+  }
+  .jiantou-s{
+    width: 130rpx;
+    height: 130rpx;
+  }
+  .jiantou{
+    position: absolute;
+    left: 510rpx;
+    top: 6rpx;
+  }
+  

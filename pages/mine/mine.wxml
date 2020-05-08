@@ -45,5 +45,12 @@
 
 <!-- 分享遮盖 -->
 <view class="share" wx:if="{{ showShare }}" bindtap="hideShare">
-
+    <view class="notice">
+        <view class="text-de">
+            <view class="text-des">请点击右上角</view>
+           <view class="more-s"><image class="more" src="/images/icon/more.svg"></image></view> 
+            <view class="text-dec">选择“发送给好友”</view>
+        </view>
+        <view class="jiantou"><image class="jiantou-s" src="/images/icon/more-jiantou.png"></image> </view>
+    </view>
 </view>
