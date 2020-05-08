@@ -85,5 +85,36 @@ Page({
               console.log(e.errMsg);
           }
       });
+  },
+  /**
+   * 分享
+   */
+  share : function() {
+    // wx.showShareMenu();
+  },
+  /**
+   * wechat信息绑定
+   */
+  getWechatInfo : function() {
+    wx.getUserInfo({
+      success: (res) => {
+        wx.showToast({
+          title: '成功',
+          duration: 600
+        });
+        App.globalData.headUrl =  res.userInfo.avatarUrl;
+        wx.setStorage({
+          data: App.globalData.headUrl,
+          key: 'userheadInfo',
+        });
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '失败',
+          image: '/images/icon/error.png',
+          duration: 700
+        });
+      }
+    });
   }
 })

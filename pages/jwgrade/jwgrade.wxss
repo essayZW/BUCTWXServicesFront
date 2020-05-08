@@ -281,7 +281,7 @@ page{
   border-radius: 20rpx;
 }
 .stu-gpa-text{
-  color: #f0efef;
+  color: thite;
   font-size: 25rpx;
 }
 .stu-class{
@@ -293,7 +293,7 @@ page{
   border-radius: 20rpx;
 }
 .stu-class-text{
-  color: #f0efef;
+  color: white;
   font-size: 25rpx;
 }
 .blank{

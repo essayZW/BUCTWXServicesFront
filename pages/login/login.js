@@ -122,6 +122,10 @@ Page({
           title: '成功',
           icon: 'success',
         });
+        wx.setStorage({
+          data: {},
+          key: 'gradedetails'
+        })
       },
       fail:function() {
         wx.showToast({

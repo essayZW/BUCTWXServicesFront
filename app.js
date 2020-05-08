@@ -3,8 +3,10 @@ const AppConfig = require('/utils/config.js');
 App({
     onLaunch: function () {
         this.reset();
-
         this.updateTheme();
+        if(AppConfig.has('userheadInfo')) {
+            this.globalData.headUrl = AppConfig.get('userheadInfo');
+        }
     },
     onShow: function() {
 
@@ -18,7 +20,8 @@ App({
     globalData: {
        frontColor : '',
        backgroundColor : '',
-       id : ''
+       id : '',
+       headUrl : AppConfig.defaultHeadUrl
     },
     /**
      * 更新颜色信息

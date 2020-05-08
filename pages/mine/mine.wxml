@@ -1,18 +1,18 @@
 <view class="bg" style="border-left-color: {{ globalBackgroundTheme }}"></view>
 <view class="circle"></view>
 <view class="c1">
-    <image class="icon1" src="/images/icon/wx-link.png"></image>
+    <image class="icon1" src="/images/icon/wx-link.png" bindtap="getWechatInfo"></image>
 </view>
 <view class="c2"> 
     <image class="icon1" src="/images/icon/mine-m.png" data-src="/pages/login/login" bindtap="changePage"></image>
 </view>
 <view class="c3">
-    <image class="icon1" src="/images/icon/share.png"></image>
+    <image class="icon1" src="/images/icon/share.png" bindtap="share"></image>
 </view>
 <view></view>
-<view class="a1"><text class="text-s">绑定微信</text></view>
+<view class="a1"><text class="text-s" bindtap="getWechatInfo">绑定微信</text></view>
 <view class="a2"><text class="text-s" data-src="/pages/login/login" bindtap="changePage">个人信息</text></view>
-<view class="a3"><text class="text-s">分享他人</text></view>
+<view class="a3"><text class="text-s" bindtap="share">分享他人</text></view>
 
 <view class="f">
 

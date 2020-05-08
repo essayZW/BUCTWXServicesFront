@@ -2,7 +2,7 @@
 <view class="select-list">
   <view class="bkg" style="background-color: {{ globalBackgroundTheme }};">
     <view class="student-info-show">
-        <view  class="stu-name" style="color:{{ globalFrontTheme  }};">{{ studentName }}<view class="stu-gpa"> <text class="stu-gpa-text" decode="{{true}}"> &ensp;GPA:&ensp;{{ gpa }}&ensp;</text></view></view>
+        <view  class="stu-name" style="color:{{ globalFrontTheme  }};">{{ studentName }}<view class="stu-gpa"> <text class="stu-gpa-text" decode="{{true}}"> &ensp;{{ gpa ? 'GPA:' : ''}}&ensp;{{ gpa }}&ensp;</text></view></view>
         <view class="stu-class" ><text class="stu-class-text" decode="{{true}}">&ensp;{{ studentClass }}&ensp;</text></view>
       </view>
   </view>
@@ -25,9 +25,9 @@
 <view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
   <view class="bkg" style="background-color: {{ globalBackgroundTheme }};">
       <image src="/images/grademenu.png" class="menu-img" bindtap="listChange"></image>
-      <image src="/images/test1.jpg" class="head-img" bindtap="listChange"></image>
+      <image src="{{ imageUrl }}" class="head-img" bindtap="listChange"></image>
       <view class="student-info-show">
-        <view  class="stu-name" style="color:{{ globalFrontTheme  }};">{{ studentName }}<view class="stu-gpa"> <text class="stu-gpa-text" decode="{{true}}"> &ensp;GPA:&ensp;{{ gpa }}&ensp;</text></view></view>
+        <view  class="stu-name" style="color:{{ globalFrontTheme  }};">{{ studentName }}<view class="stu-gpa"> <text class="stu-gpa-text" decode="{{true}}"> &ensp;{{ gpa ? 'GPA:' : '' }}&ensp;{{ gpa }}&ensp;</text></view></view>
         <view class="stu-class" ><text class="stu-class-text" decode="{{true}}">&ensp;{{ studentClass }}&ensp;</text></view>
       </view>
   </view>

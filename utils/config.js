@@ -89,6 +89,8 @@ module.exports = {
     'defaultFrontColor' : '#ffffff',
     // 默认颜色ID
     'defaultColorId' : 2,
+    // 默认头像地址
+    'defaultHeadUrl' : '/images/test1.jpg',
 
     /**
      * 函数
