@@ -1,28 +1,26 @@
 <view class="bg" style="border-left-color: {{ globalBackgroundTheme }}"></view>
 <view class="circle"></view>
-<view class="c1">
-    <image class="icon1" src="/images/icon/wx-link.png" bindtap="getWechatInfo"></image>
+<view class="line-icon">
+    <view class="line-fun">
+        <image class="icon1" src="/images/icon/wx-link.png" bindtap="getWechatInfo"></image>
+        <view class="a1"><text class="text-s">绑定微信</text></view>
+    </view>
+    <view class="line-fun"> 
+        <image class="icon1" src="/images/icon/mine-m.png" data-src="/pages/login/login" bindtap="changePage"></image>
+        <view class="a2"><text class="text-s">个人信息</text></view>
+    </view>
+    <view class="line-fun">
+        <image class="icon1" src="/images/icon/share.png"></image>
+        <view class="a3"><text class="text-s">分享他人</text></view>
+    </view>
 </view>
-<view class="c2"> 
-    <image class="icon1" src="/images/icon/mine-m.png" data-src="/pages/login/login" bindtap="changePage"></image>
-</view>
-<view class="c3">
-    <image class="icon1" src="/images/icon/share.png" bindtap="share"></image>
-</view>
-<view></view>
-<view class="a1"><text class="text-s" bindtap="getWechatInfo">绑定微信</text></view>
-<view class="a2"><text class="text-s" data-src="/pages/login/login" bindtap="changePage">个人信息</text></view>
-<view class="a3"><text class="text-s" bindtap="share">分享他人</text></view>
-
-<view class="f">
-
+<view class="f" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/help.png"></image>
         <text class="text">操作指南</text>
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
-
 <view class="f" data-src="/pages/settings/settings" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/settings.png"></image>
@@ -30,7 +28,6 @@
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
-
 <view class="f" data-src="/pages/feedback/feedback" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/callback.png"></image>
@@ -38,8 +35,7 @@
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
-
-<view class="f">
+<view class="f" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/aboutus.png"></image>
         <text class="text">关于我们</text>

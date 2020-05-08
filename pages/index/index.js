@@ -88,6 +88,11 @@ Page({
     changePage : function(e) {
         let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
         if(src === false) {
+            wx.showToast({
+              title: '开发中',
+              icon: 'none',
+              duration: 400
+            })
             return;
         }
         wx.navigateTo({

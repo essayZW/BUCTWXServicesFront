@@ -74,7 +74,12 @@ Page({
   changePage : function(e) {
       let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
       if(src === false) {
-          return;
+        wx.showToast({
+          title: '开发中',
+          icon: 'none',
+          duration: 400
+        })
+        return;
       }
       wx.navigateTo({
           url: src,
@@ -85,12 +90,6 @@ Page({
               console.log(e.errMsg);
           }
       });
-  },
-  /**
-   * 分享
-   */
-  share : function() {
-    // wx.showShareMenu();
   },
   /**
    * wechat信息绑定
