@@ -1,15 +1,15 @@
 <view class="bg" style="border-left-color: {{ globalBackgroundTheme }}"></view>
 <view class="circle"></view>
 <view class="line-icon">
-    <view class="line-fun">
-        <image class="icon1" src="/images/icon/wx-link.png" bindtap="getWechatInfo"></image>
+    <view class="line-fun" bindtap="getWechatInfo">
+        <image class="icon1" src="/images/icon/wx-link.png"></image>
         <view class="a1"><text class="text-s">绑定微信</text></view>
     </view>
-    <view class="line-fun"> 
-        <image class="icon1" src="/images/icon/mine-m.png" data-src="/pages/login/login" bindtap="changePage"></image>
+    <view class="line-fun" data-src="/pages/login/login" bindtap="changePage"> 
+        <image class="icon1" src="/images/icon/mine-m.png" ></image>
         <view class="a2"><text class="text-s">个人信息</text></view>
     </view>
-    <view class="line-fun">
+    <view class="line-fun" bindtap="share">
         <image class="icon1" src="/images/icon/share.png"></image>
         <view class="a3"><text class="text-s">分享他人</text></view>
     </view>
@@ -41,4 +41,9 @@
         <text class="text">关于我们</text>
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
+</view>
+
+<!-- 分享遮盖 -->
+<view class="share" wx:if="{{ showShare }}" bindtap="hideShare">
+
 </view>

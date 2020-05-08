@@ -115,5 +115,21 @@ Page({
         });
       }
     });
+  },
+  /**
+   * 显示分享界面
+   */
+  share : function() {
+    this.setData({
+      'showShare' : true
+    });
+  },
+  /**
+   * 隐藏分享
+   */
+  hideShare : function() {
+    this.setData({
+      'showShare' : false
+    });
   }
 })
