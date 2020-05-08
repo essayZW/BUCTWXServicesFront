@@ -5,58 +5,10 @@ page {
 .star-box{
     border-radius:20rpx;
     width: 730rpx;
-    height: 900rpx;
+    height: 1000rpx;
     background-color: white;
     margin: 20rpx auto 0px auto;
-    /* position: relative;
-    top:200rpx;
-    transition: all 1s ease-in-out;
-    transition-delay: 0.8s; */
 }
-/* .star-box>view, .star-box>textarea{
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-.star-box:before{
-    content: "";
-    display: block;
-    width: 100%;
-    height:300rpx;
-    position: fixed;
-    transition: all 1s ease-in-out;
-    top:250rpx;
-    left:0px;
-    background-image: url(http://imessay.cn:8828/images/2020/04/29/before.png);
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: contain;
-    transform-origin: 0 0;
-}
-.star-box:after{
-    content: "";
-    display: block;
-    position: absolute;
-    bottom:0px;
-    left:0px;
-    width:100%;
-    height:400rpx;
-    background-image:url(http://imessay.cn:8828/images/2020/04/28/after.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom;
-}
-.star-box:hover>view,.star-box:hover>textarea{
-    opacity: 1;
-}
-.star-box:hover{
-    height:1000rpx;
-    top:0rpx;
-}
-.star-box:hover:before{
-    transform: rotate3d(1, 0, 0, -180deg);
-    animation: topChange;
-    animation-delay: 0.8s top
-} */
 .star-title{
     margin-top: 50rpx;
     margin-left: 30rpx;
@@ -100,9 +52,29 @@ page {
     border:1rpx solid;
     border-color:#cacaca;
     border-radius:20rpx;
-    width: 700rpx;
     margin-top: 30rpx;
-    margin-left: 15rpx;
+    margin-left: 30rpx;
+    width: calc(90% - 30rpx);
     height: 250rpx;
+    padding: 12rpx;
+}
+.email-input{
+    border:1rpx solid;
+    border-color:#cacaca;
+    border-radius:20rpx;
+    margin-top: 30rpx;
+    margin-left: 30rpx;
+    width: calc(90% - 30rpx);
+    height: 50rpx;
+    padding: 12rpx;
+}
+.submit-butt{
+    margin-top:10rpx;
+    border:1px solid black;
+}
+/* 必填字段样式 */
+.must::after{
+    content: '*';
+    color:red;
 }
 

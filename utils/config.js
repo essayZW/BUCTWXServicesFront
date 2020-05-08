@@ -64,9 +64,21 @@ module.exports = {
     /**
      * 教务API配置
      */
+    
+    //  查询所有成绩API接口
     'jwAllGrade'    : '/jw/getAllGrade',
+    // 查询单个成绩API接口
     'jwSingleGrade' : '/jw/getSingleGrade',
+    // 查询考试信息API接口
     'jwExam'        : '/jw/getExamInfo',
+    /**
+     *  反馈界面的一些配置
+     */
+
+    //  反馈内容添加接口
+    'feedBackAPI' : '/feedBack/add',
+    //  最大的反馈内容长度
+    'maxFeedBackContentLength' : 400,
     /**
      * 函数
      */

@@ -39,12 +39,27 @@ function myrandom(maxnum = 999) {
     let numdict = [10, 100, 1000];
     return parseInt(Math.random() * numdict[parseInt(Math.random() * 10) % 3]) % maxnum;
 }
+// 自带服务器验证的请求
+function request(url, method = 'GET', data, successCallBack, failCallBack, header) {
+    let random = myrandom(256);
+    let timetoken = new Date().getTime();
+    let rtoken = encrypt(timetoken, random);
+    wx.request({
+      url: url + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
+      method: method,
+      data : data,
+      success: successCallBack,
+      fail: failCallBack,
+      header: header
+    });
+}
 // 导出函数
 module.exports = {
     'encrypt' : encrypt,
     'random'  : myrandom,
     'base64encrypt' : base64_encode,
     'base64decrypt' : base64_decode,
+    'request' : request
 }
 
 function base64_encode (str) {
