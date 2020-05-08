@@ -1,6 +1,9 @@
 //app.js
+const AppConfig = require('/utils/config.js');
 App({
     onLaunch: function () {
+        this.reset();
+
         this.updateTheme();
     },
     onShow: function() {
@@ -13,16 +16,15 @@ App({
 
     },
     globalData: {
-       frontColor : '#ffffff',
-       backgroundColor : '#ffd21e',
-       id : 2
+       frontColor : '',
+       backgroundColor : '',
+       id : ''
     },
     /**
      * 更新颜色信息
      */
     updateTheme : function() {
         // 读取本地存储的全局主题颜色
-        const AppConfig = require('/utils/config.js');
         if(AppConfig.has('theme')) {
             let colorSettings = AppConfig.get('theme');
             if(colorSettings.frontColor)
@@ -52,6 +54,14 @@ App({
             'globalBackgroundTheme' : this.globalData.backgroundColor,
             'globalFrontTheme' : this.globalData.frontColor
         });
+    },
+    /**
+     * 恢复
+     */
+    reset: function() {
+        this.globalData.frontColor = AppConfig.defaultFrontColor;
+        this.globalData.backgroundColor = AppConfig.defaultBackgroundColor;
+        this.globalData.id = AppConfig.defaultColorId;
     }
 })
 

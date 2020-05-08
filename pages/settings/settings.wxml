@@ -1,2 +1,3 @@
 <!--pages/settings/settings.wxml-->
 <navigator url="/pages/themesetting/themesetting">主题设置</navigator>
+<view class="clear-cache" bindtap="clearCache">清除缓存</view>

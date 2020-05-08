@@ -13,3 +13,12 @@ navigator{
 .navigator-hover{
     background-color: white;
 }
+/* 清理缓存按钮 */
+.clear-cache{
+    text-align: center;
+    color:red;
+    background-color: white;
+    margin-top:10rpx;
+    height:80rpx;
+    line-height: 80rpx;
+}

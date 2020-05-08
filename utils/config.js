@@ -80,6 +80,17 @@ module.exports = {
     //  最大的反馈内容长度
     'maxFeedBackContentLength' : 400,
     /**
+     * App配置
+     */
+    
+    // 默认背景色
+    'defaultBackgroundColor' : '#ffd21e',
+    // 默认前景色
+    'defaultFrontColor' : '#ffffff',
+    // 默认颜色ID
+    'defaultColorId' : 2,
+
+    /**
      * 函数
      */
     'get' : get,
