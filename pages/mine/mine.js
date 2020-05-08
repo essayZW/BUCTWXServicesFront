@@ -74,7 +74,12 @@ Page({
   changePage : function(e) {
       let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
       if(src === false) {
-          return;
+        wx.showToast({
+          title: '开发中',
+          icon: 'none',
+          duration: 400
+        })
+        return;
       }
       wx.navigateTo({
           url: src,
@@ -85,5 +90,30 @@ Page({
               console.log(e.errMsg);
           }
       });
+  },
+  /**
+   * wechat信息绑定
+   */
+  getWechatInfo : function() {
+    wx.getUserInfo({
+      success: (res) => {
+        wx.showToast({
+          title: '成功',
+          duration: 600
+        });
+        App.globalData.headUrl =  res.userInfo.avatarUrl;
+        wx.setStorage({
+          data: App.globalData.headUrl,
+          key: 'userheadInfo',
+        });
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '失败',
+          image: '/images/icon/error.png',
+          duration: 700
+        });
+      }
+    });
   }
 })

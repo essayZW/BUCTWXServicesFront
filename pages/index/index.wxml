@@ -21,7 +21,7 @@
 <view class="center">
   <image class="index-link" src="/images/test3.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image>
   <image class="index-link" src="/images/test3.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test3.png"> </image>
+  <image class="index-link" src="/images/test3.png" bindtap="changePage"> </image>
 </view>
 
 <view class="text-margin">
@@ -30,6 +30,6 @@
 </view>
 <view class="center">
   <image class="index-link" src="/images/test4.png" data-src="/pages/calendar/calendar" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test4.png"> </image>
-  <image class="index-link" src="/images/test4.png"> </image>
+  <image class="index-link" src="/images/test4.png" bindtap="changePage"> </image>
+  <image class="index-link" src="/images/test4.png" bindtap="changePage"> </image>
 </view>

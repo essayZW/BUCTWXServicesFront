@@ -3,31 +3,36 @@
 	<view class="star-title"><text class="star-title-s">给个评分吧！</text></view>
 	<view class="star">
 	<view class="star-text1"><text class="star-text1-s">使用操作</text></view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ useScore >= 1 ? '_' : '' }}.png" bindtap="starClick" data-id="useScore" data-score="1"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ useScore >= 2 ? '_' : '' }}.png" bindtap="starClick" data-id="useScore" data-score="2"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ useScore >= 3 ? '_' : '' }}.png" bindtap="starClick" data-id="useScore" data-score="3"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ useScore >= 4 ? '_' : '' }}.png" bindtap="starClick" data-id="useScore" data-score="4"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ useScore >= 5 ? '_' : '' }}.png" bindtap="starClick" data-id="useScore" data-score="5"></image></view>
+	<view class="star-text2"><text class="star-text2-s">{{ scoreWord[useScore] }}</text></view>
 	</view>
 		<view class="star">
 	<view class="star-text1"><text class="star-text1-s">界面样式</text></view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-text2"><text class="star-text2-s">非常差<!--很差 一般 很好 非常好--></text></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ styleScore >= 1 ? '_' : '' }}.png" bindtap="starClick" data-id="styleScore" data-score="1"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ styleScore >= 2 ? '_' : '' }}.png" bindtap="starClick" data-id="styleScore" data-score="2"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ styleScore >= 3 ? '_' : '' }}.png" bindtap="starClick" data-id="styleScore" data-score="3"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ styleScore >= 4 ? '_' : '' }}.png" bindtap="starClick" data-id="styleScore" data-score="4"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ styleScore >= 5 ? '_' : '' }}.png" bindtap="starClick" data-id="styleScore" data-score="5"></image></view>
+	<view class="star-text2"><text class="star-text2-s">{{ scoreWord[styleScore] }}</text></view>
 	</view>
 		<view class="star">
 	<view class="star-text1"><text class="star-text1-s">功能实用</text></view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
-	<view class="star-image"><image class="star-image-s" src="/images/icon/star.png"></image> </view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 1 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="1"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 2 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="2"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 3 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="3"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 4 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="4"></image></view>
+	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 5 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="5"></image></view>
+	<view class="star-text2"><text class="star-text2-s">{{ scoreWord[funScore] }}</text></view>
 	</view>
-	<view class="star-title"><text class="star-title-s">给个评价吧！</text></view>
-	<textarea class="input"></textarea>
+	<view class="star-title"><text class="star-title-s must">给个评价吧！</text></view>
+	<textarea class="input" bindinput="inputData" id="content"></textarea>
+	<view class="star-title"><text class="star-title-s">给个邮箱吧！</text></view>
+	<input class="email-input" bindinput="inputData" id="email"></input>
+	<button class="submit-butt" bindtap="submitFeedBack">提交反馈</button>
 </view>
 
 

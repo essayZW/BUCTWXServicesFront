@@ -24,18 +24,15 @@
     width:60rpx;
     height:60rpx;
 }
-  .c1{
+.line-icon{
+  padding: 0px 83rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top:100rpx;
+}
+  .line-fun{
     display: inline-block;
-    margin-left: 120rpx;
-    margin-top: 100rpx;
-  }
-  .c2{
-    display: inline-block;
-    margin-left: 170rpx;
-  }
-  .c3{
-    display: inline-block;
-    margin-left: 170rpx;
+    text-align: center;
   }
   .text-s{
     font-size: 25rpx;
@@ -49,19 +46,6 @@
     line-height: 50rpx;
     vertical-align: top;
     margin-left: 40rpx;
-  }
-  .a1{
-    display: inline-block;
-    margin-left: 103rpx;
-    
-  }
-  .a2{
-    display: inline-block;
-    margin-left: 135rpx;
-  }
-  .a3{
-    display: inline-block;
-    margin-left: 135rpx;
   }
 
   .icon2{

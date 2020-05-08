@@ -15,16 +15,10 @@ const token = require('./token.js');
  * @param {function} failCallBack 
  */
 function getAllGrade(xnm, xqm, username, password, vpnusername, vpnpassword, successCallBack, failCallBack){
-    let random = token.random(256);
-    let timetoken = new Date().getTime();
-    let rtoken = token.encrypt(timetoken, random);
-    wx.request({
-        url: AppConfig.APIAddress + AppConfig.jwAllGrade + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
-        method: 'POST',
-        header : {
-            'content-type' : 'application/x-www-form-urlencoded'
-        },
-        data : {
+    token.request(
+        AppConfig.APIAddress + AppConfig.jwAllGrade,
+        'POST',
+        {
             'xqm' : xqm,
             'xnm' : xnm,
             'username' : username,
@@ -32,9 +26,12 @@ function getAllGrade(xnm, xqm, username, password, vpnusername, vpnpassword, suc
             'vpnusername' : vpnusername,
             'vpnpassword' : vpnpassword
         },
-        success: successCallBack,
-        fail: failCallBack
-    });
+        successCallBack,
+        failCallBack,
+        {
+            'content-type' : 'application/x-www-form-urlencoded'
+        },
+    );
 }
 /**
  * 查询指定学年指定学期的课程详细信息
@@ -52,13 +49,10 @@ function getSingleGrade(xnm, xqm, classm, username, password, vpnusername, vpnpa
     let random = token.random(256);
     let timetoken = new Date().getTime();
     let rtoken = token.encrypt(timetoken, random);
-    wx.request({
-        url: AppConfig.APIAddress + AppConfig.jwSingleGrade + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
-        method: 'POST',
-        header : {
-            'content-type' : 'application/x-www-form-urlencoded'
-        },
-        data : {
+    token.request(
+        AppConfig.APIAddress + AppConfig.jwSingleGrade,
+        'POST',
+        {
             'xqm' : xqm,
             'xnm' : xnm,
             'classm' : classm,
@@ -67,9 +61,12 @@ function getSingleGrade(xnm, xqm, classm, username, password, vpnusername, vpnpa
             'vpnusername' : vpnusername,
             'vpnpassword' : vpnpassword
         },
-        success: successCallBack,
-        fail: failCallBack
-    });
+        successCallBack,
+        failCallBack,
+        {
+            'content-type' : 'application/x-www-form-urlencoded'
+        }
+    );
 }
 /**
  * 得到指定学年学期的考试信息
@@ -83,16 +80,10 @@ function getSingleGrade(xnm, xqm, classm, username, password, vpnusername, vpnpa
  * @param {function} failCallBack 
  */
 function getExamList(xnm, xqm, username, password, vpnusername, vpnpassword,successCallBack, failCallBack) {
-    let random = token.random(256);
-    let timetoken = new Date().getTime();
-    let rtoken = token.encrypt(timetoken, random);
-    wx.request({
-        url: AppConfig.APIAddress + AppConfig.jwExam + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
-        method: 'POST',
-        header : {
-            'content-type' : 'application/x-www-form-urlencoded'
-        },
-        data : {
+    token.request(
+        AppConfig.APIAddress + AppConfig.jwExam,
+        'POST',
+        {
             'xqm' : xqm,
             'xnm' : xnm,
             'username' : username,
@@ -100,9 +91,12 @@ function getExamList(xnm, xqm, username, password, vpnusername, vpnpassword,succ
             'vpnusername' : vpnusername,
             'vpnpassword' : vpnpassword
         },
-        success: successCallBack,
-        fail: failCallBack
-    });
+        successCallBack,
+        failCallBack,
+        {
+            'content-type' : 'application/x-www-form-urlencoded'
+        }
+    );
 }
 module.exports = {
     'getAllGrade' : getAllGrade,

@@ -64,9 +64,34 @@ module.exports = {
     /**
      * 教务API配置
      */
+    
+    //  查询所有成绩API接口
     'jwAllGrade'    : '/jw/getAllGrade',
+    // 查询单个成绩API接口
     'jwSingleGrade' : '/jw/getSingleGrade',
+    // 查询考试信息API接口
     'jwExam'        : '/jw/getExamInfo',
+    /**
+     *  反馈界面的一些配置
+     */
+
+    //  反馈内容添加接口
+    'feedBackAPI' : '/feedBack/add',
+    //  最大的反馈内容长度
+    'maxFeedBackContentLength' : 400,
+    /**
+     * App配置
+     */
+    
+    // 默认背景色
+    'defaultBackgroundColor' : '#ffd21e',
+    // 默认前景色
+    'defaultFrontColor' : '#ffffff',
+    // 默认颜色ID
+    'defaultColorId' : 2,
+    // 默认头像地址
+    'defaultHeadUrl' : '/images/test1.jpg',
+
     /**
      * 函数
      */

@@ -67,5 +67,29 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    /**
+     * 清楚缓存
+     */
+    clearCache : function() {
+        wx.showModal({
+          title: '确认清除',
+          content: '您确认清理所有缓存吗，这将重置主题、保存的用户名密码等信息',
+          success: (res) => {
+              if(res.confirm) {
+                  wx.clearStorage({
+                    complete: (res) => {
+                        wx.showToast({
+                          title: '清理完成,请重新打开小程序',
+                          duration: 700,
+                          icon: 'none'
+                        });
+                        App.reset();
+                        this.onShow();
+                    },
+                  })
+              }
+          }
+        })
     }
 })

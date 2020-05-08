@@ -93,7 +93,9 @@ Page({
             touchObj.move(e);
         }
 
-        
+        this.setData({
+            'imageUrl' : App.globalData.headUrl
+        });
         // 设置该页面主题色
         App.setPageColor(this);
         // 修改本页面顶栏颜色
