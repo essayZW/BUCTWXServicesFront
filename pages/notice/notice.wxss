@@ -1,6 +1,9 @@
 /* pages/notice/notice.wxss */
 
 /* 以下最好是不要动 */
+page{
+    background-color: #f5f5f5; 
+}
 .main{
     display: inline-block;
     width:calc(100% - 70rpx);
@@ -11,10 +14,10 @@
 .line:before{
     content: "";
     float: left;
-    width:25rpx;
+    width:35rpx;
     position: absolute;
     /* 细线 */
-    border-right:2px solid gray;
+    border-right:2px solid rgba(232,227,231,1);
     top:0px;
     bottom:0px;
     left:-50rpx;
@@ -33,9 +36,9 @@
     border-radius: 50%;
     position: absolute;
     /* 图标相对于模块顶部边框的位置 */
-    top:15rpx;
+    top:38rpx;
     /* 图标相对于模块左边框的位置 */
-    left:-45rpx;
+    left:-35rpx;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -44,17 +47,98 @@
 /* 以上最好是不要动 */
 
 /* 修改图标颜色以及图标请在这里改 */
-.test1:before{
+.exam:before{
     /* 修改第一个模块的图标和颜色 */
-    background-color: #0ae;
+    background-color: rgb(241,166,12);
     /* 修改图标.不过还是得用网络图片,这只是示例 */
-    background-image: url(http://imessay.cn:8828/images/2020/05/09/logo2.png);
+    background-image: url(http://imessay.cn:8828/images/2020/05/09/exam-notice.png);
+    background-size:55%;
 }
 
-.test2:before{
+.course:before{
     /* 修改第二个 */
-    background-color: green;
+    background-color: rgb(108,156,254);
     /* 修改第二个的图标 */
-    background-image: url(http://imessay.cn:8828/images/2020/05/09/aboutus.png);
+    background-image: url(http://imessay.cn:8828/images/2020/05/09/course-notice.png);
+    background-size:50%;
+}
+.todo:before{
+    /* 修改第二个 */
+    background-color: rgb(247,133,71);
+    /* 修改第二个的图标 */
+    background-image: url(http://imessay.cn:8828/images/2020/05/09/todo-notice.png);
+    background-size:60%;
 }
 /* 修改图标颜色以及图标请在这里改 */
+.exam-box{
+    margin-left: 30rpx;
+    width: 610rpx;
+    height: 225rpx;
+    border-radius: 30rpx;
+    background-color: white;
+    padding-top:40rpx;
+    padding-left: 30rpx;
+    box-shadow:rgb(236, 236, 236) 0px 0px 10px;
+}
+/*也是todo的盒子*/
+.course-box{
+    margin-left: 30rpx;
+    width: 610rpx;
+    height: 225rpx;
+    border-radius: 30rpx;
+    background-color: white;
+    padding-top:40rpx;
+    padding-left: 30rpx;
+    box-shadow:rgb(236, 236, 236) 0px 0px 10px;
+}
+.title{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #404040;
+}
+.name{
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+    font-size: 25rpx;
+    color: #515151;
+}
+.data{
+    margin-top: 10rpx;
+    margin-left: 10rpx;
+}
+.data-s{
+    font-size: 25rpx;
+    font-weight: bold;
+    color: #515151;
+}
+.time-box{
+    display: inline-block;
+    margin-left: 10rpx;
+    margin-top: 20rpx;
+    width: 80rpx;
+    border-right-style:solid;
+    border-right-color:rgb(1,132,255);
+}
+.begin{
+    font-size: 27rpx;
+    color: #515151;
+}
+.end{
+    font-size: 27rpx;
+    color: #a9a8a8;
+}
+.detail-box{
+    display: inline-block;
+    
+}
+.name{
+    font-size: 30rpx;
+    margin-left: 20rpx;
+    color: #515151;
+}
+.pos{
+    font-size: 27rpx;
+    margin-left: 20rpx;
+    font-weight: bold;
+    color: rgb(1,132,255)
+}
