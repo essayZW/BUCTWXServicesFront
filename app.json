@@ -1,6 +1,6 @@
 {
     "pages": [ 
-        
+        "pages/notice/notice",
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/jwexam/jwexam",
@@ -9,7 +9,7 @@
         "pages/login/login",
         
         "pages/calendar/calendar",
-        "pages/notice/notice",
+        
         "pages/themesetting/themesetting",
         "pages/settings/settings"
     ],

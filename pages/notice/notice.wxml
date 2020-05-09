@@ -2,10 +2,61 @@
 <!-- 下面有两个测试模块，记得把test1和test2删除掉，这两个class名字随便起的 -->
 <!-- 另外不要把模块的高度设置死，让子元素撑开（也就是不要设置高度，就会被撑开） -->
 <view class="main line">
-    <view class="module test1">
-    
+    <view class="module exam">
+       <view class="exam-box">
+          <view class="title">即将到来的考试！</view>
+          <view class="data"><text class="data-s" decode="{{true}}">6月31日&ensp;星期八</text></view>
+          <view class="time-box">
+               <view class="begin">08:00</view>
+               <view class="end">10:00</view>
+          </view>
+          <view class="detail-box">
+               <view class="name">大学物理实验II</view>
+               <view class="pos">北区B-203</view>
+          </view>
+       </view>
     </view>
-    <view class="module test2">
-    
+    <view class="module course">
+       <view class="course-box">
+          <view class="title">今天的课程！</view>
+          <view class="data"><text class="data-s" decode="{{true}}">教师：谢超然</text></view>
+          <view class="time-box">
+               <view class="begin">08:00</view>
+               <view class="end">09:35</view>
+          </view>
+          <view class="detail-box">
+               <view class="name">大学物理实验II</view>
+               <view class="pos">北区B-201</view>
+          </view>
+       </view>
     </view>
+     <view class="module todo">
+       <view class="course-box">
+          <view class="title">还要做的事！</view>
+             <view class="data"><text class="data-s" decode="{{true}}">6月31日&ensp;星期八</text></view>
+          <view class="time-box">
+               <view class="begin">00:00</view>
+               <view class="end">24:00</view>
+          </view>
+          <view class="detail-box">
+               <view class="name">吹秦叔</view>
+               <view class="pos">任何地方</view>
+          </view>
+       </view>
+    </view>
+    <view class="module course">
+       <view class="course-box">
+          <view class="title">今天的课程！</view>
+          <view class="data"><text class="data-s" decode="{{true}}">教师：谢超然</text></view>
+          <view class="time-box">
+               <view class="begin">08:00</view>
+               <view class="end">09:35</view>
+          </view>
+          <view class="detail-box">
+               <view class="name">大学物理实验II</view>
+               <view class="pos">北区B-201</view>
+          </view>
+       </view>
+    </view>
+
 </view>
