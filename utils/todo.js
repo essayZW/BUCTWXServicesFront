@@ -85,10 +85,26 @@ function changeTodo(year, month, day, id, data) {
     return file.write(wx.env.USER_DATA_PATH + '/todo.json', hadTodoList);
 }
 
+function getTodo(year, month, day) {
+    // 得到指定的待办
+    const file = require('./config.js');
+    let hadTodoList = file.read(wx.env.USER_DATA_PATH + '/todo.json');
+    if(!hadTodoList[year]) {
+        return [];
+    }
+    if(!hadTodoList[year][month]) {
+        return [];
+    }
+    if(!hadTodoList[year][month][day]) {
+        return [];
+    }
+    return hadTodoList[year][month][day];
+}
 module.exports = {
     'add' : add,
     'del' : del,
-    'change' : changeTodo
+    'change' : changeTodo,
+    'get' : getTodo
 }
 
 function sortTodo(todo) {

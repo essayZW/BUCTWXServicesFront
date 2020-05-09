@@ -15,3 +15,10 @@
     font-size: 25px;
     font-weight: bold;
 }
+
+
+.nothing-todo{
+    text-align: center;
+    color: gray;
+    margin-top:40rpx;
+}

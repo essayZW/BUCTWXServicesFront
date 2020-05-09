@@ -1,8 +1,26 @@
 <!--pages/notice/notice.wxml-->
 <!-- 下面有两个测试模块，记得把test1和test2删除掉，这两个class名字随便起的 -->
 <!-- 另外不要把模块的高度设置死，让子元素撑开（也就是不要设置高度，就会被撑开） -->
-<view class="main line">
-    <view class="module exam">
+<view wx:if="{{ !evenList || !eventList.length }}" class="nothing-todo">
+   最近无事可做~
+</view>
+<view class="main line" wx:if="{{ true || (eventList && eventList.length) }}">
+    <view wx:for="{{ eventList }}" class="module {{ typeClassName[item.type] }}">
+       <view class="{{ secondTypeClassName[item.type] }}-box">
+          <view class="title">{{ typeTitle[item.type] }}</view>
+          <view class="data"><text class="data-s" decode="{{true}}">{{ item.secondTitle }}</text></view>
+          <view class="time-box" style="border-right-color: {{ globalBackgroundTheme }};">
+               <view class="begin">{{ item.sTime }}</view>
+               <view class="end">{{ item.eTime }}</view>
+          </view>
+          <view class="detail-box">
+               <view class="name">{{ item.title }}</view>
+               <view class="pos" style="color: {{ globalBackgroundTheme }};">{{ item.position }}</view>
+          </view>
+       </view>
+    </view>
+
+    <!-- <view class="module exam">
        <view class="exam-box">
           <view class="title">即将到来的考试！</view>
           <view class="data"><text class="data-s" decode="{{true}}">6月31日&ensp;星期八</text></view>
@@ -57,6 +75,6 @@
                <view class="pos">北区B-201</view>
           </view>
        </view>
-    </view>
+    </view> -->
 
 </view>
