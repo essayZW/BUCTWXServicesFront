@@ -1,13 +1,12 @@
 {
     "pages": [ 
-        "pages/notice/notice",
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/jwexam/jwexam",
         "pages/feedback/feedback",
         "pages/mine/mine",
         "pages/login/login",
-        
+        "pages/notice/notice",
         "pages/calendar/calendar",
         
         "pages/themesetting/themesetting",
