@@ -80,6 +80,7 @@ Page({
         jw.getExamList(xnm, xqm, username, password, vpnusername, vpnpassword, (rep) => {
             let examList = [];
             if(rep.data.status) {
+              wx.hideToast();
               for(let i = 0; i < rep.data.data.length; i ++) {
                 let obj = {};
                 let now = rep.data.data[i];

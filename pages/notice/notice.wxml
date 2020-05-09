@@ -1,2 +1,11 @@
 <!--pages/notice/notice.wxml-->
-<text>pages/notice/notice.wxml</text>
+<!-- 下面有两个测试模块，记得把test1和test2删除掉，这两个class名字随便起的 -->
+<!-- 另外不要把模块的高度设置死，让子元素撑开（也就是不要设置高度，就会被撑开） -->
+<view class="main line">
+    <view class="module test1">
+    
+    </view>
+    <view class="module test2">
+    
+    </view>
+</view>
