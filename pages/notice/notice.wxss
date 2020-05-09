@@ -1,1 +1,60 @@
 /* pages/notice/notice.wxss */
+
+/* 以下最好是不要动 */
+.main{
+    display: inline-block;
+    width:calc(100% - 70rpx);
+    margin-top:30rpx;
+    position: relative;
+    margin-left: 50rpx;
+}
+.line:before{
+    content: "";
+    float: left;
+    width:25rpx;
+    position: absolute;
+    /* 细线 */
+    border-right:2px solid gray;
+    top:0px;
+    bottom:0px;
+    left:-50rpx;
+}
+
+.module{
+    /* 这个设置一个模块的最小高度 */
+    min-height: 100rpx;
+    position: relative;
+    margin-top: 50rpx;
+}
+.module:before{
+    content: "";
+    width:45rpx;
+    height:45rpx;
+    border-radius: 50%;
+    position: absolute;
+    /* 图标相对于模块顶部边框的位置 */
+    top:15rpx;
+    /* 图标相对于模块左边框的位置 */
+    left:-45rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+/* 以上最好是不要动 */
+
+/* 修改图标颜色以及图标请在这里改 */
+.test1:before{
+    /* 修改第一个模块的图标和颜色 */
+    background-color: #0ae;
+    /* 修改图标.不过还是得用网络图片,这只是示例 */
+    background-image: url(http://imessay.cn:8828/images/2020/05/09/logo2.png);
+}
+
+.test2:before{
+    /* 修改第二个 */
+    background-color: green;
+    /* 修改第二个的图标 */
+    background-image: url(http://imessay.cn:8828/images/2020/05/09/aboutus.png);
+}
+/* 修改图标颜色以及图标请在这里改 */

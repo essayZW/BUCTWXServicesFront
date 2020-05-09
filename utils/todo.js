@@ -25,7 +25,7 @@ function add(year, month, day, data) {
         let flag = true;
         // console.log(now);
         for(let key in now) {
-            if(key in ['id', 'finish']) continue;
+            if(['id', 'finish'].indexOf(key) != -1) continue;
             if(now[key] != data[key]) {
                 flag = false;
                 break;
