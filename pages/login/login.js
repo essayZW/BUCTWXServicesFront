@@ -125,6 +125,10 @@ Page({
         wx.setStorage({
           data: {},
           key: 'gradedetails'
+        });
+        wx.setStorage({
+          data: null,
+          key: 'userinfo',
         })
       },
       fail:function() {

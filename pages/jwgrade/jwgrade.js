@@ -253,18 +253,16 @@ Page({
                 'hasGrade' : true,
                 'allGradeInfo': gradeRes,
             });
-            // 检查是否本地存有登陆信息
-            if(!AppConfig.has('userinfo')) {
-                wx.setStorage({
-                  data: userInfo,
-                  key: 'userinfo',
-                });
-                THIS.setData({
-                    'studentName' : userInfo['name'],
-                    'studentClass' : userInfo['classInfo'],
-                    'gpa' : userInfo['gpa']['gpa']
-                });
-            }
+
+            wx.setStorage({
+                data: userInfo,
+                key: 'userinfo',
+            });
+            THIS.setData({
+                'studentName' : userInfo['name'],
+                'studentClass' : userInfo['classInfo'],
+                'gpa' : userInfo['gpa']['gpa']
+            });
         }, function(data) {
             // 失败
             wx.hideToast({
