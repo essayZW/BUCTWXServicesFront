@@ -71,6 +71,8 @@ module.exports = {
     'jwSingleGrade' : '/jw/getSingleGrade',
     // 查询考试信息API接口
     'jwExam'        : '/jw/getExamInfo',
+    // 查询学生信息接口
+    'jwStuInfo'     : '/jw/getStuInfo',
     /**
      *  反馈界面的一些配置
      */

@@ -34,7 +34,7 @@ App({
                 this.globalData.frontColor = colorSettings.frontColor;
             if(colorSettings.backgroundColor)
                 this.globalData.backgroundColor = colorSettings.backgroundColor;
-            if(colorSettings.id)
+            if(colorSettings.id || colorSettings.id === 0)
                 this.globalData.id = colorSettings.id;
         }
     },

@@ -21,7 +21,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      'headImg' : App.globalData.headUrl
+    })
   },
 
   /**
@@ -95,24 +97,41 @@ Page({
    * wechat信息绑定
    */
   getWechatInfo : function() {
-    wx.getUserInfo({
-      success: (res) => {
-        wx.showToast({
-          title: '成功',
-          duration: 600
-        });
-        App.globalData.headUrl =  res.userInfo.avatarUrl;
-        wx.setStorage({
-          data: App.globalData.headUrl,
-          key: 'userheadInfo',
+    wx.authorize({
+      scope: 'scope.userInfo',
+      success: () => {
+        // 已经授权
+        wx.getUserInfo({
+          success: (res) => {
+            wx.showToast({
+              title: '成功',
+              duration: 600
+            });
+            // 更新变量值
+            App.globalData.headUrl =  res.userInfo.avatarUrl;
+            // 更新当前页面
+            this.onReady();
+            wx.setStorage({
+              data: App.globalData.headUrl,
+              key: 'userheadInfo',
+            });
+          },
+          fail: (res) => {
+            wx.showToast({
+              title: '失败',
+              image: '/images/icon/error.png',
+              duration: 700
+            });
+          }
         });
       },
-      fail: (res) => {
+      fail: () => {
+        // 没有授权
         wx.showToast({
-          title: '失败',
+          title: '没有权限',
           image: '/images/icon/error.png',
           duration: 700
-        });
+        })
       }
     });
   },

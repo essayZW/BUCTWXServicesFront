@@ -192,8 +192,9 @@ Page({
                     }
                     else {
                         wx.showToast({
-                            title: '失败',
-                            image: '/images/icon/error.png'
+                            title: '需要配置用户信息',
+                            icon: 'none',
+                            duration: 700
                         })
                     }
                 }

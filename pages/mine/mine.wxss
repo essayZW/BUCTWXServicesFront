@@ -12,13 +12,20 @@
     border-bottom:60px solid transparent;
   }
   .circle {
-    background:#ffffff;
+    background:rgba(255, 255, 255, 0.5);
     height:200rpx;
     width:200rpx;
     margin-top: 50rpx;
-    opacity:0.5;
     margin-left: 500rpx;
     border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle>image{
+    width:90%;
+    height:90%;
+    border-radius: 50%;
   }
   .icon1{
     width:60rpx;
