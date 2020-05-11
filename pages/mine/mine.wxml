@@ -1,5 +1,7 @@
 <view class="bg" style="border-left-color: {{ globalBackgroundTheme }}"></view>
-<view class="circle"></view>
+<view class="circle">
+    <image src="{{ headImg }}"></image>
+</view>
 <view class="line-icon">
     <view class="line-fun" bindtap="getWechatInfo">
         <image class="icon1" src="/images/icon/wx-link.png"></image>

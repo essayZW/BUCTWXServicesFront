@@ -98,8 +98,35 @@ function getExamList(xnm, xqm, username, password, vpnusername, vpnpassword,succ
         }
     );
 }
+
+/**
+ * 得到指定用户的信息
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} vpnusername 
+ * @param {string} vpnpassword 
+ * @param {function} successCallBack 
+ * @param {function} failCallBack 
+ */
+function getUserInfo(username, password, vpnusername, vpnpassword, successCallBack, failCallBack) {
+    token.request(AppConfig.APIAddress + AppConfig.jwStuInfo,
+        'POST',
+        {
+            'username' : username,
+            'password' : password,
+            'vpnusername' : vpnusername,
+            'vpnpassword' : vpnpassword
+        },
+        successCallBack,
+        failCallBack,
+        {
+            'content-type' : 'application/x-www-form-urlencoded'
+        }
+    );
+}
 module.exports = {
     'getAllGrade' : getAllGrade,
     'getSingleGrade' : getSingleGrade,
-    'getExamList' : getExamList
+    'getExamList' : getExamList,
+    'getStuInfo' : getUserInfo
 }

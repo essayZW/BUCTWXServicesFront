@@ -1,7 +1,8 @@
 // pages/login/login.js
 const App = getApp();
 const AppConfig= require('/../../utils/config.js');
-const token = require('/../../utils/token.js')
+const token = require('/../../utils/token.js');
+const jw = require('/../../utils/jw.js');
 Page({
 
   /**
@@ -114,30 +115,81 @@ Page({
       });
       return;
     }
-    wx.setStorage({
-      data: savedata,
-      key: 'userpass',
-      success: function() {
-        wx.showToast({
-          title: '成功',
-          icon: 'success',
-        });
-        wx.setStorage({
-          data: {},
-          key: 'gradedetails'
-        });
-        wx.setStorage({
-          data: null,
-          key: 'userinfo',
-        })
-      },
-      fail:function() {
-        wx.showToast({
-          title: '失败',
-          image: '/images/icon/error.png'
-        })
-      }
+    wx.showToast({
+      title: '验证中',
+      icon: 'loading',
+      duration: 10000
     });
+    jw.getStuInfo(savedata.username, savedata.password, savedata.vpnusername, savedata.vpnpassword,
+        (res) => {
+          // 请求成功
+          if(!res.data.status) {
+            wx.hideToast({
+              complete: () => {
+                wx.showToast({
+                  title: res.data.info,
+                  inoc: 'none',
+                  duration: 700
+                });
+              },
+            });
+            return;
+          }
+          // 验证成功
+          wx.setStorage({
+            data: res.data.data,
+            key: 'userinfo',
+            success: () => {
+              // 存储用户名密码信息
+              wx.setStorage({
+                data: savedata,
+                key: 'userpass',
+              })
+              // 清空成绩详情缓存
+              wx.setStorage({
+                data: {},
+                key: 'gradedetails'
+              });
+              wx.hideToast({
+                complete: (res) => {
+                  wx.showToast({
+                    title: '成功',
+                    duration: 800,
+                    complete: () => {
+                      setTimeout(() => {
+                        wx.navigateBack();
+                      }, 600);
+                    }
+                  });
+                }
+              });
+            },
+            fail: () => {
+              wx.hideToast({
+                complete: (res) => {
+                  wx.showToast({
+                    title: '失败',
+                    image: '/images/icon/error.png',
+                    duration: 700
+                  });
+                }
+              });
+            }
+          })
+        },
+        (res) => {
+          // 请求失败
+          wx.hideToast({
+            complete: (res) => {
+              wx.showToast({
+                title: '验证失败，请稍后再试',
+                icon: 'none',
+                duration: 700
+              });
+            },
+          })
+        }
+    );
   },
   /**
    * 输入框获得焦点

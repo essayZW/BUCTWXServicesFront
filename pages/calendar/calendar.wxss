@@ -137,11 +137,6 @@
     opacity: 1;
 }
 
-.nothing-todo{
-    text-align: center;
-    color: gray;
-    margin-top:40rpx;
-}
 .add-button{
     width:40rpx;
     height:40rpx;

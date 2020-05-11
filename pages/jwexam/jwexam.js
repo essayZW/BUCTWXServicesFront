@@ -117,7 +117,8 @@ Page({
                   'finish' : false,
                   'shortInfo' : title.substr(0, 3),
                   'sTime' : startTimeObj.getTime(),
-                  'eTime' : endTimeObj.getTime()
+                  'eTime' : endTimeObj.getTime(),
+                  'type' : 'exam'
                 };
                 todoManage.add(year, month, day, data);
               }

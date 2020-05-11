@@ -11,7 +11,9 @@
   padding: 5% 0;
   position: relative;
 }
-
+.btn{
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
 .panel>.bn {
   display: inline-block;
 }

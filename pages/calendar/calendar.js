@@ -387,7 +387,8 @@ Page({
             'finish' : false,
             'shortInfo' : title.substr(0, 3),
             'sTime' : startTimeObj.getTime(),
-            'eTime' : endTimeObj.getTime()
+            'eTime' : endTimeObj.getTime(),
+            'type' : 'calendar'
         };
         if(this.data.changeBool) {
             // 现在处于修改模式

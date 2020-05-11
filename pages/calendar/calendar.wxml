@@ -73,13 +73,13 @@
             <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="20" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};" value="{{ edit.title }}"></input>
             <!-- 待办的时间区间选择 -->
             <view class="time-picker">
-                <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
+                <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" style="color: {{ globalFrontTheme }};" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>
                 <picker mode="time" value="{{ timePickerNowTime[0] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="0">
-                    <view class="detail-time underline" decode="{{ true }}">{{ timePickerNowTime[0] }}</view>
+                    <view class="detail-time underline" decode="{{ true }}" style="color: {{ globalFrontTheme }};">{{ timePickerNowTime[0] }}</view>
                 </picker>
                 ~
                 <picker mode="time" value="{{ timePickerNowTime[1] }}" start="00:00" end="23:59" bindchange="timeChange" data-index="1">
-                    <view><text class="detail-time-text underline" decode="{{true}}">{{ timePickerNowTime[1] }}</text></view>
+                    <view><text class="detail-time-text underline" decode="{{true}}" style="color: {{ globalFrontTheme }};">{{ timePickerNowTime[1] }}</text></view>
                 </picker>
             </view>
         </view>
