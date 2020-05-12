@@ -1,10 +1,10 @@
 <!--pages/notice/notice.wxml-->
 <!-- 下面有两个测试模块，记得把test1和test2删除掉，这两个class名字随便起的 -->
 <!-- 另外不要把模块的高度设置死，让子元素撑开（也就是不要设置高度，就会被撑开） -->
-<view wx:if="{{ !evenList || !eventList.length }}" class="nothing-todo">
+<view wx:if="{{ !eventList.length }}" class="nothing-todo">
    最近无事可做~
 </view>
-<view class="main line" wx:if="{{ true || (eventList && eventList.length) }}">
+<view class="main line" wx:else>
     <view wx:for="{{ eventList }}" class="module {{ typeClassName[item.type] }}">
        <view class="{{ secondTypeClassName[item.type] }}-box">
           <view class="title">{{ typeTitle[item.type] }}</view>
