@@ -21,15 +21,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      'headImg' : App.globalData.headUrl
-    })
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      'headImageUrl' : App.globalData.headUrl
+    });
     // 设置该页面主题色
     App.setPageColor(this);
     // 修改本页面顶栏颜色
@@ -96,42 +97,29 @@ Page({
   /**
    * wechat信息绑定
    */
-  getWechatInfo : function() {
-    wx.authorize({
-      scope: 'scope.userInfo',
-      success: () => {
-        // 已经授权
-        wx.getUserInfo({
-          success: (res) => {
-            wx.showToast({
-              title: '成功',
-              duration: 600
-            });
-            // 更新变量值
-            App.globalData.headUrl =  res.userInfo.avatarUrl;
-            // 更新当前页面
-            this.onReady();
-            wx.setStorage({
-              data: App.globalData.headUrl,
-              key: 'userheadInfo',
-            });
-          },
-          fail: (res) => {
-            wx.showToast({
-              title: '失败',
-              image: '/images/icon/error.png',
-              duration: 700
-            });
-          }
-        });
-      },
-      fail: () => {
-        // 没有授权
-        wx.showToast({
-          title: '没有权限',
-          image: '/images/icon/error.png',
-          duration: 700
-        })
+  getWechatInfo : function(e) {
+    wx.getSetting({
+      complete: (res) => {
+        if(res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '已经授权绑定',
+            duration: 600
+          });
+          return;
+        }
+        if(e.detail.errMsg.indexOf('ok') != -1) {
+          wx.showToast({
+            title: '成功',
+            duration: 600
+          });
+        }
+        else {
+          wx.showToast({
+            title: '需要授权',
+            image: '/images/icon/error.png',
+            duration: 700
+          });
+        }
       }
     });
   },
