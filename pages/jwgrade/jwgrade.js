@@ -74,6 +74,11 @@ Page({
         this.setData({
             'selectValue' : [9999, sclass - 1]
         });
+
+        // 设置头像
+        this.setData({
+            'headImageUrl' : App.globalData.headUrl
+        });
     },
 
     /**
@@ -92,10 +97,6 @@ Page({
         this.touchMove = function(e) {
             touchObj.move(e);
         }
-
-        this.setData({
-            'imageUrl' : App.globalData.headUrl
-        });
         // 设置该页面主题色
         App.setPageColor(this);
         // 修改本页面顶栏颜色

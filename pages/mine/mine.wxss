@@ -22,10 +22,11 @@
     justify-content: center;
     align-items: center;
   }
-  .circle>image{
+  .circle>image, .circle>open-data{
     width:90%;
     height:90%;
     border-radius: 50%;
+    overflow: hidden;
   }
   .icon1{
     width:60rpx;
@@ -40,6 +41,23 @@
   .line-fun{
     display: inline-block;
     text-align: center;
+  }
+  .line-fun>button{
+    background: inherit;
+    border:inherit;
+    font:inherit;
+    padding: 0px;
+    margin:0px;
+    width:100rpx !important;
+    height:100% !important;
+    display: inline-block;
+    overflow: inherit;
+  }
+  .line-fun>button::after{
+    display: none;
+  }
+  .line-fun>button::before{
+    display: none;
   }
   .text-s{
     font-size: 25rpx;

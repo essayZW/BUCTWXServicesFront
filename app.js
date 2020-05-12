@@ -21,7 +21,7 @@ App({
        frontColor : '',
        backgroundColor : '',
        id : '',
-       headUrl : AppConfig.defaultHeadUrl
+       headUrl : ''
     },
     /**
      * 更新颜色信息

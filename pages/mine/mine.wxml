@@ -1,11 +1,14 @@
 <view class="bg" style="border-left-color: {{ globalBackgroundTheme }}"></view>
 <view class="circle">
-    <image src="{{ headImg }}"></image>
+    <open-data type="userAvatarUrl" wx:if="{{ !headImageUrl }}"></open-data>
+    <image wx:else src="{{ headImageUrl }}"></image>
 </view>
 <view class="line-icon">
-    <view class="line-fun" bindtap="getWechatInfo">
-        <image class="icon1" src="/images/icon/wx-link.png"></image>
-        <view class="a1"><text class="text-s">绑定微信</text></view>
+    <view class="line-fun">
+        <button open-type="getUserInfo" bindgetuserinfo="getWechatInfo">
+            <image class="icon1" src="/images/icon/wx-link.png"></image>
+            <view class="a1"><text class="text-s">绑定微信</text></view>
+        </button>
     </view>
     <view class="line-fun" data-src="/pages/login/login" bindtap="changePage"> 
         <image class="icon1" src="/images/icon/mine-m.png" ></image>
