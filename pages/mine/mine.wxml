@@ -19,7 +19,7 @@
         <view class="a3"><text class="text-s">分享他人</text></view>
     </view>
 </view>
-<view class="f" bindtap="changePage">
+<view class="f" data-src="/pages/help/help" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/help.png"></image>
         <text class="text">操作指南</text>
@@ -40,7 +40,7 @@
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
-<view class="f" bindtap="changePage">
+<view class="f" data-src="/pages/about/about" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/aboutus.png"></image>
         <text class="text">关于我们</text>

@@ -1,4 +1,5 @@
 // pages/about/about.js
+const App = getApp();
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 修改本页面顶栏颜色
+    App.setNavigatorColor();
   },
 
   /**
@@ -26,7 +28,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 设置该页面主题色
+    App.setPageColor(this);
+    // 修改本页面顶栏颜色
+    App.setNavigatorColor();
   },
 
   /**

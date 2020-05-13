@@ -25,7 +25,8 @@
 <view class="main {{ selectListShow }}" bindtouchstart="touchStart" bindtouchmove="touchMove">
   <view class="bkg" style="background-color: {{ globalBackgroundTheme }};">
       <image src="/images/grademenu.png" class="menu-img" bindtap="listChange"></image>
-      <open-data type="userAvatarUrl" wx:if="{{ !headImageUrl }}" class="head-img" bindtap="listChange"></open-data>
+      <view class="open-data-click-area" wx:if="{{ !headImageUrl }}" bindtap="listChange"></view>
+      <open-data type="userAvatarUrl" wx:if="{{ !headImageUrl }}" class="head-img"></open-data>
       <image wx:else src="{{ headImageUrl }}" class="head-img" bindtap="listChange"></image>
       <view class="student-info-show">
         <view  class="stu-name" style="color:{{ globalFrontTheme  }};">{{ studentName }}<view class="stu-gpa"> <text class="stu-gpa-text" decode="{{true}}"> &ensp;{{ gpa ? 'GPA:' : '' }}&ensp;{{ gpa }}&ensp;</text></view></view>

@@ -34,7 +34,7 @@
 	<textarea class="input" bindinput="inputData" id="content"></textarea>
 	<view class="email-title"><text class="star-title-s">给个邮箱吧！</text></view>
 	<input class="email-input" bindinput="inputData" id="email"></input>
-	<view class="add-image-f"><view bindtap="submitFeedBack" class="add-butt" ><image class="add-ture" src="/images/icon/add.svg">提交反馈</image></view></view>
+	<view class="add-image-f"><view bindtap="submitFeedBack" style="background-color: {{ globalBackgroundTheme }};" class="add-butt" ><image class="add-ture" src="/images/icon/add.svg">提交反馈</image></view></view>
 </view>
 
 

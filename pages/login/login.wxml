@@ -5,7 +5,7 @@
 <view class="panel">
     <view class="bn {{ active['username'] ? 'bn-focus' : '' }}">
       <input type="text" placeholder="" id="username" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['username'] }}"></input>
-      <view class="btn">账号</view>
+      <view class="btn">学号</view>
     </view>
 </view>
 
