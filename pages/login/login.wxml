@@ -1,6 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view>
-      <image class="logo" src="/images/icon/logo2.png" ></image>
+      <image class="logo" src="https://s1.ax1x.com/2020/05/10/Y3uWu9.jpg" ></image>
 </view>
 <view class="panel">
     <view class="bn {{ active['username'] ? 'bn-focus' : '' }}">

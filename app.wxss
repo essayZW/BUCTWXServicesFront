@@ -4,10 +4,7 @@
     width:100%;
     height:100%;
 }
-.index-link{
-    width:240rpx;
-    height:300rpx;
-} 
+
 
 /* 文字背景上下两块渐变 */
 .text-middle-shadow{

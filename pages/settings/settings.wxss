@@ -7,7 +7,7 @@ navigator{
     height:80rpx;
     width:100%;
     line-height: 80rpx;
-    margin-top:20rpx;
+    margin-top:100rpx;
     background-color: white;
 }
 .navigator-hover{
@@ -22,3 +22,39 @@ navigator{
     height:80rpx;
     line-height: 80rpx;
 }
+
+.icon2{
+    width:50rpx;
+    height:50rpx;
+    margin-left: 50rpx;
+}
+.text{
+    font-size: 25rpx;
+    color: #515151;
+    display: inline-block;
+    height:50rpx;
+    line-height: 50rpx;
+    vertical-align: top;
+    margin-left: 40rpx;
+  }
+  .detail-logo{
+    width:20rpx;
+    height:20rpx;
+    margin-right: 78rpx;
+  }
+  .f1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80rpx;
+    background-color: white;
+    height:100rpx;
+  }
+  .f2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+    background-color: white;
+    height:100rpx;
+  }

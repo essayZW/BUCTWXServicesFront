@@ -28,11 +28,13 @@
 	<view class="star-image"><image class="star-image-s" src="/images/icon/star{{ funScore >= 5 ? '_' : '' }}.png" bindtap="starClick" data-id="funScore" data-score="5"></image></view>
 	<view class="star-text2"><text class="star-text2-s">{{ scoreWord[funScore] }}</text></view>
 	</view>
+</view>	
+<view class="input-box">
 	<view class="star-title"><text class="star-title-s must">给个评价吧！</text></view>
 	<textarea class="input" bindinput="inputData" id="content"></textarea>
-	<view class="star-title"><text class="star-title-s">给个邮箱吧！</text></view>
+	<view class="email-title"><text class="star-title-s">给个邮箱吧！</text></view>
 	<input class="email-input" bindinput="inputData" id="email"></input>
-	<button class="submit-butt" bindtap="submitFeedBack">提交反馈</button>
+	<view class="add-image-f"><view bindtap="submitFeedBack" class="add-butt" ><image class="add-ture" src="/images/icon/add.svg">提交反馈</image></view></view>
 </view>
 
 

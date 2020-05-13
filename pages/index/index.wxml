@@ -19,9 +19,9 @@
  <text class="text-middle-shadow" style="background: linear-gradient(to bottom, white 60%, {{ globalBackgroundTheme }} 40%);">系统</text>
 </view>
 <view class="center">
-  <image class="index-link" src="/images/test3.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test3.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test3.png" bindtap="changePage"> </image>
+  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xwjg.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image></view> 
+  <view class="image2"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xBuQ.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"> </image></view> 
+  <view class="image3"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xdgS.png" bindtap="changePage"> </image></view> 
 </view>
 
 <view class="text-margin">
@@ -29,7 +29,7 @@
   <text class="text-middle-shadow" style="background: linear-gradient(to bottom, white 60%, {{ globalBackgroundTheme }} 40%);">生活</text>
 </view>
 <view class="center">
-  <image class="index-link" src="/images/test4.png" data-src="/pages/calendar/calendar" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test4.png" bindtap="changePage"> </image>
-  <image class="index-link" src="/images/test4.png" bindtap="changePage"> </image>
+  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/05/11/YGXL6S.png" data-src="/pages/calendar/calendar" bindtap="changePage"> </image></view>
+  <view class="image2"><image class="index-link" src="https://s1.ax1x.com/2020/05/11/YGXbSf.md.png" bindtap="changePage"> </image></view>
+  <view class="image3"><image class="index-link" src="https://s1.ax1x.com/2020/05/11/YGXql8.png" bindtap="changePage"> </image></view>
 </view>

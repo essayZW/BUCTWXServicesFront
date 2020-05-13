@@ -3,15 +3,29 @@ page {
     background: #E0E0E0;
 }
 .star-box{
-    border-radius:20rpx;
-    width: 730rpx;
-    height: 1000rpx;
+    padding-top: 20rpx;
+    border-radius: 0rpx 0rpx 20rpx 20rpx;
+    width: 710rpx;
+    height: 300rpx;
     background-color: white;
-    margin: 20rpx auto 0px auto;
+    margin: 0rpx auto 0px auto;
+}
+.input-box{
+    padding-top: 20rpx;
+    border-radius:20rpx;
+    width: 710rpx;
+    height: 750rpx;
+    background-color: white;
+    margin: 40rpx auto 0px auto;
 }
 .star-title{
-    margin-top: 50rpx;
+   
     margin-left: 30rpx;
+   
+}
+.email-title{
+    margin-left: 30rpx;
+    margin-top: 30rpx;
 }
 .star-title-s{
     font-size: 25rpx;
@@ -76,5 +90,26 @@ page {
 .must::after{
     content: '*';
     color:red;
+}
+.add-image-f{
+    width:80%;
+    height:110rpx;
+    text-align: right;
+    margin: 0px auto 20rpx auto;
+}
+.add-ture{
+    width: 50rpx;
+    height: 50rpx;
+}
+.add-butt{
+    width:100rpx;
+    height:100rpx;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px #c7c7c7;
+    background-color: rgb(1,132,255);
+    line-height: 130rpx;
+    text-align: center;
+    margin-left: 230rpx;
+    margin-top: 60rpx;
 }
 

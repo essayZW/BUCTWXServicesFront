@@ -1,3 +1,30 @@
 <!--pages/settings/settings.wxml-->
+<view class="f1">
+    <view>
+        <image class="icon2" src="/images/icon/theme-logo.svg"></image>
+        <text class="text">主题设置</text>
+    </view>
+    <image class="detail-logo" src="/images/icon/more.png"></image>
+</view>
+
+<view class="f2">
+    <view>
+        <image class="icon2" src="/images/icon/notice-setting.svg"></image>
+        <text class="text">通知设置</text>
+    </view>
+    <image class="detail-logo" src="/images/icon/more.png"></image>
+</view>
+
+
+<view class="f2">
+    <view>
+        <image class="icon2" src="/images/icon/clear-logo.svg"></image>
+        <text class="text">清除缓存</text>
+    </view>
+    <image class="detail-logo" src="/images/icon/more.png"></image>
+</view>
+
+
+
 <navigator url="/pages/themesetting/themesetting">主题设置</navigator>
 <view class="clear-cache" bindtap="clearCache">清除缓存</view>

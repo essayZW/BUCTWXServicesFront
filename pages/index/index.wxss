@@ -37,3 +37,18 @@
   /* 滑块被选中的样子 */
   background-color: gray;
 }
+.image1{
+  margin-right: 30rpx;
+  display: inline-block;
+}
+.image2{
+  margin-right: 30rpx;
+  display: inline-block;
+}
+.image3{
+  display: inline-block;
+}
+.index-link{
+  width:210rpx;
+  height:290rpx;
+} 
