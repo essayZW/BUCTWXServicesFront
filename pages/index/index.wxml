@@ -28,3 +28,10 @@
   <view class="image2"><image class="index-link" src="https://s1.ax1x.com/2020/05/11/YGXbSf.md.png" bindtap="changePage"> </image></view>
   <view class="image3"><image class="index-link" src="https://s1.ax1x.com/2020/05/11/YGXql8.png" bindtap="changePage"> </image></view>
 </view>
+
+<!-- 通知显示模板 -->
+<view class="mask" bindtap="hideMask" id="mask" wx:if="{{ showMask }}">
+  <view class="content">
+    <wemark md="{{ alertContent }}"></wemark>
+  </view>
+</view>

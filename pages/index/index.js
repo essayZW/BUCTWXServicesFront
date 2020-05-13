@@ -131,7 +131,19 @@ Page({
         }
         else if(type === 'alert') {
             let alertContent = App.indexSwiperData[id].dataset.alertcontent;
-            console.log(alertContent);
+            this.setData({
+                'showMask' : true,
+                'alertContent' : alertContent
+            });
         }
+    },
+    /**
+     * 隐藏蒙版
+     */
+    hideMask : function(e) {
+        if(e.target.id != 'mask') return;
+        this.setData({
+            'showMask' : false
+        });
     }
 })
