@@ -74,6 +74,12 @@ module.exports = {
     'jwExam'        : '/jw/getExamInfo',
     // 查询学生信息接口
     'jwStuInfo'     : '/jw/getStuInfo',
+
+    /**
+     * 设置API配置
+     */
+    'swiperData' : '/swiper/getAll',
+    
     /**
      *  反馈界面的一些配置
      */
@@ -94,6 +100,19 @@ module.exports = {
     'defaultColorId' : 2,
     // 默认头像地址
     'defaultHeadUrl' : '/images/test1.jpg',
+
+    /**
+     * 功能默认配置
+     */
+    'funconfig' : {
+        'notice' : {
+            // 通知界面的默认设置
+            // 待办事件默认1天前通知
+            'todo' : 1,
+            // 考试信息默认7天谴通知
+            'exam' : 7
+        }
+    },
 
     /**
      * 函数

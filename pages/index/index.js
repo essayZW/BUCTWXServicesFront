@@ -23,7 +23,9 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        this.setData({
+            swiperData : App.indexSwiperData
+        });
     },
 
     /**
@@ -104,5 +106,32 @@ Page({
               console.log(e.errMsg);
           }
         });
+    },
+    /**
+     * 首页轮播图点击事件处理
+     */
+    swiperClick : function(e) {
+        let id = e.target.dataset.id;
+        let type = e.target.dataset.type;
+
+        if(type === 'src') {
+            let src = App.indexSwiperData[id].dataset.src;
+            if(src == undefined) {
+                wx.showToast({
+                  title: '开发中',
+                  icon: 'none',
+                  duration: 600
+                });
+            }
+            else {
+                wx.navigateTo({
+                  url: src
+                });
+            }
+        }
+        else if(type === 'alert') {
+            let alertContent = App.indexSwiperData[id].dataset.alertcontent;
+            console.log(alertContent);
+        }
     }
 })

@@ -114,7 +114,16 @@ function getTodo(year, month, day) {
     }
     return hadTodoList[year][month][day];
 }
-
+/**
+ * 得到一定范围内的指定类型的待办
+ * @param {integer} fromYear 
+ * @param {integer} fromMonth 
+ * @param {integer} fromDay 
+ * @param {integer} toYear 
+ * @param {integer} toMonth 
+ * @param {integer} toDay 
+ * @param {mixed} todoType 
+ */
 function getRangeTodo(fromYear, fromMonth, fromDay, toYear, toMonth, toDay, todoType = 'all') {
     if(fromYear > toYear) return [];
     if(fromYear == toYear && fromMonth > toMonth) return [];
@@ -125,20 +134,20 @@ function getRangeTodo(fromYear, fromMonth, fromDay, toYear, toMonth, toDay, todo
     let res = [];
     const file = require('./config.js');
     let allTodoList = file.read(TodoListJSONFileName);
-    for(let year = fromYear; year <= toYear; year ++) {
+    let startTime = new Date(fromYear, fromMonth, fromDay).getTime();
+    let endTime = new Date(toYear, toMonth, toDay).getTime();
+    for(let time = startTime; time <= endTime; time += 86400000) {
+        let year = new Date(time).getFullYear();
+        let month = new Date(time).getMonth();
+        let day = new Date(time).getDate();
         if(!allTodoList[year]) continue;
-        for(let month = fromMonth; month < toMonth; month ++) {
-            if(!allTodoList[year][month]) continue;
-            for(let day = fromDay; day <= toDay; day ++) {
-                if(!allTodoList[year][month][day]) continue;
-                // 便利该天的所有待办
-                for(let i = 0; i < allTodoList[year][month][day].length; i ++) {
-                    if(todoType.indexOf(allTodoList[year][month][day][i].type) == -1 && todoType.indexOf('all') == -1) {
-                        continue;
-                    }
-                    res.push(allTodoList[year][month][day][i]);
-                }
+        if(!allTodoList[year][month]) continue;
+        if(!allTodoList[year][month][day]) continue;
+        for(let i = 0; i < allTodoList[year][month][day].length; i ++) {
+            if(todoType.indexOf(allTodoList[year][month][day][i].type) == -1 && todoType.indexOf('all') == -1) {
+                continue;
             }
+            res.push(allTodoList[year][month][day][i]);
         }
     }
     return res;

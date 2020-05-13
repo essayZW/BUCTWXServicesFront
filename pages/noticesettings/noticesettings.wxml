@@ -1,2 +1,16 @@
 <!--pages/noticesettings/noticesettings.wxml-->
-<view class="settings-item"></view>
+<view class="settings-item">
+    <view>待办事件提前提醒天数</view>
+    <picker value="{{ todoDay }}" range="{{ dayRange }}" bindchange="setDay" id="todo">
+        <view>当前选择: {{ todoDay }}</view>
+    </picker>
+</view>
+<view class="settings-item">
+<view>考试事件提前提醒天数</view>
+    <picker value="{{ examDay }}" range="{{ dayRange }}" bindchange="setDay" id="exam">
+        <view>当前选择: {{ examDay }}</view>
+    </picker>
+</view>
+<view class="confirm-butt" style="background-color: {{ globalBackgroundTheme }};" bindtap="saveSettings">
+    <image src="/images/icon/add.svg"></image>
+</view>

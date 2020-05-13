@@ -104,6 +104,52 @@ Page({
     let res = [];
     // 得到待办列表
     let todoList = todoManage.get(year, month, day);
+    res = this.changeTodoTONotice(todoList);
+    // 查找一定范围天数的考试事件
+    let today = new Date().getTime();
+    // 减去一定的时间得到几天后的时间戳
+    let startDay = today + App.globalData.config.notice.exam * (1000 * 60 * 60 * 24);
+    let startDayObj = new Date(startDay);
+    // 不包括今天的考试
+    today += 1000 * 60 * 60 * 24;
+    let todayObj = new Date(today);
+    let rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(),startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'exam');
+    res = res.concat(this.changeTodoTONotice(rangeExam));
+    today -= 1000 * 60 * 60 * 24;
+    startDay = today + App.globalData.config.notice.todo * (1000 * 60 * 60 * 24);
+    startDayObj = new Date(startDay);
+    rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(),startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'calendar');
+    res = res.concat(this.changeTodoTONotice(rangeExam));
+    return res;
+  },
+  /**
+   * 对今天的事件排序
+   */
+  sortEvent : function(list) {
+    // 先根据是否置顶排序，后根据是否过期排序，再根据开始/结束时间排序
+    let now = new Date().getTime();
+    list.sort((a, b) => {
+      if(a.onTop != b.onTop) return -(a.onTop - b.onTop);
+      if((a.endTime - now) * (b.endTime - now) < 0) return -(a.endTime - b.endTime);
+      if(a.startTime != a.startTime) return a.startTime - b.startTime;
+      return a.endTime - b.endTime;
+    });
+    return list;
+  },
+  /**
+   * 通过时间戳得到格式化的时间（HH:mm)格式
+   */
+  timeFormat : function(time) {
+    let timeObj = new Date(time);
+    let hour = timeObj.getHours().toString().padStart(2, '0');
+    let miniute = timeObj.getMinutes().toString().padStart(2, '0');
+    return hour + ':' + miniute;
+  },
+  /**
+   * 对todo待办对象转化为通知对象
+   */
+  changeTodoTONotice : function(todoList) {
+    let res = [];
     // 遍历待办列表
     for(let i = 0; i < todoList.length; i ++) {
       if(todoList[i].finish) continue;
@@ -134,28 +180,5 @@ Page({
       res.push(obj);
     }
     return this.sortEvent(res);
-  },
-  /**
-   * 对今天的事件排序
-   */
-  sortEvent : function(list) {
-    // 先根据是否置顶排序，后根据是否过期排序，再根据开始/结束时间排序
-    let now = new Date().getTime();
-    list.sort((a, b) => {
-      if(a.onTop != b.onTop) return -(a.onTop - b.onTop);
-      if((a.endTime - now) * (b.endTime - now) < 0) return -(a.endTime - b.endTime);
-      if(a.startTime != a.startTime) return a.startTime - b.startTime;
-      return a.endTime - b.endTime;
-    });
-    return list;
-  },
-  /**
-   * 通过时间戳得到格式化的时间（HH:mm)格式
-   */
-  timeFormat : function(time) {
-    let timeObj = new Date(time);
-    let hour = timeObj.getHours().toString().padStart(2, '0');
-    let miniute = timeObj.getMinutes().toString().padStart(2, '0');
-    return hour + ':' + miniute;
   }
 })
