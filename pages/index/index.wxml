@@ -5,12 +5,14 @@
 <view>
   <swiper bindchange="changeDots">
   <!-- mode属性在图片设置宽高才起作用，我在app.wxss中设置了所有图片的默认宽高 -->
-    <swiper-item><image class="swiper" src="/images/test5.png"></image></swiper-item>
-    <swiper-item><image class="swiper" src="/images/test6.png"></image></swiper-item>
+    <swiper-item><image class="swiper" src="https://s1.ax1x.com/2020/05/13/YamReS.png"></image></swiper-item>
+    <swiper-item><image class="swiper" src="https://s1.ax1x.com/2020/05/13/YamgL8.png"></image></swiper-item>
+    <swiper-item><image class="swiper" src="https://s1.ax1x.com/2020/05/13/YamWdg.png"></image></swiper-item>
   </swiper>
   <view class="dots-group">
     <view class="normal-dots {{currentDots == 1 ? 'active-dots' : ''}}"></view>
     <view class="normal-dots {{currentDots == 2 ? 'active-dots' : ''}}"></view>
+    <view class="normal-dots {{currentDots == 3 ? 'active-dots' : ''}}"></view>
   </view>
 </view>
 <!-- 轮播图 end -->
