@@ -1,5 +1,5 @@
 {
-    "pages": [ 
+    "pages": [
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/jwexam/jwexam",
@@ -10,7 +10,8 @@
         "pages/calendar/calendar",
         "pages/themesetting/themesetting",
         "pages/about/about",
-        "pages/settings/settings"
+        "pages/settings/settings",
+        "pages/help/help"
     ],
     "window": {
         "backgroundTextStyle": "light",

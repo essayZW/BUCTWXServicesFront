@@ -91,5 +91,28 @@ Page({
               }
           }
         })
+    },
+    /**
+    * 页面切换
+    */
+    changePage : function(e) {
+        let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
+        if(src === false) {
+        wx.showToast({
+            title: '开发中',
+            icon: 'none',
+            duration: 400
+        })
+        return;
+        }
+        wx.navigateTo({
+            url: src,
+            success : function(e) {
+                console.log(e.errMsg);
+            },
+            fail: function(e) {
+                console.log(e.errMsg);
+            }
+        });
     }
 })

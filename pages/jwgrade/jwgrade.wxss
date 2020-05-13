@@ -155,11 +155,17 @@ page{
   margin-left: -10rpx;
 }
 
-.head-img{
+.head-img, .open-data-click-area{
   width:105rpx;
   height:105rpx;
   margin-left:10rpx;
   border:4rpx solid white;
+}
+.open-data-click-area{
+  opacity: 0;
+  position: absolute;
+  left: 25rpx;
+  z-index: 2;
 }
 
 /* .student-info-show{
