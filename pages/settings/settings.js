@@ -74,7 +74,7 @@ Page({
     clearCache : function() {
         wx.showModal({
           title: '确认清除',
-          content: '您确认清理所有缓存吗，这将重置主题、保存的用户名密码等信息',
+          content: '您确认清理所有缓存吗，这将重置所有设置、保存的用户名密码等信息',
           success: (res) => {
               if(res.confirm) {
                   wx.clearStorage({

@@ -7,7 +7,7 @@
     <image class="detail-logo" src="/images/icon/more.png"></image>
 </view>
 
-<view class="f2" bindtap="changePage">
+<view class="f2" data-src="/pages/noticesettings/noticesettings" bindtap="changePage">
     <view>
         <image class="icon2" src="/images/icon/notice-setting.svg"></image>
         <text class="text">通知设置</text>
