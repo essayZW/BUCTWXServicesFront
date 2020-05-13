@@ -31,11 +31,11 @@
 }
 .normal-dots{
   /* 滑块正常时候的样子 */
-  background-color: black;
+  background-color: gray;
 }
 .active-dots{
   /* 滑块被选中的样子 */
-  background-color: gray;
+  background-color: black;
 }
 .image1{
   margin-right: 30rpx;
