@@ -56,6 +56,7 @@ function writeJSONFile(filename, obj) {
     }
     return flag;
 }
+
 module.exports = {
     /**
      * 配置项

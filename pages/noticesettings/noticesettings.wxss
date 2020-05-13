@@ -1,0 +1,6 @@
+/* pages/noticesettings/noticesettings.wxss */
+.settings-item{
+    width:90%;
+    margin:0px auto;
+    margin-top:20rpx;
+}

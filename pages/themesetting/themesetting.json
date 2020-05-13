@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "color-picker-dialog" : "../components/colorPickerDialog/colorPickerDialog"
-  }
+  },
+  "navigationBarTitleText": "主题设置"
 }

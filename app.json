@@ -11,12 +11,13 @@
         "pages/themesetting/themesetting",
         "pages/about/about",
         "pages/settings/settings",
-        "pages/help/help"
+        "pages/help/help",
+        "pages/noticesettings/noticesettings"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTitleText": "挺好看的呀",
+        "navigationBarTitleText": "轻触",
         "navigationBarTextStyle": "white"
     },
     "tabBar": {

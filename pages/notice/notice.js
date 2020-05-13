@@ -106,6 +106,7 @@ Page({
     let todoList = todoManage.get(year, month, day);
     // 遍历待办列表
     for(let i = 0; i < todoList.length; i ++) {
+      if(todoList[i].finish) continue;
       let obj = {};
       obj.type = todoList[i].type;
       obj.startTime = parseInt(todoList[i].sTime);
