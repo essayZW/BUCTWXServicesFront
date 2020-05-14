@@ -1,0 +1,19 @@
+<!--pages/schedulesettings/schedulesettings.wxml-->
+<view class="settings-item">
+    <view>本学期第一周星期一的日期</view>
+    <picker mode="date" value="{{ startDay }}" start="2000-01-01" end="{{ today }}" bindchange="setDay" id="startDay">
+        <view>当前选择: {{ startDay }} 本周是第{{ weekNum }}周</view>
+    </picker>
+</view>
+<view class="settings-item">
+    <view>更新课表信息</view>
+    <view class="update-area">
+        <picker class="date-picker" mode="multiSelector" value="{{ nowSelectedIndex }}" range="{{ selectRange }}" bindchange="dateSelectChange">
+            当前选择: {{ nowSelected }}
+        </picker>
+        <view class="update-butt" style="border-color: {{ globalBackgroundTheme }}; color: {{ globalBackgroundTheme }};" bindtap="updateScheduleInfo">更新</view>
+    </view>
+</view>
+<view class="confirm-butt" style="background-color: {{ globalBackgroundTheme }};" bindtap="saveSettings">
+    <image src="/images/icon/add.svg"></image>
+</view>

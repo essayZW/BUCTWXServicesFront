@@ -1,6 +1,7 @@
 // pages/notice/notice.js
 const App = getApp();
 const todoManage = require('/../../utils/todo.js');
+const schedule = require('/../../utils/schedule.js');
 Page({
 
   /**
@@ -102,9 +103,14 @@ Page({
     let day = new Date().getDate();
     // 存储结果
     let res = [];
+    // 得到课程表
+    let startWeek = App.globalData.config.schedule.startDay;
+    let weekNum = parseInt((new Date().getTime() - startWeek) / 604800000) + 1;
+    let todayClass = schedule.getWeekDayClass(weekNum, new Date().getDay());
+    res = res.concat(this.changeSchduleToNotice(todayClass));
     // 得到待办列表
     let todoList = todoManage.get(year, month, day);
-    res = this.changeTodoTONotice(todoList);
+    res = res.concat(this.changeTodoTONotice(todoList));
     // 查找一定范围天数的考试事件
     let today = new Date().getTime();
     // 减去一定的时间得到几天后的时间戳
@@ -120,7 +126,7 @@ Page({
     startDayObj = new Date(startDay);
     rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(),startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'calendar');
     res = res.concat(this.changeTodoTONotice(rangeExam));
-    return res;
+    return this.sortEvent(res);
   },
   /**
    * 对今天的事件排序
@@ -161,11 +167,7 @@ Page({
       obj.position = todoList[i].position;
       obj.sTime = this.timeFormat(obj.startTime);
       obj.eTime = this.timeFormat(obj.endTime);
-      if(obj.type == 'exam') {
-        // 是一条考试信息
-        obj.secondTitle = todoList[i].content;
-      }
-      else if(obj.type == 'calendar') {
+      if(obj.type == 'calendar' || obj.type == 'exam') {
         let eMonth = new Date(obj.startTime).getMonth() + 1;
         let eDay = new Date(obj.startTime).getDate();
         let weekDay = new Date(obj.startTime).getDay();
@@ -180,5 +182,58 @@ Page({
       res.push(obj);
     }
     return this.sortEvent(res);
+  },
+  /**
+   * 将课程数据格式转化为通知数据格式
+   */
+  changeSchduleToNotice : function(schedule) {
+    let timeTable = [0,
+      ['08:00', '08:45'],
+      ['08:50', '09:35'],
+      ['09:50', '10:35'],
+      ['10:45', '11:30'],
+      ['11:35', '12:20'],
+      ['13:00', '13:45'],
+      ['13:50', '14:35'],
+      ['14:45', '15:30'],
+      ['15:40', '16:25'],
+      ['16:30', '17:15'],
+      ['18:00', '18:45'],
+      ['18:50', '19:35'],
+      ['19:40', '20:25']
+    ];
+    let res = [];
+    let today = new Date();
+    for(let key in schedule) {
+      let obj = {};
+      obj.type = 'schedule';
+      obj.title = schedule[key].className.substr(0, 15);
+      obj.position = schedule[key].position;
+      obj.sTime = timeTable[schedule[key].startClassNum][0];
+      obj.eTime = timeTable[schedule[key].endClassNum][1];
+      // 计算时间戳
+      let sDate = this.__getA_BFormat(obj.sTime);
+      obj.startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), sDate[1], sDate[2]).getTime();
+      let eDate = this.__getA_BFormat(obj.eTime);
+      obj.endTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), eDate[1], eDate[2]).getTime();
+      if(obj.endTime < new Date().getTime()) continue;
+      obj.secondTitle = '第' + schedule[key].startClassNum + '~' + schedule[key].endClassNum + '节 ' + schedule[key].teacherInfo.name;
+      // 默认不置顶
+      obj.onTop = false;
+      res.push(obj);
+    }
+    return this.sortEvent(res);
+  },
+  /**
+   * 解析格式如 a:b 的字符串，得到a和b的值
+   */
+  __getA_BFormat : function (str) {
+    let pattern = /^(\d+?)\:(\d+?)$/
+    let res = str.match(pattern);
+    if(res[1])
+      res[1] = parseInt(res[1]);
+    if(res[2])
+      res[2] = parseInt(res[2]);
+    return res;
   }
-})
+});

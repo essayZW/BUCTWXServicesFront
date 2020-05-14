@@ -12,7 +12,8 @@
         "pages/about/about",
         "pages/settings/settings",
         "pages/help/help",
-        "pages/noticesettings/noticesettings"
+        "pages/noticesettings/noticesettings",
+        "pages/schedulesettings/schedulesettings"
     ],
     "window": {
         "backgroundTextStyle": "light",

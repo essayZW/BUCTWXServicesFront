@@ -1,0 +1,55 @@
+/* pages/schedulesettings/schedulesettings.wxss */
+page{
+    background-color: rgb(246, 246, 246);
+}
+.settings-item{
+    width:100%;
+    height:120rpx;
+    margin-top:20rpx;
+}
+
+.settings-item>view{
+    height:50%;
+    line-height: 60rpx;
+    padding-left: 20rpx;
+}
+.settings-item>picker{
+    height:50%;
+    background-color: white;
+    line-height: 60rpx;
+    padding-left: 20rpx;
+}
+.confirm-butt{
+    width:110rpx;
+    height:110rpx;
+    border-radius: 50%;
+    margin:50rpx auto;
+}
+.confirm-butt>image{
+    width:100%;
+    height:100%;
+}
+
+.date-picker, .update-butt{
+    display: inline-block;
+}
+.update-area{
+    width:calc(100% - 40rpx);
+    height:50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+.update-butt{
+    width:80rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+    border:1px solid black;
+    text-align: center;
+    line-height: 50rpx;
+}
+.date-picker{
+    width:85%;
+    height:100%;
+}

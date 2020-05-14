@@ -9,7 +9,10 @@ App({
             this.globalData.headUrl = AppConfig.get('userheadInfo');
         }
         if(AppConfig.has('settings')) {
-            this.globalData.config = AppConfig.get('settings');
+            let configs = AppConfig.get('settings');
+            for(let key in configs) {
+                this.globalData.config[key] = configs[key];    
+            }
         }
 
         // 请求首页轮播图信息
