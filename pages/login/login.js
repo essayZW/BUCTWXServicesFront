@@ -128,7 +128,7 @@ Page({
               complete: () => {
                 wx.showToast({
                   title: res.data.info,
-                  inoc: 'none',
+                  icon : 'none',
                   duration: 700
                 });
               },

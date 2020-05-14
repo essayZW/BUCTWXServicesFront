@@ -74,6 +74,8 @@ module.exports = {
     'jwExam'        : '/jw/getExamInfo',
     // 查询学生信息接口
     'jwStuInfo'     : '/jw/getStuInfo',
+    // 查询课程表接口
+    'jwSchedule'    : '/jw/getSchedule',
 
     /**
      * 设置API配置
@@ -111,6 +113,11 @@ module.exports = {
             'todo' : 1,
             // 考试信息默认7天谴通知
             'exam' : 7
+        },
+        'schedule' : {
+            // 课程表功能的相关设置
+            // 本学期第一周第一天的时间戳
+            'startDay' : getWeekFirstDay(new Date())
         }
     },
 
@@ -120,5 +127,14 @@ module.exports = {
     'get' : get,
     'has' : has,
     'read' : readJSONFile,
-    'write' : writeJSONFile
+    'write' : writeJSONFile,
+    'getWeekFirstDay' : getWeekFirstDay
+}
+
+function getWeekFirstDay(dateObj) {
+    let today = dateObj.getTime();
+    let day = dateObj.getDay();
+    if(day == 0) day = 7;
+    today -= (Math.abs(day - 1) * 86400000);
+    return today;
 }

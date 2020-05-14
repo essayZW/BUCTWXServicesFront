@@ -124,6 +124,35 @@ function getUserInfo(username, password, vpnusername, vpnpassword, successCallBa
         }
     );
 }
+/**
+ * 得到某学年学期的课程表
+ * @param {integer} xnm 
+ * @param {integer} xqm 
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} vpnusername 
+ * @param {string} vpnpassword 
+ * @param {function} successCallBack 
+ * @param {function} failCallBack 
+ */
+function getSchedule(xnm, xqm, username, password, vpnusername, vpnpassword, successCallBack, failCallBack) {
+    token.request(AppConfig.APIAddress + AppConfig.jwSchedule,
+        'POST',
+        {
+            'xnm' : xnm,
+            'xqm' : xqm,
+            'username' : username,
+            'password' : password,
+            'vpnusername' : vpnusername,
+            'vpnpassword' : vpnpassword
+        },
+        successCallBack,
+        failCallBack,
+        {
+            'content-type' : 'application/x-www-form-urlencoded'
+        }
+    );
+}
 module.exports = {
     'getAllGrade' : getAllGrade,
     'getSingleGrade' : getSingleGrade,

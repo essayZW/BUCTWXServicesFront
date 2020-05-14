@@ -161,11 +161,7 @@ Page({
       obj.position = todoList[i].position;
       obj.sTime = this.timeFormat(obj.startTime);
       obj.eTime = this.timeFormat(obj.endTime);
-      if(obj.type == 'exam') {
-        // 是一条考试信息
-        obj.secondTitle = todoList[i].content;
-      }
-      else if(obj.type == 'calendar') {
+      if(obj.type == 'calendar' || obj.type == 'exam') {
         let eMonth = new Date(obj.startTime).getMonth() + 1;
         let eDay = new Date(obj.startTime).getDate();
         let weekDay = new Date(obj.startTime).getDay();
