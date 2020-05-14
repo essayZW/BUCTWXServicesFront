@@ -1,6 +1,8 @@
 // pages/schedulesettings/schedulesettings.js
 const App = getApp();
 const AppConfig = require('/../../utils/config.js');
+const jw = require('/../../utils/jw.js');
+const schedule = require('/../../utils/schedule.js');
 Page({
 
     /**
@@ -9,7 +11,10 @@ Page({
     data: {
         selectDay : {
             startDay : App.globalData.config.schedule.startDay
-        }
+        },
+        selectRange : [
+            [], [1, 2, 3]
+        ]
     },
 
     /**
@@ -30,6 +35,34 @@ Page({
             'today' : this.getFormatDate(new Date()),
             'startDay' : this.getFormatDate(new Date(App.globalData.config.schedule.startDay)),
             'weekNum' : parseInt(weekNum)
+        });
+
+        // 课表数据更新设置的相关数据绑定
+        let year = new Date().getFullYear();
+        for(let i = 2000; i <= year; i ++) {
+            this.data.selectRange[0][i - 2000] = i;
+        }
+        let month = new Date().getMonth() + 1;
+        let xnm = year;
+        let xqm;
+        if((month >= 9 && month <= 12) || (month >= 1 && month <= 2)) {
+            xqm = 1;
+            if(month >= 1 && month <= 2) xnm --;
+        }
+        else if(month > 2 && month <= 6) {
+            xqm = 2;
+            xnm --;
+            
+        }
+        else {
+            xqm = 3;
+            xnm --;
+        }
+        this.data.selectIndex = [xnm - 2000, xqm - 1];
+        this.setData({
+            selectRange : this.data.selectRange,
+            nowSelectedIndex : [xnm - 2000, xqm - 1],
+            nowSelected : xnm + '~' + (xnm + 1) + '学年第' + xqm + '学期'
         });
     },
 
@@ -141,6 +174,109 @@ Page({
                 image : '/images/icon/error.png'
               });
           }
+        });
+    },
+    /**
+     * 更新选择的学期学年信息
+     */
+    dateSelectChange : function(e) {
+        this.data.selectIndex = e.detail.value;
+        let xnm = this.data.selectRange[0][e.detail.value[0]];
+        let xqm = this.data.selectRange[1][e.detail.value[1]];
+        this.setData({
+            nowSelectedIndex : [e.detail.value[0], e.detail.value[1]],
+            nowSelected : xnm + '~' + (xnm + 1) + '学年第' + xqm + '学期'
+        });
+    },
+    /**
+     * 更新本地课程表信息
+     */
+    updateScheduleInfo : function() {
+        let xnm = this.data.selectRange[0][this.data.selectIndex[0]];
+        let xqm = this.data.selectRange[1][this.data.selectIndex[1]];
+        wx.showToast({
+          title: '更新中',
+          duration : 10000,
+          icon: 'loading'
+        });
+        // 检测是否本地存储的有用户名密码
+        if(!AppConfig.has('userpass')) {
+            // 没有存好的用户名密码
+            wx.hideToast();
+            wx.showModal({
+                content: '未配置教务用户名和密码，将要跳转到配置页面填写',
+                title : '页面跳转提示',
+                success: function(res) {
+                    if(res.confirm) {
+                        wx.navigateTo({
+                            url: '/pages/login/login'
+                        })
+                    }
+                    else {
+                        wx.showToast({
+                            title: '需要配置用户信息',
+                            icon: 'none',
+                            duration: 700
+                        })
+                    }
+                }
+            })
+            return;
+        }
+        // 调用本地存储获得用户名密码
+        let userInfo = AppConfig.get('userpass');
+        let username = userInfo['username'];
+        let password = userInfo['password'];
+        let vpnusername = userInfo['username'];
+        let vpnpassword = userInfo['vpnpassword'];
+        jw.getSchedule(xnm, xqm, username, password, vpnusername, vpnpassword, (rep) => {
+            if(!rep.data.status) {
+                wx.hideToast({
+                  complete: (res) => {
+                      wx.showToast({
+                        title: rep.data.info,
+                        icon : 'none',
+                        duration: 700
+                      });                    
+                  }
+                });
+                return;
+            }
+            let parsedData = schedule.parse(rep.data.data['kbList']);
+            if(schedule.write(parsedData)) {
+                wx.hideToast({
+                  complete: (res) => {
+                      wx.showToast({
+                        title: '成功',
+                        duration: 600,
+                      });
+                      setTimeout(() => {
+                          wx.navigateBack();
+                      }, 620);
+                  }
+                });
+            }
+            else {
+                wx.hideToast({
+                  complete: (res) => {
+                    wx.showToast({
+                        title: '课表保存失败',
+                        duration: 700,
+                        image : '/images/icon/error.png'
+                      });
+                  },
+                })
+            }
+        }, (rep) => {
+            wx.hideToast({
+              complete: (res) => {
+                  wx.showToast({
+                    title: '更新失败',
+                    duration: 700,
+                    image: '/images/icon/error.png'
+                  });
+              }
+            });
         });
     }
 })

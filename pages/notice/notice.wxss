@@ -95,6 +95,7 @@ page{
     font-size: 30rpx;
     font-weight: bold;
     color: #404040;
+    overflow: hidden;
 }
 .name{
     margin-top: 20rpx;
@@ -135,6 +136,7 @@ page{
     font-size: 30rpx;
     margin-left: 20rpx;
     color: #515151;
+    overflow: hidden;
 }
 .pos{
     font-size: 27rpx;

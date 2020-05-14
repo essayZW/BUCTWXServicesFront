@@ -52,12 +52,16 @@ function parse(jwSchedule) {
         // 结束的结束
         res[cdid].endClassNum = parseInt(classStartEndRange[2]);
         // 解析周
-        let allWeekList = jwData.zcd.split(',').map(x => x.replace('周', ''));
-        res[cdid].week = [];
+        let allWeekList = jwData.zcd.split(',').map((value) => {
+            return value.replace('周', '').replace('(', '').replace(')', '').replace('双', '').replace('单', '');
+        });
+        res[cdid].week = new Array(20).fill(false);
         for(let j = 0; j < allWeekList.length; j ++) {
             if(allWeekList[j].indexOf('-') > -1) {
                 let range = __getA_BFormat(allWeekList[j]);
                 // 这几周都有课
+                range[1] = parseInt(range[1]);
+                range[2] = parseInt(range[2]);
                 for(let start = range[1]; start <= range[2]; start ++) {
                     res[cdid].week[start] = true;
                 }

@@ -29,3 +29,27 @@ page{
     width:100%;
     height:100%;
 }
+
+.date-picker, .update-butt{
+    display: inline-block;
+}
+.update-area{
+    width:calc(100% - 40rpx);
+    height:50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+.update-butt{
+    width:80rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+    border:1px solid black;
+    text-align: center;
+    line-height: 50rpx;
+}
+.date-picker{
+    width:85%;
+    height:100%;
+}

@@ -157,5 +157,6 @@ module.exports = {
     'getAllGrade' : getAllGrade,
     'getSingleGrade' : getSingleGrade,
     'getExamList' : getExamList,
-    'getStuInfo' : getUserInfo
+    'getStuInfo' : getUserInfo,
+    'getSchedule' : getSchedule
 }
