@@ -289,7 +289,7 @@
     height:100rpx;
     border-radius: 50%;
     box-shadow: 2px 2px 2px #c7c7c7;
-    line-height: 130rpx;
+    line-height: 125rpx;
     text-align: center;
     margin-left: 400rpx;
 }
@@ -300,8 +300,8 @@
     margin: 0px auto 20rpx auto;
 }
 .add-ture{
-    width: 40rpx;
-    height: 40rpx;
+    width: 45rpx;
+    height: 45rpx;
 }
 .underline{
     text-decoration: underline;

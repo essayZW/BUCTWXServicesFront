@@ -32,7 +32,7 @@
 
 <view class="color-select1">
 <view class="classical-color1"><image wx:if="{{ isSet[1] }}" class="chosed" src="/images/icon/chosed.png"></image></view>
-<view class="color-text1"><text class="color-text-s1">网易红</text></view>
+<view class="color-text1"><text class="color-text-s1">烈日红</text></view>
 <view class="chosed-border1" data-color="#db2c20" bindtap="setSystemColor" data-id="1"><text class="chosed-text1">{{ isSet[1] ? '已选择' : '选择' }}</text></view>
 </view>
 
@@ -50,13 +50,13 @@
 
 <view class="color-select3">
 <view class="classical-color3"><image wx:if="{{ isSet[4] }}" class="chosed" src="/images/icon/chosed.png"></image></view>
-<view class="color-text3"><text class="color-text-s3">知乎蓝</text></view>
+<view class="color-text3"><text class="color-text-s3">蔚海蓝</text></view>
 <view class="chosed-border3" data-color="#0184ff" bindtap="setSystemColor" data-id="4"><text class="chosed-text3">{{ isSet[4] ? '已选择' : '选择' }}</text></view>
 </view>
 
 <view class="color-select5">
 <view class="classical-color5"><image wx:if="{{ isSet[5] }}" class="chosed" src="/images/icon/chosed.png"></image></view>
-<view class="color-text5"><text class="color-text-s5">秦叔紫</text></view>
+<view class="color-text5"><text class="color-text-s5">罗兰紫</text></view>
 <view class="chosed-border5" data-color="#673bb7" bindtap="setSystemColor" data-id="5"><text class="chosed-text5">{{ isSet[5] ? '已选择' : '选择' }}</text></view>
 </view>
 
