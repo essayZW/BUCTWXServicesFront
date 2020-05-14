@@ -15,7 +15,7 @@
 </view>
 <view class="f2" data-src="/pages/schedulesettings/schedulesettings" bindtap="changePage">
     <view>
-        <image class="icon2" src="/images/icon/notice-setting.svg"></image>
+        <image class="icon2" src="/images/icon/schedule-setting.svg"></image>
         <text class="text">课程表设置</text>
     </view>
     <image class="detail-logo" src="/images/icon/more.png"></image>
