@@ -24,9 +24,18 @@ function read() {
 function parse(jwSchedule) {
     let res = {};
     for(let i = 0; i < jwSchedule.length; i ++) {
-        // 课程的某种ID，貌似在每学期的课程表中唯一
+        // 课程的某种ID，在每学期的课程表中并不唯一
         let cdid = jwSchedule[i]['cd_id'];
         if(res[cdid] == undefined) {
+            res[cdid] = {};
+        }
+        else {
+            // 该ID已经存在，所以给ID后面加一个序号
+            let i = 0;
+            while(res[cdid + i] != undefined) {
+                i ++;
+            }
+            cdid += i;
             res[cdid] = {};
         }
         // 原始数据

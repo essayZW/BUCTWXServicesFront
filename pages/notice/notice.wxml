@@ -9,13 +9,15 @@
        <view class="{{ secondTypeClassName[item.type] }}-box">
           <view class="title">{{ typeTitle[item.type] }}</view>
           <view class="data"><text class="data-s" decode="{{true}}">{{ item.secondTitle }}</text></view>
-          <view class="time-box" style="border-right-color: {{ globalBackgroundTheme }};">
-               <view class="begin">{{ item.sTime }}</view>
-               <view class="end">{{ item.eTime }}</view>
-          </view>
-          <view class="detail-box">
-               <view class="name">{{ item.title }}</view>
-               <view class="pos" style="color: {{ globalBackgroundTheme }};">{{ item.position }}</view>
+          <view class="info-box">
+            <view class="time-box" style="border-right-color: {{ globalBackgroundTheme }};">
+                  <view class="begin">{{ item.sTime }}</view>
+                  <view class="end">{{ item.eTime }}</view>
+            </view>
+            <view class="detail-box">
+                  <view class="name">{{ item.title }}</view>
+                  <view class="pos" style="color: {{ globalBackgroundTheme }};">{{ item.position }}</view>
+            </view>
           </view>
        </view>
     </view>
