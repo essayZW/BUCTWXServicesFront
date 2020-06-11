@@ -109,7 +109,7 @@ Page({
                 let position = examList[i].position;
                 let title = examList[i].name + '考试';
                 let data = {
-                  'title' : title,
+                  'title' : title.substr(0, 10),
                   'startTime' : startTime,
                   'endTime' : endTime,
                   'position' : position,

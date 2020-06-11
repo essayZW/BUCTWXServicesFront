@@ -98,7 +98,6 @@ page{
     overflow: hidden;
 }
 .name{
-    margin-top: 20rpx;
     margin-left: 20rpx;
     font-size: 25rpx;
     color: #515151;
@@ -115,10 +114,11 @@ page{
 .time-box{
     display: inline-block;
     margin-left: 10rpx;
-    margin-top: 20rpx;
     width: 80rpx;
+    height:100%;
     border-right-style:solid;
     border-right-color:rgb(1,132,255);
+    vertical-align: top;
 }
 .begin{
     font-size: 27rpx;
@@ -130,17 +130,25 @@ page{
 }
 .detail-box{
     display: inline-block;
-    
+    height: 100%;
+    width:calc(100% - 100rpx);
 }
 .name{
-    font-size: 30rpx;
     margin-left: 20rpx;
     color: #515151;
     overflow: hidden;
+    height:50%;
 }
 .pos{
     font-size: 27rpx;
     margin-left: 20rpx;
     font-weight: bold;
-    color: rgb(1,132,255)
+    color: rgb(1,132,255);
+    overflow: hidden;
+    height: 50%;
+}
+.info-box{
+    width:100%;
+    height:80rpx;
+    margin-top: 20rpx;
 }

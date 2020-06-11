@@ -186,6 +186,12 @@
     font-size: 55rpx;
     font-weight: 350;
 }
+.detail-title{
+    width:100%;
+    overflow: hidden;
+    height:80rpx;
+    line-height: 80rpx;
+}
 .time-logo{
     width: 28rpx;
     height:28rpx;
