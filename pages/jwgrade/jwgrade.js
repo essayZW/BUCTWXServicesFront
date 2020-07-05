@@ -33,15 +33,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        // 渲染用户信息
-        if(AppConfig.has('userinfo')) {
-            let userInfo = AppConfig.get('userinfo');
-            this.setData({
-                'studentName' : userInfo['name'],
-                'studentClass' : userInfo['classInfo'],
-                'gpa' : userInfo['gpa']['gpa']
-            });
-        }
         this.setData({
             'hasGrade' : false,
         });
@@ -84,6 +75,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        // 渲染用户信息
+        if(AppConfig.has('userinfo')) {
+            let userInfo = AppConfig.get('userinfo');
+            this.setData({
+                'studentName' : userInfo['name'],
+                'studentClass' : userInfo['classInfo'],
+                'gpa' : userInfo['gpa']['gpa']
+            });
+        }
         let touch = require('/../../utils/touch.js');
         let touchObj = new touch(() => {
             this.listChange(false);
