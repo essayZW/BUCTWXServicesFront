@@ -61,7 +61,7 @@ module.exports = {
     /**
      * 配置项
      */
-    'APIAddress' : 'http://127.0.0.1:8888',
+    'APIAddress' : 'https://www.imessay.cn:8848',
     /**
      * 教务API配置
      */

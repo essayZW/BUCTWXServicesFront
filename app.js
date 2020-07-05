@@ -18,8 +18,12 @@ App({
         // 请求首页轮播图信息
         token.request(AppConfig.APIAddress + AppConfig.swiperData, 'POST', {}, (res) => {
                 if(res.data.status) {
-                    this.indexSwiperData = res.data.data.swiper;
-                    this.globalData.notice = res.data.data.notice;
+                    if(res.data.data.swiper != undefined) {
+                        this.indexSwiperData = res.data.data.swiper;
+                    }
+                    if(res.data.data.notice != undefined) {
+                        this.globalData.notice = res.data.data.notice;
+                    }
                 }
                 else {
                     wx.showToast({
