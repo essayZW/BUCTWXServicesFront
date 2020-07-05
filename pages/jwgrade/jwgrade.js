@@ -211,23 +211,28 @@ Page({
         let THIS = this;
         let syear = this.data.syear;
         let sclass = this.data.sclass;
-        jw.getAllGrade(syear, sclass, username, password, vpnusername, vpnpassword, function(data) {
+        jw.getAllGrade(syear, sclass, username, password, vpnusername, vpnpassword, function(res) {
             // 成功
             wx.hideToast();
             // 分析数据并展示
-            if(!data.data.status) {
+            if(!res.data.status) {
                 wx.hideToast({
-                    complete: (res) => {
+                    complete: () => {
                         wx.showToast({
-                            title: data.data.info,
+                            title: res.data.info,
                             icon: 'none'
                         });
                     },
                 })
                 return;
             }
-            let userInfo = data.data.sinfo;
-            data = data.data.data;
+            let userInfo = res.data.sinfo;
+            let data = res.data.data;
+            if(data == undefined || data.items == undefined) {
+                data = {
+                    items : []
+                };
+            }
             if(data.items.length == 0) {
                 wx.showToast({
                   title: '无成绩',

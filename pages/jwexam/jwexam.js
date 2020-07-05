@@ -81,6 +81,9 @@ Page({
             let examList = [];
             if(rep.data.status) {
               wx.hideToast();
+              if(rep.data.data == undefined) {
+                rep.data.data = [];
+              }
               for(let i = 0; i < rep.data.data.length; i ++) {
                 let obj = {};
                 let now = rep.data.data[i];
