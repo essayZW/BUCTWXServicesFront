@@ -1,25 +1,25 @@
 <!--pages/mine/mine.wxml-->
-<view>
+<view class="logo-area">
       <image class="logo" src="https://s1.ax1x.com/2020/05/10/Y3uWu9.jpg" ></image>
 </view>
 <view class="panel">
     <view class="bn {{ active['username'] ? 'bn-focus' : '' }}">
-      <input type="text" placeholder="" id="username" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['username'] }}"></input>
-      <view class="btn">学号</view>
+      <input type="text" focus="{{ activeFocus['username'] }}" placeholder="" id="username" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['username'] }}"></input>
+      <view class="btn" bindtap="getFocusByWord" id="username">学号</view>
     </view>
 </view>
 
 <view class="panel">
     <view class="bn {{ active['vpnpassword'] ? 'bn-focus' : '' }}">
-      <input type="password" placeholder="" id="vpnpassword" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['vpnpassword'] }}"></input>
-      <view class="btn">校园网密码</view>
+      <input type="password"  focus="{{ activeFocus['vpnpassword'] }}" placeholder="" id="vpnpassword" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['vpnpassword'] }}"></input>
+      <view class="btn" bindtap="getFocusByWord" id="vpnpassword">校园网密码</view>
     </view>
 </view>
 
 <view class="panel">
     <view class="bn {{ active['password'] ? 'bn-focus' : '' }}">
-      <input type="password" placeholder="" id="password" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['password'] }}"></input>
-      <view class="btn">教务密码</view>
+      <input type="password" focus="{{ activeFocus['password'] }}" placeholder="" id="password" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['password'] }}"></input>
+      <view class="btn" bindtap="getFocusByWord" id="password">教务密码</view>
     </view>
 </view>
 <view class="submit-area">

@@ -44,7 +44,6 @@ Page({
         }
         this.setData({
             'hasGrade' : false,
-            'noGradeInfo' : '暂时无成绩!'
         });
         //渲染选择列表
         let yearList = new Array();

@@ -220,6 +220,7 @@ page{
   right:0px;
   margin:auto;
   background-color: white;
+  overflow: auto;
   z-index: 4;
 }
 
@@ -228,6 +229,8 @@ page{
   font-weight: bold;
   height: 100rpx;
   line-height: 100rpx;
+  overflow: auto;
+  white-space:nowrap;
   margin-top: 20rpx;
 }
 /* 表格基本的CSS */

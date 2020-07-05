@@ -21,7 +21,11 @@ App({
                     this.indexSwiperData = res.data.data;
                 }
                 else {
-                    console.log('轮播图获取失败')
+                    wx.showToast({
+                        title: '服务器繁忙，连接失败!',
+                        icon: "none"
+                    });
+                    throw new Error("轮播图信息获取失败!");
                 }
             }, (res) => {
                 console.log(res.errMsg);
@@ -114,7 +118,7 @@ App({
             type : 'alert',
             dataset : {
                 src : '',
-                alertcontent : '暂无'
+                alertcontent : '服务器连接繁忙，内容获取失败!'
             },
             image : 'https://s1.ax1x.com/2020/05/13/YamWdg.png'
         }

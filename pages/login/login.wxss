@@ -1,14 +1,19 @@
+.logo-area{
+  width:100%;
+  height:400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logo{
   width:200rpx;
   height:200rpx;
-  margin-left:270rpx;
-  margin-bottom:100rpx;
-  margin-top:100rpx;
 }
 /*调整一波距离*/
 .panel {
+  width:100%;
+  height:120rpx;
   text-align: center;
-  padding: 5% 0;
   position: relative;
 }
 .btn{
@@ -16,6 +21,8 @@
 }
 .panel>.bn {
   display: inline-block;
+  width:100%;
+  height:100%;
 }
 /*输入文本+输入框*/
 .panel>.bn>input {

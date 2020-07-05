@@ -34,7 +34,8 @@
       </view>
   </view>
   <view wx:if="{{ !hasGrade }}" class="no-grade">
-    {{ noGradeInfo }}
+    <view>暂时无成绩！</view>
+    <view>(点击头像或者右滑选择学期查询成绩)</view>
   </view>
   <view class="subject" wx:for="{{ allGradeInfo }}" wx:if="{{ hasGrade }}">
     <view class="subject-name" >

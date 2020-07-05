@@ -18,6 +18,11 @@ Page({
       'username' : false,
       'password' : false,
       'vpnpassword' : false
+    },
+    activeFocus : {
+      'username' : false,
+      'password' : false,
+      'vpnpassword' : false
     }
   },
 
@@ -198,7 +203,7 @@ Page({
     this.data.focusList[e.target.id] = true;
     this.setData({
       'active' : this.data.focusList
-    })
+    });
   },
   /**
    * 输入框失去焦点
@@ -208,6 +213,18 @@ Page({
     this.data.focusList[e.target.id] = false;
     this.setData({
       'active' : this.data.focusList
+    });
+  },
+  /**
+   * 点击文字获得焦点 
+   */
+  getFocusByWord : function(e) {
+    for(let key in this.data.activeFocus) {
+      this.data.activeFocus[key] = false;
+    }
+    this.data.activeFocus[e.target.id] = true;
+    this.setData({
+      'activeFocus' : this.data.activeFocus
     });
   }
 })
