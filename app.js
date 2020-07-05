@@ -18,13 +18,18 @@ App({
         // 请求首页轮播图信息
         token.request(AppConfig.APIAddress + AppConfig.swiperData, 'POST', {}, (res) => {
                 if(res.data.status) {
-                    this.indexSwiperData = res.data.data;
+                    this.indexSwiperData = res.data.data.swiper;
+                    this.globalData.notice = res.data.data.notice;
                 }
                 else {
-                    console.log('轮播图获取失败')
+                    wx.showToast({
+                        title: '服务器繁忙，连接失败!',
+                        icon: "none"
+                    });
+                    throw new Error("轮播图等信息获取失败!\n");
                 }
             }, (res) => {
-                console.log(res.errMsg);
+                throw new Error("轮播图等信息获取失败!\n" + res.errMsg);
             },
             {
                 'content-type' : 'application/x-www-form-urlencoded'
@@ -45,7 +50,11 @@ App({
        backgroundColor : '',
        id : '',
        headUrl : '',
-       config : AppConfig.funconfig
+       config : AppConfig.funconfig,
+       notice : {
+           id : '',
+           content : ''
+       }
     },
     /**
      * 更新颜色信息
@@ -114,7 +123,7 @@ App({
             type : 'alert',
             dataset : {
                 src : '',
-                alertcontent : '暂无'
+                alertcontent : '服务器连接繁忙，内容获取失败!'
             },
             image : 'https://s1.ax1x.com/2020/05/13/YamWdg.png'
         }

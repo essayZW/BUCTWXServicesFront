@@ -1,5 +1,6 @@
 // pages/index/index.js
 const App = getApp();
+const AppConfig = require('/../../utils/config.js');
 Page({
 
     /**
@@ -15,6 +16,24 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        if(App.globalData.notice.id.length) {
+            // 有通知
+            let noticeId = "";
+            if(AppConfig.has('noticeId')) {
+                noticeId = AppConfig.get('noticeId');
+            }
+            if(noticeId != App.globalData.notice.id) {
+                // 新的通知，或者未阅读过的通知
+                this.setData({
+                    'showMask' : true,
+                    'alertContent' : App.globalData.notice.content
+                });
+                wx.setStorage({
+                  data: App.globalData.notice.id,
+                  key: 'noticeId',
+                });
+            }
+        }
         // 修改本页面顶栏颜色
         App.setNavigatorColor();
     },

@@ -33,18 +33,8 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        // 渲染用户信息
-        if(AppConfig.has('userinfo')) {
-            let userInfo = AppConfig.get('userinfo');
-            this.setData({
-                'studentName' : userInfo['name'],
-                'studentClass' : userInfo['classInfo'],
-                'gpa' : userInfo['gpa']['gpa']
-            });
-        }
         this.setData({
             'hasGrade' : false,
-            'noGradeInfo' : '暂时无成绩!'
         });
         //渲染选择列表
         let yearList = new Array();
@@ -85,6 +75,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        // 渲染用户信息
+        if(AppConfig.has('userinfo')) {
+            let userInfo = AppConfig.get('userinfo');
+            this.setData({
+                'studentName' : userInfo['name'],
+                'studentClass' : userInfo['classInfo'],
+                'gpa' : userInfo['gpa']['gpa']
+            });
+        }
         let touch = require('/../../utils/touch.js');
         let touchObj = new touch(() => {
             this.listChange(false);
@@ -212,23 +211,28 @@ Page({
         let THIS = this;
         let syear = this.data.syear;
         let sclass = this.data.sclass;
-        jw.getAllGrade(syear, sclass, username, password, vpnusername, vpnpassword, function(data) {
+        jw.getAllGrade(syear, sclass, username, password, vpnusername, vpnpassword, function(res) {
             // 成功
             wx.hideToast();
             // 分析数据并展示
-            if(!data.data.status) {
+            if(!res.data.status) {
                 wx.hideToast({
-                    complete: (res) => {
+                    complete: () => {
                         wx.showToast({
-                            title: data.data.info,
+                            title: res.data.info,
                             icon: 'none'
                         });
                     },
                 })
                 return;
             }
-            let userInfo = data.data.sinfo;
-            data = data.data.data;
+            let userInfo = res.data.sinfo;
+            let data = res.data.data;
+            if(data == undefined || data.items == undefined) {
+                data = {
+                    items : []
+                };
+            }
             if(data.items.length == 0) {
                 wx.showToast({
                   title: '无成绩',

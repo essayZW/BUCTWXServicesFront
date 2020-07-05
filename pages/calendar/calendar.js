@@ -24,6 +24,8 @@ Page({
     onLoad: function (options) {
         // 修改本页面顶栏颜色
         App.setNavigatorColor();
+        let DateObj = new Date();
+        this.changeDay(DateObj.getFullYear(), DateObj.getMonth(), DateObj.getDate());
         // 实例化触摸类
         let touchObj = require('/../../utils/touch.js');
         touchObj = new touchObj(this.lastMonth, this.nextMonth)
@@ -46,8 +48,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        let DateObj = new Date();
-        this.changeDay(DateObj.getFullYear(), DateObj.getMonth(), DateObj.getDate());
         // 设置该页面主题色
         App.setPageColor(this);
         // 修改本页面顶栏颜色
