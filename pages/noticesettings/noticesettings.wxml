@@ -1,10 +1,10 @@
 <!--pages/noticesettings/noticesettings.wxml-->
-<view class="settings-item">
+<!-- <view class="settings-item">
     <view class="title">待办事件提前提醒天数</view>
     <picker value="{{ todoDay }}" range="{{ dayRange }}" bindchange="setDay" id="todo">
         <view class="text">当前选择: {{ todoDay }}</view>
     </picker>
-</view>
+</view> -->
 <view class="settings-item">
 <view class="title">考试事件提前提醒天数</view>
     <picker value="{{ examDay }}" range="{{ dayRange }}" bindchange="setDay" id="exam">
