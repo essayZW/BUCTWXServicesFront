@@ -49,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 或许今日待办
+    // 或取今日待办
     let todayEvent = this.getTodayEvent();
     this.setData({
       'eventList' : todayEvent
@@ -216,6 +216,7 @@ Page({
       obj.startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), sDate[1], sDate[2]).getTime();
       let eDate = this.__getA_BFormat(obj.eTime);
       obj.endTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), eDate[1], eDate[2]).getTime();
+      // 过期不与展示
       if(obj.endTime < new Date().getTime()) continue;
       obj.secondTitle = '第' + schedule[key].startClassNum + '~' + schedule[key].endClassNum + '节 ' + schedule[key].teacherInfo.name;
       // 默认不置顶

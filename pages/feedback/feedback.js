@@ -133,7 +133,7 @@ Page({
       (rep) => {
         if(!rep.data.status) {
           wx.showToast({
-            title: re.data.info,
+            title: rep.data.info,
             icon: 'none',
             duration: 700,
           });
