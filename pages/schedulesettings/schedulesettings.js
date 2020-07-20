@@ -244,6 +244,13 @@ Page({
             }
             let parsedData = schedule.parse(rep.data.data['kbList']);
             if(schedule.write(parsedData)) {
+                // 保存课表的学年和学期
+                App.globalData.config.schedule.xnm = xnm;
+                App.globalData.config.schedule.xqm = xqm;
+                wx.setStorage({
+                  data: App.globalData.config,
+                  key: 'settings',
+                });
                 wx.hideToast({
                   complete: (res) => {
                       wx.showToast({

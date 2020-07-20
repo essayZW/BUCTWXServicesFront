@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "wemark" : "../components/wemark/wemark"
+    "wemark" : "/components/wemark/wemark"
   }
 }

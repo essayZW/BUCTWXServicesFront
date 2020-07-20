@@ -1,6 +1,5 @@
 {
     "pages": [
-        
         "pages/index/index",
         "pages/jwgrade/jwgrade",
         "pages/jwexam/jwexam",
@@ -14,7 +13,8 @@
         "pages/settings/settings",
         "pages/help/help",
         "pages/noticesettings/noticesettings",
-        "pages/schedulesettings/schedulesettings"
+        "pages/schedulesettings/schedulesettings",
+        "pages/schedule/schedule"
     ],
     "window": {
         "backgroundTextStyle": "light",
