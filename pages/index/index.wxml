@@ -16,10 +16,10 @@
 </view>
 <view style="height:60rpx;width:100%;"></view>
 <view class="center">
-  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xwjg.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"> </image></view> 
-  <view class="image2"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xBuQ.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"> </image></view>
-  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/07/06/UiVUTe.jpg" data-src="/pages/calendar/calendar" bindtap="changePage"> </image></view>
-  <!-- <view class="image3"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xdgS.png" bindtap="changePage"> </image></view>  -->
+  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xwjg.png" data-src="/pages/jwgrade/jwgrade" bindtap="changePage"></image></view> 
+  <view class="image2"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xBuQ.png" data-src="/pages/jwexam/jwexam" bindtap="changePage"></image></view>
+  <view class="image3"><image class="index-link" src="https://s1.ax1x.com/2020/05/10/Y1xdgS.png" data-src="/pages/schedule/schedule" bindtap="changePage"></image></view> 
+  <view class="image1"><image class="index-link" src="https://s1.ax1x.com/2020/07/06/UiVUTe.jpg" data-src="/pages/calendar/calendar" bindtap="changePage"></image></view>
 </view>
 
 <!-- <view class="text-margin">

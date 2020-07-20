@@ -117,7 +117,11 @@ module.exports = {
         'schedule' : {
             // 课程表功能的相关设置
             // 本学期第一周第一天的时间戳
-            'startDay' : getWeekFirstDay(new Date())
+            'startDay' : getWeekFirstDay(new Date()),
+            // 学年
+            'xnm' : 0,
+            // 学期
+            'xqm' : 1
         }
     },
 

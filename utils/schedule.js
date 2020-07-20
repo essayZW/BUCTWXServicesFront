@@ -139,8 +139,8 @@ function getClassListInDay(weekNum, date) {
 function getClassListInWeek(weekNum) {
     const AllClassList = read();
     let res = [];
-    for(let i = 0; i < 7; i ++) {
-        res[i] = __parseDayClass(weekNum, i);
+    for(let i = 1; i <= 7; i ++) {
+        res[i] = __parseDayClass(AllClassList, weekNum, i);
     }
     return res;
 }
