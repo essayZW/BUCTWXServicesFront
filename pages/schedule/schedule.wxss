@@ -68,7 +68,7 @@ page{
 }
 .top {
     width: 100%;
-    height: 90rpx;
+    height: 70rpx;
     margin-bottom: 6rpx;
     position: relative;
     margin-top: 10rpx;
@@ -108,17 +108,17 @@ page{
 }
 .top-info-show>view{
     width: 100%;
-    height: 50%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     font-size: 24rpx;
 }
-.top-info-show>view:first-child {
-    font-size: 30rpx;
+.picker-area {
+    font-size: 25rpx;
 }
-.top-info-show>view>picker{
+.picker-area>picker{
     height:100%;
     width:100%;
     text-align: center;
@@ -127,8 +127,8 @@ page{
     align-items: center;
 }
 .down-icon{
-    width:60rpx;
-    height:60rpx;
+    width:37rpx;
+    height:37rpx;
     vertical-align: middle;
 }
 .top-setting-butt {
@@ -158,18 +158,26 @@ page{
     overflow: hidden;
     display: inline-flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     font-size: 25rpx;
     vertical-align: top;
+    align-content: flex-start;
 }
+.top-line>view:first-child {
+    align-content: center;
+}
+
 .week-title>view {
     width: 100%;
-    height: 50%;
+    max-height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: flex-start;
     overflow: hidden;
+    margin-bottom: 5rpx;
+    font-size: 25rpx;
+    float: left;
 }
 .time-table {
     display: flex;

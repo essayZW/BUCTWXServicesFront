@@ -4,12 +4,6 @@
         <view hidden="{{ showBackMenu }}" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}" bindtap="backToday">今</view>
     </view>
     <view class="top-info-show">
-        <view>
-            <picker value="{{ weekNum - 1 }}" range="{{ pickerRange }}" bindchange="pickerChangeWeek">
-                <text>第{{ weekNum }}周</text>
-                <image class="down-icon" src="/images/icon/downarrow.png"></image>
-            </picker>
-        </view>
         <view>{{ xnm }}-{{ xnm + 1 }} 第{{ xqm }}学期</view>
     </view>
     <view class="top-setting-butt">
@@ -20,7 +14,12 @@
 </view>
 <view class="container">
     <view class="row-start-0 row-end-0 column-start-0 column-end-7 block border-block top-line">
-        <view>第{{ weekNum }}周</view>
+        <view class="picker-area">
+            <picker value="{{ weekNum - 1 }}" range="{{ pickerRange }}" bindchange="pickerChangeWeek">
+                <text>第{{ weekNum }}周</text>
+                <image class="down-icon" src="/images/icon/downarrow.png"></image>
+            </picker>
+        </view>
         <view wx:for="{{ classInfo }}" wx:for-id="id" wx:for-index="index" class="week-title" style="{{ item.isActive ? 'background-color: ' + globalBackgroundTheme + ';' : ''}}">
             <view>{{ dayToStr[(index + 1) % 7] }}</view>
             <view>{{ item.month }}/{{ item.date }}</view>
