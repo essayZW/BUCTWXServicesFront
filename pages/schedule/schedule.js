@@ -83,7 +83,7 @@ Page({
                 content : "检测到未配置课程表信息，是否前往设置页面配置",
                 title : '未配置课表信息',
                 cancelText : '暂不配置',
-                confirmColor : '前往配置',
+                confirmText : '前往配置',
                 success : function(res) {
                     if(res.confirm) {
                         wx.navigateTo({
