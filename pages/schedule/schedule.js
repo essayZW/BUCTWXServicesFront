@@ -69,9 +69,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        let xnm = App.globalData.config.schedule.xnm;
+        if(xnm == undefined) xnm = 0;
+        let xqm = App.globalData.config.schedule.xqm;
+        if(xqm == undefined) xqm = 1;
         this.setData({
-            xnm : App.globalData.config.schedule.xnm,
-            xqm : App.globalData.config.schedule.xqm
+            xnm : xnm,
+            xqm : xqm
         });
         if(App.globalData.config.schedule.xnm == 0) {
             // 未配置课表信息
