@@ -14,7 +14,8 @@ Page({
         },
         selectRange : [
             [], [1, 2, 3]
-        ]
+        ],
+        datePickerRange : []
     },
 
     /**
@@ -29,12 +30,33 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        let today = AppConfig.getWeekFirstDay(new Date());
-        let weekNum = (today - new Date(App.globalData.config.schedule.startDay).getTime()) / (86400000 * 7) + 1;
+        let thisWeekFirstDay = AppConfig.getWeekFirstDay(new Date());
+        let weekNum = (thisWeekFirstDay - new Date(App.globalData.config.schedule.startDay).getTime()) / (86400000 * 7) + 1;
+
+        let todayObj = new Date();
+        let today = todayObj.getTime();
+        let pickerStartDay = new Date(todayObj.getFullYear() - 4, todayObj.getMonth(), todayObj.getDate());
+        pickerStartDay = AppConfig.getWeekFirstDay(pickerStartDay);
+        // 构建日期范围
+        let pickerRange = [];
+        let num = 0;
+        let startDayIndex = 0;
+        while(pickerStartDay <= today) {
+            if(pickerStartDay == App.globalData.config.schedule.startDay) {
+                startDayIndex = num;
+            }
+            let dateObj = new Date(pickerStartDay);
+            pickerRange[num] = dateObj.getFullYear();
+            pickerRange[num] += '-' + (dateObj.getMonth() + 1).toString().padStart(2, '0');
+            pickerRange[num] += '-' + dateObj.getDate().toString().padStart(2, '0');
+            num ++;
+            pickerStartDay += 604800000;
+        }
+        this.data.datePickerRange = pickerRange;
         this.setData({
-            'today' : this.getFormatDate(new Date()),
-            'startDay' : this.getFormatDate(new Date(App.globalData.config.schedule.startDay)),
-            'weekNum' : parseInt(weekNum)
+            'nowDatePickerIndex' : startDayIndex,
+            'datePickerRange' : pickerRange,
+            'weekNum' : parseInt(weekNum),
         });
 
         // 课表数据更新设置的相关数据绑定
@@ -123,22 +145,21 @@ Page({
      * 设置日期
      */
     setDay : function(e) {
-        let time = this.transFormatDate(e.detail.value);
+        let time = this.transFormatDate(this.data.datePickerRange[parseInt(e.detail.value)]);
         let dateObj = new Date(time[1], time[2] - 1, time[3]);
-        if(dateObj.getDay() != 1) {
-            wx.showToast({
-              title: '所选日期不是星期一，自动调整到星期一',
-              icon : 'none',
-              duration: 600
-            });
-            time = AppConfig.getWeekFirstDay(dateObj);
-            dateObj = new Date(time);
-        }
         this.data.selectDay.startDay = dateObj.getTime();
         let today = AppConfig.getWeekFirstDay(new Date());
         let weekNum = parseInt((today - dateObj.getTime()) / (86400000 * 7) + 1);
+        if(weekNum > 20) {
+            wx.showToast({
+              title: '不能大于20周',
+              image : '/images/icon/error.png',
+              duration : 700
+            });
+            return;
+        }
         this.setData({
-            startDay : this.getFormatDate(dateObj),
+            nowDatePickerIndex : parseInt(e.detail.value),
             weekNum : weekNum
         });
     },
