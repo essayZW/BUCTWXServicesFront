@@ -10,7 +10,8 @@ Page({
         startDay : new Date().getTime(),
         dayToStr : ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
         pickerRange : [],
-        thisWeekNum : 1
+        thisWeekNum : 1,
+        isOpen : true
     },
 
     /**
@@ -59,6 +60,7 @@ Page({
         let today = new Date().getTime();
         let weekNum = (today - this.data.startDay) / 604800000;
         weekNum = Math.ceil(weekNum);
+        if(weekNum > 20) weekNum = 20;
         this.data.thisWeekNum = weekNum;
         this.changeWeek(weekNum);
         // 修改本页面顶栏颜色
@@ -69,7 +71,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if(App.globalData.config.schedule.startDay != this.data.startDay) {
+        if(!this.data.isOpen) {
             this.onReady();
         }
         let xnm = App.globalData.config.schedule.xnm;
@@ -206,5 +208,15 @@ Page({
      */
     backToday : function() {
         this.changeWeek(this.data.thisWeekNum);
+    },
+    /**
+     * 页面跳转
+     */
+    navigatorTo : function(e) {
+        if(!e.currentTarget.dataset.src) return;
+        this.data.isOpen = false;
+        wx.navigateTo({
+          url: e.currentTarget.dataset.src,
+        });
     }
 })

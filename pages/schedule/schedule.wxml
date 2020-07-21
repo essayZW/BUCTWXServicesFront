@@ -7,9 +7,9 @@
         <view>{{ xnm }}-{{ xnm + 1 }} 第{{ xqm }}学期</view>
     </view>
     <view class="top-setting-butt">
-        <navigator url="/pages/schedulesettings/schedulesettings">
+        <view data-src="/pages/schedulesettings/schedulesettings" bindtap="navigatorTo">
             <image src="/images/icon/settings.png"></image>
-        </navigator>
+        </view>
     </view>
 </view>
 <view class="container">

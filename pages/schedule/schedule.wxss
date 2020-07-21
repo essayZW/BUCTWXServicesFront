@@ -141,14 +141,14 @@ page{
     justify-content: center;
     align-items: center;
 }
-.top-setting-butt>navigator{
+.top-setting-butt>view{
     width: 80%;
     height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.top-setting-butt>navigator>image{
+.top-setting-butt>view>image{
     width:40rpx;
     height:40rpx;
 }
