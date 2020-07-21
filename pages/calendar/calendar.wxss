@@ -51,7 +51,7 @@
 }
 #monthday-list>view{
     height:90rpx;
-    font-weight: 500;
+    font-weight: bold;
 }
 #monthday-list>view>view{
     height:50%;
@@ -59,7 +59,7 @@
 /* 当天 */
 .day-active{
     /* background-color: #0ae; */
-    font-weight: 500;
+    font-weight: bold;
     color: white;
     border-radius: 12rpx;
 }
@@ -110,7 +110,7 @@
     line-height: 70rpx;
 }
 .todo-title{
-    font-weight: bolder;
+    font-weight: bold;
     font-size: large;
 }
 
@@ -184,7 +184,7 @@
 }
 .detail-title-s{
     font-size: 55rpx;
-    font-weight: 350;
+    font-weight: bold;
 }
 .detail-title{
     width:100%;
@@ -275,7 +275,7 @@
     height:100rpx;
     width: 80%;
     font-size: 60rpx;
-    font-weight: 350;
+    font-weight: bold;
     color: white;
     border:none;
     border-bottom: 2px solid black;

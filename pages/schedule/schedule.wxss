@@ -125,6 +125,7 @@ page{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 .down-icon{
     width:37rpx;
@@ -194,7 +195,7 @@ page{
     overflow: hidden;
 }
 .time-table>view:first-child{
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 24rpx;
 }
 .time-table>view:last-child {

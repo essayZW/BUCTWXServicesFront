@@ -69,6 +69,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        if(App.globalData.config.schedule.startDay != this.data.startDay) {
+            this.onReady();
+        }
         let xnm = App.globalData.config.schedule.xnm;
         if(xnm == undefined) xnm = 0;
         let xqm = App.globalData.config.schedule.xqm;
