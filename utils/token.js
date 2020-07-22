@@ -1,4 +1,5 @@
 // token加密函数
+let _version = '1.2.2.200722'
 function encrypt(timetoken, random) {
     let numArr = new Array();
     while(timetoken) {
@@ -45,7 +46,7 @@ function request(url, method = 'GET', data, successCallBack, failCallBack, heade
     let timetoken = new Date().getTime();
     let rtoken = encrypt(timetoken, random);
     wx.request({
-      url: url + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
+      url: url + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random + '&version=' + _version,
       method: method,
       data : data,
       success: successCallBack,
@@ -59,7 +60,8 @@ module.exports = {
     'random'  : myrandom,
     'base64encrypt' : base64_encode,
     'base64decrypt' : base64_decode,
-    'request' : request
+    'request' : request,
+    'version' : _version
 }
 
 function base64_encode (str) {

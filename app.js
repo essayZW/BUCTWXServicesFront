@@ -95,7 +95,8 @@ App({
        notice : {
            id : '',
            content : ''
-       }
+       },
+       version : token.version
     },
     /**
      * 更新颜色信息
