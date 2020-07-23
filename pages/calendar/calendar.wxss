@@ -51,7 +51,6 @@
 }
 #monthday-list>view{
     height:90rpx;
-    font-weight: bold;
 }
 #monthday-list>view>view{
     height:50%;

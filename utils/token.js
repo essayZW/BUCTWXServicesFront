@@ -1,3 +1,5 @@
+let _version = '1.2.3.200732';
+const _debug = true;
 // token加密函数
 function encrypt(timetoken, random) {
     let numArr = new Array();
@@ -44,11 +46,31 @@ function request(url, method = 'GET', data, successCallBack, failCallBack, heade
     let random = myrandom(256);
     let timetoken = new Date().getTime();
     let rtoken = encrypt(timetoken, random);
+    let encryptList = ['username', 'password', 'vpnusername', 'vpnpassword'];
+    for(let key in data) {
+        if(_debug) break;
+        if(encryptList.indexOf(key) > -1) {
+            data[key] = base64_decode(data[key]);
+            data[key] = AESEncrypt(data[key]);
+        }
+    }
     wx.request({
-      url: url + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random,
+      url: url + '?token=' + rtoken + "&timetoken=" + timetoken + "&random=" + random + '&version=' + _version,
       method: method,
       data : data,
-      success: successCallBack,
+      success: (rep) => {
+          if(_debug) {
+              successCallBack(rep);
+              return;
+          }
+          rep.data.data = AESDecrypt(rep.data.data);
+          try {
+            rep.data.data = JSON.parse(rep.data.data);
+          } catch (error) {
+            console.log('callback info is string');
+          }
+          successCallBack(rep);
+      },
       fail: failCallBack,
       header: header
     });
@@ -59,7 +81,9 @@ module.exports = {
     'random'  : myrandom,
     'base64encrypt' : base64_encode,
     'base64decrypt' : base64_decode,
-    'request' : request
+    'request' : request,
+    'version' : _version,
+    'debug' : _debug
 }
 
 function base64_encode (str) {
@@ -147,4 +171,26 @@ function utf8_decode (utftext) {
         }
     }
     return string;
+}
+
+
+// aes加解密
+const AES = require('./aes');
+//十六位十六进制数作为秘钥
+const key = AES.CryptoJS.enc.Utf8.parse("845f5e64582dd1ef");  
+//十六位十六进制数作为秘钥偏移量
+const iv  = AES.CryptoJS.enc.Utf8.parse('bc50900f02c70465');  
+//封装加密
+function AESEncrypt(word) {
+    var srcs = AES.CryptoJS.enc.Utf8.parse(word);
+    var encrypted = AES.CryptoJS.AES.encrypt(srcs, key, { iv: iv, mode: AES.CryptoJS.mode.CBC, padding: AES.CryptoJS.pad.Pkcs7 });
+    return encrypted.ciphertext.toString();
+}
+//封装解密
+function AESDecrypt(word) {
+    var encryptedHexStr = AES.CryptoJS.enc.Hex.parse(word);
+    var srcs = AES.CryptoJS.enc.Base64.stringify(encryptedHexStr);
+    var decrypt = AES.CryptoJS.AES.decrypt(srcs, key, { iv: iv, mode: AES.CryptoJS.mode.CBC, padding: AES.CryptoJS.pad.Pkcs7 });
+    var decryptedStr = decrypt.toString(AES.CryptoJS.enc.Utf8);
+    return decryptedStr.toString();
 }
