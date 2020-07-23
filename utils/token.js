@@ -1,4 +1,4 @@
-let _version = '1.2.2.200722';
+let _version = '1.2.3.200732';
 const _debug = true;
 // token加密函数
 function encrypt(timetoken, random) {
