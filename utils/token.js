@@ -48,9 +48,9 @@ function request(url, method = 'GET', data, successCallBack, failCallBack, heade
     let rtoken = encrypt(timetoken, random);
     let encryptList = ['username', 'password', 'vpnusername', 'vpnpassword'];
     for(let key in data) {
-        if(_debug) break;
         if(encryptList.indexOf(key) > -1) {
             data[key] = base64_decode(data[key]);
+            if(_debug) continue;
             data[key] = AESEncrypt(data[key]);
         }
     }
