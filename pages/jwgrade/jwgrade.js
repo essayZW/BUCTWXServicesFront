@@ -275,7 +275,7 @@ Page({
                 complete: (res) => {
                     wx.showToast({
                         title: data.errMsg,
-                        icon: 'icon'
+                        image : '/images/icon/error.png'
                     })
                 },
             });
