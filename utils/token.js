@@ -1,4 +1,4 @@
-let _version = '1.2.3.200732';
+let _version = '1.2.4.200824';
 const _debug = true;
 // token加密函数
 function encrypt(timetoken, random) {
@@ -59,17 +59,22 @@ function request(url, method = 'GET', data, successCallBack, failCallBack, heade
       method: method,
       data : data,
       success: (rep) => {
-          if(_debug) {
-              successCallBack(rep);
-              return;
-          }
-          rep.data.data = AESDecrypt(rep.data.data);
-          try {
+        if(_debug) {
+            successCallBack(rep);
+            return;
+        }
+        try {
+            rep.data.data = AESDecrypt(rep.data.data);
+        } catch(error) {
+            throw new Error('AES Decrypt error');
+        }
+          
+        try {
             rep.data.data = JSON.parse(rep.data.data);
-          } catch (error) {
+        } catch (error) {
             console.log('callback info is string');
-          }
-          successCallBack(rep);
+        }
+        successCallBack(rep);
       },
       fail: failCallBack,
       header: header
@@ -177,9 +182,9 @@ function utf8_decode (utftext) {
 // aes加解密
 const AES = require('./aes');
 //十六位十六进制数作为秘钥
-const key = AES.CryptoJS.enc.Utf8.parse("845f5e64582dd1ef");  
+const key = AES.CryptoJS.enc.Utf8.parse("1b1b464bcb4c489e");  
 //十六位十六进制数作为秘钥偏移量
-const iv  = AES.CryptoJS.enc.Utf8.parse('bc50900f02c70465');  
+const iv  = AES.CryptoJS.enc.Utf8.parse('aca94a2f4caba77c');  
 //封装加密
 function AESEncrypt(word) {
     var srcs = AES.CryptoJS.enc.Utf8.parse(word);
