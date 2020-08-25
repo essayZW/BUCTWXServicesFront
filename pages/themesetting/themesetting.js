@@ -132,6 +132,7 @@ Page({
             this.data.isSet[i] = false;
         }
         this.data.isSet[id] = true;
+        this.inputData.color = color;
         this.setData({
             'isSet' : this.data.isSet,
             'currentColorCode' : color
@@ -163,6 +164,7 @@ Page({
      * 颜色选择器颜色确认
      */
     confirmColor : function(e) {
+        this.inputData.color = e.detail.value;
         this.setSystemColor({
             currentTarget : {
                 dataset : {
@@ -185,6 +187,7 @@ Page({
         this.setData({
             'edit' : this.data.edit
         });
+
         this.setSystemColor({
             currentTarget : {
                 dataset : {
