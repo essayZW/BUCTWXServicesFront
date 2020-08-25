@@ -37,6 +37,7 @@
         <view style="color: {{ globalFrontTheme }}; background-color: rgb({{ item.color }});">
             <view>{{ item.className }}</view>
             <view>{{ item.position }}</view>
+            <view>{{ item.teacherName }}</view>
         </view> 
     </view>
 </view>

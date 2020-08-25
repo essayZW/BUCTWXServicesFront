@@ -175,6 +175,7 @@ Page({
                 classTable[nums].class += `column-start-${i} column-end-${i}`;
                 classTable[nums].position = allSchedule[i][key].position;
                 classTable[nums].color = this.getRandomColor();
+                classTable[nums].teacherName = allSchedule[i][key].teacherInfo.name;
                 nums ++;
             }
         }

@@ -182,9 +182,9 @@ function utf8_decode (utftext) {
 // aes加解密
 const AES = require('./aes');
 //十六位十六进制数作为秘钥
-const key = AES.CryptoJS.enc.Utf8.parse("1b1b464bcb4c489e");  
+const key = AES.CryptoJS.enc.Utf8.parse("");  
 //十六位十六进制数作为秘钥偏移量
-const iv  = AES.CryptoJS.enc.Utf8.parse('aca94a2f4caba77c');  
+const iv  = AES.CryptoJS.enc.Utf8.parse('');  
 //封装加密
 function AESEncrypt(word) {
     var srcs = AES.CryptoJS.enc.Utf8.parse(word);
