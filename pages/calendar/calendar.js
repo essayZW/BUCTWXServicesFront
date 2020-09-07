@@ -234,7 +234,7 @@ Page({
      * 为日历中的每一天设置其当天日程
      */
     getTodoList : function(year, month, day) {
-        let todoList = AppConfig.read(wx.env.USER_DATA_PATH + '/todo.json');
+        let todoList = AppConfig.read('todo_json');
         if(todoList === {}) return [];
         if(todoList[year] && todoList[year][month] && todoList[year][month][day]) {
             return todoList[year][month][day];
@@ -245,7 +245,7 @@ Page({
      * 得到每天的 shortInfo
      */
     getShortInfo : function(calendar) {
-        let todoList = AppConfig.read(wx.env.USER_DATA_PATH + '/todo.json');
+        let todoList = AppConfig.read('todo_json');
         if(todoList === {}) return calendar;
         for(let i = 0; i < calendar.length; i ++) {
             let year = calendar[i]['year'];
@@ -393,9 +393,13 @@ Page({
         if(this.data.changeBool) {
             // 现在处于修改模式
             this.data.changeBool = false;
-            todoManage.del(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, this.data.showData.id);
+            this.addOrChangeCallback(todoManage.change(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, this.data.showData.id, data));
+            return;
         }
-        if(todoManage.add(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, data)){
+        this.addOrChangeCallback(todoManage.add(this.data.currentShowYear, this.data.currentShowMonth, this.data.currentShowDay, data));
+    },
+    addOrChangeCallback : function(flag) {
+        if(flag){
             wx.showToast({
               title: '成功',
               duration: 600

@@ -32,7 +32,6 @@ Page({
     onReady: function () {
         let thisWeekFirstDay = AppConfig.getWeekFirstDay(new Date());
         let weekNum = (thisWeekFirstDay - new Date(App.globalData.config.schedule.startDay).getTime()) / (86400000 * 7) + 1;
-        console.log(weekNum);
         let todayObj = new Date();
         let today = todayObj.getTime();
         let pickerStartDay = new Date(todayObj.getFullYear() - 4, todayObj.getMonth(), todayObj.getDate());
@@ -52,7 +51,9 @@ Page({
             num ++;
             pickerStartDay += 604800000;
         }
-        startDayIndex = pickerRange.length - 1;
+        if(startDayIndex == 0) {
+            startDayIndex = pickerRange.length - 1;
+        }
         this.data.datePickerRange = pickerRange;
         this.setData({
             'nowDatePickerIndex' : startDayIndex,
@@ -283,7 +284,7 @@ Page({
                         duration: 600,
                       });
                       setTimeout(() => {
-                          wx.navigateBack();
+                        this.saveSettings();
                       }, 620);
                   }
                 });

@@ -11,7 +11,7 @@
             <view wx:for="{{ weekdayList }}">{{ item }}</view>
         </view>
         <view id="monthday-list" bindtouchstart="touchStart" bindtouchmove="touchMove">
-            <view wx:for="{{ monthdayList }}" wx:key="id" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}" style="{{ item.currentDayBool ? 'background-color: ' + globalBackgroundTheme + '; color: ' +  globalFrontTheme + ';': ''}}">
+            <view wx:for="{{ monthdayList }}" wx:key="id" class="{{ item.currentDayBool ? 'day-active' : ''}} {{ item.inThisMonth ? '' : '.day-not-inmonth'}}" bindtap="clickChangeDay" data-year="{{ item.year }}" data-month="{{ item.month }}" data-day="{{ item.day }}" style="{{ item.currentDayBool ? 'background-color: ' + globalBackgroundTheme + ';' : ''}}">
                 <view>{{ item.day }}</view><view class="day-info">{{ item.shortInfo }}</view>
             </view>
         </view>
@@ -70,7 +70,7 @@
     <view class="add-area">
         <view class="detail-title-time" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }}">
             <!-- 输入待办的标题 -->
-            <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="10" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }};" value="{{ edit.title }}"></input>
+            <input type="text" placeholder="点击编辑标题" id="title" bindchange="saveInput" maxlength="10" placeholder-style="color: {{ globalFrontTheme }};" style="border-color: {{ globalFrontTheme }}; color: {{ globalFrontTheme }}" value="{{ edit.title }}"></input>
             <!-- 待办的时间区间选择 -->
             <view class="time-picker">
                 <image class="time-logo" src="/images/icon/time2.png"></image><text class="detail-time-text" style="color: {{ globalFrontTheme }};" decode="{{true}}">&ensp;{{ month }}月{{ day }}日{{ weekday }}&ensp;</text>

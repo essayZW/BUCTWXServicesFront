@@ -1,4 +1,4 @@
-const TodoListJSONFileName = wx.env.USER_DATA_PATH + '/todo.json';
+const TodoListJSONFileName = 'todo_json';
 /**
  * 保存一个待办信息到某一天
  * @param {integer} year 
@@ -87,6 +87,9 @@ function changeTodo(year, month, day, id, data) {
         return false;
     }
     for(let key in data) {
+        if(key == 'type') {
+            continue;
+        }
         hadTodoList[year][month][day][id][key] = data[key];
     }
     hadTodoList[year][month][day] = sortTodo(hadTodoList[year][month][day]);

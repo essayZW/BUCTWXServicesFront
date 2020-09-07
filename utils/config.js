@@ -6,8 +6,8 @@ function get(name) {
     try {
         returndata = wx.getStorageSync(name);
     } catch (e) {
-        returndata = false;
-        console.log(e);
+        returndata = null;
+        console.error(e);
     }
     return returndata;
 }
@@ -25,34 +25,34 @@ function has(name) {
     }
     return data ? true : false;
 }
-
+// 以缓存存储的文件的前缀
+const fileprefix = '__file_';
 /**
- * 读取某个JSON文件并转化为对象返回
+ * 缓存文件是否存在
+ * @param string filename 
+ */
+function fileHas(filename) {
+    return has(fileprefix + filename);
+}
+/**
+ * 读取文件缓存
  */
 function readJSONFile(filename) {
-    let flag;
-    try {
-        wx.getFileSystemManager().accessSync(filename);
-        flag = true;
-    } catch (error) {
-        console.log(filename + ' don\'t exists');
-        flag = false;
-    }
-    if(!flag) return {};
-    let res = wx.getFileSystemManager().readFileSync(filename, 'utf-8');
-    return JSON.parse(res);
+    let res = get(fileprefix + filename);
+    if(res == null || res == '') res = {};
+    return res;
 }
 /**
  * 覆盖写入JSON文件
  */
 function writeJSONFile(filename, obj) {
-    let flag;
-    try{
-        wx.getFileSystemManager().writeFileSync(filename, JSON.stringify(obj), 'utf8');
-        flag = true;
+    let flag = true;
+    try {
+        wx.setStorageSync(fileprefix + filename, obj);
     }
-    catch(e) {
+    catch (error) {
         flag = false;
+        console.error(error);
     }
     return flag;
 }
@@ -132,7 +132,8 @@ module.exports = {
     'has' : has,
     'read' : readJSONFile,
     'write' : writeJSONFile,
-    'getWeekFirstDay' : getWeekFirstDay
+    'getWeekFirstDay' : getWeekFirstDay,
+    'fileHas' : fileHas
 }
 
 function getWeekFirstDay(dateObj) {

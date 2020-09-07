@@ -1,4 +1,4 @@
-let _version = '1.2.5.200825';
+let _version = '1.3.0.200907';
 const _debug = true;
 // token加密函数
 function encrypt(timetoken, random) {
@@ -63,16 +63,18 @@ function request(url, method = 'GET', data, successCallBack, failCallBack, heade
             successCallBack(rep);
             return;
         }
-        try {
-            rep.data.data = AESDecrypt(rep.data.data);
-        } catch(error) {
-            throw new Error('AES Decrypt error');
-        }
-          
-        try {
-            rep.data.data = JSON.parse(rep.data.data);
-        } catch (error) {
-            console.log('callback info is string');
+        if(typeof(rep.data.data) == 'string') {
+            try {
+                rep.data.data = AESDecrypt(rep.data.data);
+            } catch(error) {
+                throw new Error('AES Decrypt error');
+            }
+              
+            try {
+                rep.data.data = JSON.parse(rep.data.data);
+            } catch (error) {
+                console.log('callback info is string');
+            }
         }
         successCallBack(rep);
       },

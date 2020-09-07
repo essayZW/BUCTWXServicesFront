@@ -36,6 +36,7 @@ Page({
         }
         this.data.isSet[App.globalData.id] = true;
         this.data.useBlack = (App.globalData.frontColor === '#000000');
+        this.inputData.color = App.globalData.backgroundColor;
         this.setData({
             'isSet' : this.data.isSet,
             'useBlack' : this.data.useBlack,
@@ -185,7 +186,7 @@ Page({
         if(this.data.edit) return;
         let color = this.inputData.color;
         this.setData({
-            'edit' : this.data.edit
+            'edit' : this.data.edit,
         });
 
         this.setSystemColor({

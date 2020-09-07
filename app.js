@@ -14,7 +14,7 @@ App({
         updateManager.onUpdateReady(function () {
             wx.showModal({
                 title: '更新提示',
-                content: '新版本已经准备好，是否重启应用？',
+                content: '检测到版本更新，是否重启应用？',
                 success(res) {
                     if (res.confirm) {
                         // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
@@ -54,7 +54,7 @@ App({
 
         // 请求首页轮播图信息
         token.request(AppConfig.APIAddress + AppConfig.swiperData, 'POST', {}, (res) => {
-                if(res.data.status) {
+                if(res.data.status == true) {
                     if(res.data.data.swiper != undefined) {
                         this.indexSwiperData = res.data.data.swiper;
                     }
@@ -64,7 +64,7 @@ App({
                 }
                 else {
                     wx.showToast({
-                        title: '服务器繁忙，连接失败!',
+                        title: res.data.info ? res.data.info : '服务器繁忙，连接失败!',
                         icon: "none"
                     });
                     throw new Error("轮播图等信息获取失败!\n");
