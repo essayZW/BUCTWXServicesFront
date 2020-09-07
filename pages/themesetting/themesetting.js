@@ -36,6 +36,7 @@ Page({
         }
         this.data.isSet[App.globalData.id] = true;
         this.data.useBlack = (App.globalData.frontColor === '#000000');
+        this.inputData.color = App.globalData.backgroundColor;
         this.setData({
             'isSet' : this.data.isSet,
             'useBlack' : this.data.useBlack,
@@ -132,6 +133,7 @@ Page({
             this.data.isSet[i] = false;
         }
         this.data.isSet[id] = true;
+        this.inputData.color = color;
         this.setData({
             'isSet' : this.data.isSet,
             'currentColorCode' : color
@@ -163,6 +165,7 @@ Page({
      * 颜色选择器颜色确认
      */
     confirmColor : function(e) {
+        this.inputData.color = e.detail.value;
         this.setSystemColor({
             currentTarget : {
                 dataset : {
@@ -183,8 +186,9 @@ Page({
         if(this.data.edit) return;
         let color = this.inputData.color;
         this.setData({
-            'edit' : this.data.edit
+            'edit' : this.data.edit,
         });
+
         this.setSystemColor({
             currentTarget : {
                 dataset : {

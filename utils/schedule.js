@@ -1,6 +1,6 @@
 // 课程表解析等相关API
 
-const scheduleFileName = wx.env.USER_DATA_PATH + '/schedule.json';
+const scheduleFileName = 'schedule_json';
 const file = require('./config.js')
 /**
  * 覆盖写入课程表到文件
@@ -16,7 +16,12 @@ function write(schedule) {
 function read() {
     return file.read(scheduleFileName);
 }
-
+/**
+ * 判断是否存在文件
+ */
+function has() {
+    return file.fileHas(scheduleFileName);
+}
 /**
  * 解析课程表，参数是教务系统返回的JSON格式课程表
  * @param {object} jwSchedule 
@@ -150,7 +155,8 @@ module.exports = {
     'write' : write,
     'getWeekDayClass' : getClassListInDay,
     'getWeekClass' : getClassListInWeek,
-    'parse' : parse
+    'parse' : parse,
+    'has' : has
 }
 
 // 以下为私有方法

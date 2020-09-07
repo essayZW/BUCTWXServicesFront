@@ -32,7 +32,6 @@ Page({
     onReady: function () {
         let thisWeekFirstDay = AppConfig.getWeekFirstDay(new Date());
         let weekNum = (thisWeekFirstDay - new Date(App.globalData.config.schedule.startDay).getTime()) / (86400000 * 7) + 1;
-
         let todayObj = new Date();
         let today = todayObj.getTime();
         let pickerStartDay = new Date(todayObj.getFullYear() - 4, todayObj.getMonth(), todayObj.getDate());
@@ -52,6 +51,9 @@ Page({
             num ++;
             pickerStartDay += 604800000;
         }
+        if(startDayIndex == 0) {
+            startDayIndex = pickerRange.length - 1;
+        }
         this.data.datePickerRange = pickerRange;
         this.setData({
             'nowDatePickerIndex' : startDayIndex,
@@ -64,21 +66,24 @@ Page({
         for(let i = 2000; i <= year; i ++) {
             this.data.selectRange[0][i - 2000] = i;
         }
-        let month = new Date().getMonth() + 1;
-        let xnm = year;
-        let xqm;
-        if((month >= 9 && month <= 12) || (month >= 1 && month <= 2)) {
-            xqm = 1;
-            if(month >= 1 && month <= 2) xnm --;
-        }
-        else if(month > 2 && month <= 6) {
-            xqm = 2;
-            xnm --;
-            
-        }
-        else {
-            xqm = 3;
-            xnm --;
+        let xnm = App.globalData.config.schedule.xnm;
+        let xqm = App.globalData.config.schedule.xqm;
+        if(xnm == 0) {
+            let month = new Date().getMonth() + 1;
+            xnm = new Date().getFullYear();
+            if((month >= 9 && month <= 12) || (month >= 1 && month <= 2)) {
+                xqm = 1;
+                if(month >= 1 && month <= 2) xnm --;
+            }
+            else if(month > 2 && month <= 6) {
+                xqm = 2;
+                xnm --;
+                
+            }
+            else {
+                xqm = 3;
+                xnm --;
+            }
         }
         this.data.selectIndex = [xnm - 2000, xqm - 1];
         this.setData({
@@ -279,7 +284,7 @@ Page({
                         duration: 600,
                       });
                       setTimeout(() => {
-                          wx.navigateBack();
+                        this.saveSettings();
                       }, 620);
                   }
                 });

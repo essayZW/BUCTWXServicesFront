@@ -25,6 +25,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
+        this.data.isOpen = true;
         // 获取本学期的第一天
         this.data.startDay = App.globalData.config.schedule.startDay;
         for(let i = 1; i <= 20; i ++) {
@@ -71,9 +72,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if(!this.data.isOpen) {
-            this.onReady();
-        }
         let xnm = App.globalData.config.schedule.xnm;
         if(xnm == undefined) xnm = 0;
         let xqm = App.globalData.config.schedule.xqm;
@@ -82,21 +80,25 @@ Page({
             xnm : xnm,
             xqm : xqm
         });
-        if(App.globalData.config.schedule.xnm == 0) {
+        if(!ScheduleManager.has()) {
             // 未配置课表信息
             wx.showModal({
                 content : "检测到未配置课程表信息，是否前往设置页面配置",
                 title : '未配置课表信息',
                 cancelText : '暂不配置',
                 confirmText : '前往配置',
-                success : function(res) {
+                success : (res) => {
                     if(res.confirm) {
+                        this.data.isOpen = false;
                         wx.navigateTo({
                           url: '/pages/schedulesettings/schedulesettings',
                         });
                     }
                 }
             });
+        }
+        if(!this.data.isOpen) {
+            this.onReady();
         }
         // 设置该页面主题色
         App.setPageColor(this);
@@ -175,6 +177,7 @@ Page({
                 classTable[nums].class += `column-start-${i} column-end-${i}`;
                 classTable[nums].position = allSchedule[i][key].position;
                 classTable[nums].color = this.getRandomColor();
+                classTable[nums].teacherName = allSchedule[i][key].teacherInfo.name;
                 nums ++;
             }
         }

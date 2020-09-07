@@ -12,7 +12,7 @@ Page({
     inputData : {
       'username' : '',
       'password' : '',
-      'vpnpassword' : ''
+      'vpnpassword' : 'bucter'
     },
     focusList : {
       'username' : false,

@@ -9,12 +9,12 @@
     </view>
 </view>
 
-<view class="panel">
+<!-- <view class="panel">
     <view class="bn {{ active['vpnpassword'] ? 'bn-focus' : '' }}">
       <input type="password"  focus="{{ activeFocus['vpnpassword'] }}" placeholder="" id="vpnpassword" bindinput="saveInput" bindfocus="getFocus" bindblur="lostFocus" value="{{ storageData['vpnpassword'] }}"></input>
       <view class="btn" bindtap="getFocusByWord" id="vpnpassword">校园网密码</view>
     </view>
-</view>
+</view> -->
 
 <view class="panel">
     <view class="bn {{ active['password'] ? 'bn-focus' : '' }}">
