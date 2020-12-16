@@ -122,6 +122,11 @@ module.exports = {
             'xnm' : 0,
             // 学期
             'xqm' : 1
+        },
+        'calendar' : {
+            // 日历界面的相关设置
+            // 是否启用
+            'activate' : false
         }
     },
 

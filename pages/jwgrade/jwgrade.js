@@ -50,7 +50,7 @@ Page({
         else {
             sclass = 3;
         }
-        for(let i = 2000; i < nowyear; i ++) {
+        for(let i = 2000; i <= nowyear; i ++) {
             yearList.push(i);
         }
         this.data.syear = nowyear - 1;

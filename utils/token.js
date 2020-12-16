@@ -1,5 +1,5 @@
 let _version = '1.3.0.200907';
-const _debug = true;
+const _debug = false;
 // token加密函数
 function encrypt(timetoken, random) {
     let numArr = new Array();
@@ -184,9 +184,9 @@ function utf8_decode (utftext) {
 // aes加解密
 const AES = require('./aes');
 //十六位十六进制数作为秘钥
-const key = AES.CryptoJS.enc.Utf8.parse("");  
+const key = AES.CryptoJS.enc.Utf8.parse("737a25cb4ad06049");  
 //十六位十六进制数作为秘钥偏移量
-const iv  = AES.CryptoJS.enc.Utf8.parse('');  
+const iv  = AES.CryptoJS.enc.Utf8.parse('1c8e2b7862731e6c');  
 //封装加密
 function AESEncrypt(word) {
     var srcs = AES.CryptoJS.enc.Utf8.parse(word);
