@@ -1,5 +1,5 @@
 # BUCTWXServicesFront
-参加BUCT小程序比赛的前端代码
+BUCT轻触 小程序前端代码
 
 # 全局主题适配指南
 
