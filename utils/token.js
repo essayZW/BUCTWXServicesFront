@@ -1,5 +1,5 @@
-let _version = '1.3.0.200907';
-const _debug = true;
+let _version = '1.3.1.210124';
+const _debug = false;
 // token加密函数
 function encrypt(timetoken, random) {
     let numArr = new Array();

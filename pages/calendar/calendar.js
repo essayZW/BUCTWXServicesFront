@@ -15,7 +15,8 @@ Page({
         'currentShowCalendar' : null,
         'currentTodoList' : null,
         'showData' : {},
-        'changeBool' : false
+        'changeBool' : false,
+        'activate' : App.globalData.config.calendar.activate
     },
 
     /**

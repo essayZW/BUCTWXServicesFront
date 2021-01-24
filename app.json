@@ -1,51 +1,52 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/jwgrade/jwgrade",
-        "pages/jwexam/jwexam",
-        "pages/feedback/feedback",
-        "pages/mine/mine",
-        "pages/login/login",
-        "pages/notice/notice",
-        "pages/calendar/calendar",
-        "pages/themesetting/themesetting",
-        "pages/about/about",
-        "pages/settings/settings",
-        "pages/help/help",
-        "pages/noticesettings/noticesettings",
-        "pages/schedulesettings/schedulesettings",
-        "pages/schedule/schedule"
+  "pages": [
+    "pages/index/index",
+    "pages/jwgrade/jwgrade",
+    "pages/jwexam/jwexam",
+    "pages/feedback/feedback",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/notice/notice",
+    "pages/calendar/calendar",
+    "pages/themesetting/themesetting",
+    "pages/about/about",
+    "pages/settings/settings",
+    "pages/help/help",
+    "pages/noticesettings/noticesettings",
+    "pages/schedulesettings/schedulesettings",
+    "pages/schedule/schedule",
+    "pages/spaceclassroom/spaceclassroom"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "轻触",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon/index.png",
+        "selectedIconPath": "images/icon/index_.png"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "text": "通知",
+        "iconPath": "images/icon/notice.png",
+        "selectedIconPath": "images/icon/notice_.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mine_.png"
+      }
     ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTitleText": "轻触",
-        "navigationBarTextStyle": "white"
-    },
-    "tabBar": {
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "images/icon/index.png",
-                "selectedIconPath": "images/icon/index_.png"
-            },
-            {
-                "pagePath": "pages/notice/notice",
-                "text": "通知",
-                "iconPath": "images/icon/notice.png",
-                "selectedIconPath": "images/icon/notice_.png"
-            },
-            {
-                "pagePath": "pages/mine/mine",
-                "text": "我的",
-                "iconPath": "images/icon/mine.png",
-                "selectedIconPath": "images/icon/mine_.png"
-            }
-        ],
-        "color": "#515151",
-        "selectedColor": "#515151"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json"
+    "color": "#515151",
+    "selectedColor": "#515151"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }

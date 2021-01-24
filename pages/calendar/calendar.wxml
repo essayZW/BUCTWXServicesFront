@@ -35,7 +35,7 @@
 </view>
 <!-- 当前信息展示 end -->
 <!-- 添加待办按钮 start -->
-<!-- <view class="add-button" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }};" bindtap="showAddArea">+</view> -->
+<view class="add-button" style="background-color: {{ globalBackgroundTheme }}; color: {{ globalFrontTheme }};" bindtap="showAddArea" wx:if="{{ activate }}">+</view>
 <!-- 添加待办按钮 end -->
 <!-- 详细信息展示 start -->
 <view wx:if="{{ showDetail }}" class="mask" bindtap="hideMask" id="mask" data-type="detail">
