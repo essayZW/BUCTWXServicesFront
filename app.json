@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/spaceclassroom/spaceclassroom",
     "pages/index/index",
     "pages/jwgrade/jwgrade",
     "pages/jwexam/jwexam",
@@ -15,7 +14,8 @@
     "pages/help/help",
     "pages/noticesettings/noticesettings",
     "pages/schedulesettings/schedulesettings",
-    "pages/schedule/schedule"
+    "pages/schedule/schedule",
+    "pages/spaceclassroom/spaceclassroom"
   ],
   "window": {
     "backgroundTextStyle": "light",

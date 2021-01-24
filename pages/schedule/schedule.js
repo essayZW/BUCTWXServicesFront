@@ -148,6 +148,7 @@ Page({
         let data = [];
         data.length = 7;
         let today = new Date().getDay();
+        if(today == 0) today = 7;
         let todayMonth = new Date().getMonth();
         let todayDate = new Date().getDate();
         let showBackMenu = false;
