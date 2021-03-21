@@ -8,22 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    typeTitle : {
-      'exam' : '即将到来的考试!',
-      'calendar' : '还要做的事!',
-      'schedule' : '今天的课程!',
+    typeTitle: {
+      'exam': '即将到来的考试!',
+      'calendar': '还要做的事!',
+      'schedule': '今天的课程!',
     },
-    typeClassName : {
-      'exam' : 'exam',
-      'calendar' : 'todo',
-      'schedule' : 'course'
+    typeClassName: {
+      'exam': 'exam',
+      'calendar': 'todo',
+      'schedule': 'course'
     },
-    secondTypeClassName : {
-      'exam' : 'exam',
-      'calendar' : 'course',
-      'schedule' : 'course'
+    secondTypeClassName: {
+      'exam': 'exam',
+      'calendar': 'course',
+      'schedule': 'course'
     },
-    weekDay : ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+    weekDay: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
   },
 
   /**
@@ -39,9 +39,9 @@ Page({
    */
   onReady: function () {
     this.setData({
-      typeTitle : this.data.typeTitle,
-      typeClassName : this.data.typeClassName,
-      secondTypeClassName : this.data.secondTypeClassName
+      typeTitle: this.data.typeTitle,
+      typeClassName: this.data.typeClassName,
+      secondTypeClassName: this.data.secondTypeClassName
     });
   },
 
@@ -52,7 +52,7 @@ Page({
     // 或取今日待办
     let todayEvent = this.getTodayEvent();
     this.setData({
-      'eventList' : todayEvent
+      'eventList': todayEvent
     });
     // 设置该页面主题色
     App.setPageColor(this);
@@ -97,7 +97,7 @@ Page({
   /**
    * 得到今天的待办，考试，课程等信息
    */
-  getTodayEvent : function() {
+  getTodayEvent: function () {
     let year = new Date().getFullYear();
     let month = new Date().getMonth();
     let day = new Date().getDate();
@@ -119,25 +119,25 @@ Page({
     // 不包括今天的考试
     today += 1000 * 60 * 60 * 24;
     let todayObj = new Date(today);
-    let rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(),startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'exam');
+    let rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(), startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'exam');
     res = res.concat(this.changeTodoTONotice(rangeExam));
     today -= 1000 * 60 * 60 * 24;
     startDay = today + App.globalData.config.notice.todo * (1000 * 60 * 60 * 24);
     startDayObj = new Date(startDay);
-    rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(),startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'calendar');
+    rangeExam = todoManage.range(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate(), startDayObj.getFullYear(), startDayObj.getMonth(), startDayObj.getDate(), 'calendar');
     res = res.concat(this.changeTodoTONotice(rangeExam));
     return this.sortEvent(res);
   },
   /**
    * 对今天的事件排序
    */
-  sortEvent : function(list) {
+  sortEvent: function (list) {
     // 先根据是否置顶排序，后根据是否过期排序，再根据开始/结束时间排序
     let now = new Date().getTime();
     list.sort((a, b) => {
-      if(a.onTop != b.onTop) return -(a.onTop - b.onTop);
-      if((a.endTime - now) * (b.endTime - now) < 0) return -(a.endTime - b.endTime);
-      if(a.startTime != a.startTime) return a.startTime - b.startTime;
+      if (a.onTop != b.onTop) return -(a.onTop - b.onTop);
+      if ((a.endTime - now) * (b.endTime - now) < 0) return -(a.endTime - b.endTime);
+      if (a.startTime != a.startTime) return a.startTime - b.startTime;
       return a.endTime - b.endTime;
     });
     return list;
@@ -145,7 +145,7 @@ Page({
   /**
    * 通过时间戳得到格式化的时间（HH:mm)格式
    */
-  timeFormat : function(time) {
+  timeFormat: function (time) {
     let timeObj = new Date(time);
     let hour = timeObj.getHours().toString().padStart(2, '0');
     let miniute = timeObj.getMinutes().toString().padStart(2, '0');
@@ -154,11 +154,11 @@ Page({
   /**
    * 对todo待办对象转化为通知对象
    */
-  changeTodoTONotice : function(todoList) {
+  changeTodoTONotice: function (todoList) {
     let res = [];
     // 遍历待办列表
-    for(let i = 0; i < todoList.length; i ++) {
-      if(todoList[i].finish) continue;
+    for (let i = 0; i < todoList.length; i++) {
+      if (todoList[i].finish) continue;
       let obj = {};
       obj.type = todoList[i].type;
       obj.startTime = parseInt(todoList[i].sTime);
@@ -167,7 +167,7 @@ Page({
       obj.position = todoList[i].position;
       obj.sTime = this.timeFormat(obj.startTime);
       obj.eTime = this.timeFormat(obj.endTime);
-      if(obj.type == 'calendar' || obj.type == 'exam') {
+      if (obj.type == 'calendar' || obj.type == 'exam') {
         let eMonth = new Date(obj.startTime).getMonth() + 1;
         let eDay = new Date(obj.startTime).getDate();
         let weekDay = new Date(obj.startTime).getDay();
@@ -186,7 +186,7 @@ Page({
   /**
    * 将课程数据格式转化为通知数据格式
    */
-  changeSchduleToNotice : function(schedule) {
+  changeSchduleToNotice: function (schedule) {
     let timeTable = [0,
       ['08:00', '08:45'],
       ['08:50', '09:35'],
@@ -204,7 +204,7 @@ Page({
     ];
     let res = [];
     let today = new Date();
-    for(let key in schedule) {
+    for (let key in schedule) {
       let obj = {};
       obj.type = 'schedule';
       obj.title = schedule[key].className.substr(0, 15);
@@ -217,7 +217,7 @@ Page({
       let eDate = this.__getA_BFormat(obj.eTime);
       obj.endTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), eDate[1], eDate[2]).getTime();
       // 过期不与展示
-      if(obj.endTime < new Date().getTime()) continue;
+      if (obj.endTime < new Date().getTime()) continue;
       obj.secondTitle = '第' + schedule[key].startClassNum + '~' + schedule[key].endClassNum + '节 ' + schedule[key].teacherInfo.name;
       // 默认不置顶
       obj.onTop = false;
@@ -228,12 +228,12 @@ Page({
   /**
    * 解析格式如 a:b 的字符串，得到a和b的值
    */
-  __getA_BFormat : function (str) {
+  __getA_BFormat: function (str) {
     let pattern = /^(\d+?)\:(\d+?)$/
     let res = str.match(pattern);
-    if(res[1])
+    if (res[1])
       res[1] = parseInt(res[1]);
-    if(res[2])
+    if (res[2])
       res[2] = parseInt(res[2]);
     return res;
   }

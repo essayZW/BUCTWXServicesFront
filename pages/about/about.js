@@ -14,13 +14,13 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      version : App.globalData.version
+      version: App.globalData.version
     });
-    if(options.open) {
-      if(options.open == "statement") {
+    if (options.open) {
+      if (options.open == "statement") {
         this.showMask({
-          currentTarget : {
-            id : 'statement'
+          currentTarget: {
+            id: 'statement'
           }
         });
       }
@@ -83,28 +83,28 @@ Page({
   /**
    * 隐藏蒙版
    */
-  hideMask : function(e) {
-    if(e.target.id != 'mask') return;
+  hideMask: function (e) {
+    if (e.target.id != 'mask') return;
     this.setData({
-        'showMask' : false
+      'showMask': false
     });
-},
+  },
   /**
    * 显示内容蒙版
    */
-  showMask : function(e) {
+  showMask: function (e) {
     this.setData({
-      'showMask' : true,
-      'alertContent' : this.alertContent[e.currentTarget.id]
+      'showMask': true,
+      'alertContent': this.alertContent[e.currentTarget.id]
     });
   },
   /**
    * 弹出的信息
    */
-  alertContent : {
-    'about' : `# 联系我们
+  alertContent: {
+    'about': `# 联系我们
 email: essaybeihai@gmail.com`,
-    'statement' : `# 隐私协议声明
+    'statement': `# 隐私协议声明
 ## 一. 本程序所使用的信息
 1. 学号，校园网密码，教务密码
 2. 授权情况下的微信头像，用户名等信息

@@ -10,13 +10,13 @@ Page({
   data: {
     useScore: 0,
     styleScore: 0,
-    funScore : 0,
-    scoreWord : [
+    funScore: 0,
+    scoreWord: [
       '', '非常差', '很差', '一般', '很好', '非常好'
     ],
-    input : {
-      content : '',
-      email : ''
+    input: {
+      content: '',
+      email: ''
     }
   },
 
@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      App.setNavigatorColor();
+    App.setNavigatorColor();
   },
 
   /**
@@ -33,10 +33,10 @@ Page({
   onReady: function () {
     // 设置星星初始值
     this.setData({
-      'useScore' : this.data.useScore,
-      'styleScore' : this.data.styleScore,
-      'funScore' : this.data.funScore,
-      'scoreWord' : this.data.scoreWord
+      'useScore': this.data.useScore,
+      'styleScore': this.data.styleScore,
+      'funScore': this.data.funScore,
+      'scoreWord': this.data.scoreWord
     });
   },
 
@@ -44,8 +44,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      App.setPageColor(this);
-      App.setNavigatorColor();
+    App.setPageColor(this);
+    App.setNavigatorColor();
   },
 
   /**
@@ -85,27 +85,27 @@ Page({
   /**
    * 星星打分
    */
-  starClick : function(e) {
+  starClick: function (e) {
     this.data[e.target.dataset.id] = parseInt(e.target.dataset.score)
     this.setData({
-      'useScore' : this.data.useScore,
-      'styleScore' : this.data.styleScore,
-      'funScore' : this.data.funScore
+      'useScore': this.data.useScore,
+      'styleScore': this.data.styleScore,
+      'funScore': this.data.funScore
     });
   },
   /**
    * 保存输入数据
    */
-  inputData : function(e) {
+  inputData: function (e) {
     this.data.input[e.target.id] = e.detail.value;
   },
   /**
    * 提交反馈
    */
-  submitFeedBack : function() {
+  submitFeedBack: function () {
     let content = this.data.input.content;
     let email = this.data.input.email;
-    if(!content || content.length == 0 || content.length > AppConfig.maxFeedBackContentLength) {
+    if (!content || content.length == 0 || content.length > AppConfig.maxFeedBackContentLength) {
       wx.showToast({
         title: '评价内容必填',
         image: '/images/icon/error.png',
@@ -114,16 +114,16 @@ Page({
       return;
     }
     let useScore = this.data.useScore;
-    if(useScore == 0) useScore = -1;
+    if (useScore == 0) useScore = -1;
     let styleScore = this.data.styleScore;
-    if(styleScore == 0) styleScore = -1;
+    if (styleScore == 0) styleScore = -1;
     let funScore = this.data.funScore;
-    if(funScore == 0) funScore = -1;
+    if (funScore == 0) funScore = -1;
     token.request(
       AppConfig.APIAddress + AppConfig.feedBackAPI,
       'POST',
       {
-        content : content,
+        content: content,
         email: email,
         use_score: useScore,
         style_score: styleScore,
@@ -131,7 +131,7 @@ Page({
         time: new Date().getTime()
       },
       (rep) => {
-        if(!rep.data.status) {
+        if (!rep.data.status) {
           wx.showToast({
             title: rep.data.info,
             icon: 'none',
@@ -152,7 +152,7 @@ Page({
         });
       },
       {
-        'content-type' : 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded'
       }
     )
   }

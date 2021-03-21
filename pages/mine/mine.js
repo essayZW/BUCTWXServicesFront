@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -29,7 +29,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      'headImageUrl' : App.globalData.headUrl
+      'headImageUrl': App.globalData.headUrl
     });
     // 设置该页面主题色
     App.setPageColor(this);
@@ -74,40 +74,40 @@ Page({
   /**
     * 页面切换
     */
-  changePage : function(e) {
-      let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
-      if(src === false) {
-        wx.showToast({
-          title: '开发中',
-          icon: 'none',
-          duration: 400
-        })
-        return;
+  changePage: function (e) {
+    let src = e.target.dataset.src || e.currentTarget.dataset.src || false;
+    if (src === false) {
+      wx.showToast({
+        title: '开发中',
+        icon: 'none',
+        duration: 400
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: src,
+      success: function (e) {
+        console.log(e.errMsg);
+      },
+      fail: function (e) {
+        console.log(e.errMsg);
       }
-      wx.navigateTo({
-          url: src,
-          success : function(e) {
-              console.log(e.errMsg);
-          },
-          fail: function(e) {
-              console.log(e.errMsg);
-          }
-      });
+    });
   },
   /**
    * wechat信息绑定
    */
-  getWechatInfo : function(e) {
+  getWechatInfo: function (e) {
     wx.getSetting({
       complete: (res) => {
-        if(res.authSetting['scope.userInfo']) {
+        if (res.authSetting['scope.userInfo']) {
           wx.showToast({
             title: '已经授权绑定',
             duration: 600
           });
           return;
         }
-        if(e.detail.errMsg.indexOf('ok') != -1) {
+        if (e.detail.errMsg.indexOf('ok') != -1) {
           wx.showToast({
             title: '成功',
             duration: 600
@@ -126,17 +126,17 @@ Page({
   /**
    * 显示分享界面
    */
-  share : function() {
+  share: function () {
     this.setData({
-      'showShare' : true
+      'showShare': true
     });
   },
   /**
    * 隐藏分享
    */
-  hideShare : function() {
+  hideShare: function () {
     this.setData({
-      'showShare' : false
+      'showShare': false
     });
   }
 })
